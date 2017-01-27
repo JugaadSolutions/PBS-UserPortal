@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Refunds
+                <small>Refund Details</small></h2>
+                <br>
+
+            <form class="pmbb-edit" name="RefundForm" novalidate>
+
+                <!--<label>From</label>&nbsp;&nbsp;
+                <input type="text" name="joiningDate1" ng-model="fromDate" ng-change="fromDate" ng-focus="joiningDate1=true" ng-click="joiningDate1=true"
+                       uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate1" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">From</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': RefundForm.joiningDate1.$touched && RefundForm.joiningDate1.$invalid }">
+                            <input type="text" name="joiningDate1" ng-model="refundDetails.fromDate" ng-change="fromDate" ng-focus="joiningDate1=true" ng-click="joiningDate1=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate1" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="RefundForm.joiningDate1.$error"
+                                  ng-show="RefundForm.joiningDate1.$touched">
+                                <small ng-message="required">From Date is required</small>
+                            </span>
+                        </div>
+                    </dd>
+                </dl>
+
+                <br>
+
+               <!-- <label>To</label>
+                <input type="text" name="joiningDate2" ng-model="toDate" ng-change="toDate"  ng-focus="joiningDate2=true" ng-click="joiningDate2=true"
+                       uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate2" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">To</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': RefundForm.joiningDate2.$touched && RefundForm.joiningDate2.$invalid }">
+                            <input type="text" name="joiningDate2" ng-model="refundDetails.toDate" ng-change="toDate" ng-focus="joiningDate2=true" ng-click="joiningDate2=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate2" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="RefundForm.joiningDate2.$error"
+                                  ng-show="RefundForm.joiningDate2.$touched">
+                                <small ng-message="required">To Date is required</small>
+                            </span>
+                        </div>
+                    </dd>
+                </dl>
+                <br>
+
+               <!-- <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Locations</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <select chosen class="form-control"
+                                    ng-options=""
+                                    ng-model="Location"
+                                    ng-change="Location">
+                                <option value="Mysuru">Mysuru</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="mangaluru">mangaluru</option>
+                                <option value="Hubli">Hubli</option>
+                                <option value="Dharwad">Dharwad</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>-->
+
+               <!-- <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Registration Centers</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <select chosen class="form-control"
+                                    ng-options=""
+                                    ng-model="Reg_Center" required>
+                                <option value="Registration center1">Registration center 1</option>
+                                <option value="Registration center2">Registration center 2</option>
+                                <option value="Registration center3">Registration center 3</option>
+                                <option value="Registration center4">Registration center 4</option>
+                                <option value="Registration center5">Registration center 5</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>-->
+
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Registration Centers</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <select chosen class="form-control"
+                                    ng-options="RegistrationCenter as RegistrationCenter.location for RegistrationCenter in RegistrationCenters"
+                                    ng-model="RegCenter"
+                                    ng-change="selectedRegistrationCenters(RegCenter)" required>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+
+                <br>
+
+              <!--  <button type="button" class="btn btn-icon-text btn-success waves-effect" ng-click="">
+                    <i class="zmdi zmdi-save"></i> Get Details
+                </button>-->
+                <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                        ng-click="sendDetails()" ng-disabled="RefundForm.$invalid">
+                    <i class="zmdi zmdi-save"></i> Get Details
+                </button>
+            </form>
+
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive" >
+                <table ng-table="" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="member in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <td data-title="'Date'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                            <a ui-sref="admin.members.edit({id: member._id})">{{member.Name}} {{member.lastName}}</a>
+                        </td>
+                        <td data-title="'Name '" filter="{ emailAddress: 'text'}">
+                            {{member.emailAddress}}
+                        </td>
+                        <td data-title="'Member Type'" filter="{ phoneNumber: 'text'}">
+                            {{member.phoneNumber}}
+                        </td>
+                        <td data-title="'Expiry'" filter="{ 'subscriptionType': 'text'}">
+                            {{member.subscriptionType}}
+                        </td>
+                        <td data-title="'Amount'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Payment Mode'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Location'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Employee'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Bank Cash Deposit Report
+                <small>Cash Details</small>
+                <br> </h2>
+            <!--<label>From</label>&nbsp;&nbsp;
+            <input type="text" name="joiningDate1" ng-model="fromDateCashCollection" ng-change="fromDateCashCollection" ng-focus="joiningDate1=true" ng-click="joiningDate1=true"
+                   uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate1" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+
+            <form class="pmbb-edit" name="BankCashDepositReport" novalidate>
+
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line"
+                                 ng-class="{ 'has-error': BankCashDepositReport.BankDepositReportFromDate.$touched && BankCashDepositReport.BankDepositReportFromDate.$invalid }" >
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>From Date</label>
+                                <input type="text" name="BankDepositReportFromDate" ng-model="bankDepositsInput.fromdate" ng-change="fromdate" ng-focus="BankDepositReportFromDate=true" ng-click="BankDepositReportFromDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="BankDepositReportFromDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" chars="none" required >
+                                <span class="help-block"
+                                      ng-messages="BankCashDepositReport.BankDepositReportFromDate.$error"
+                                      ng-show="BankCashDepositReport.BankDepositReportFromDate.$touched">
+                                                <small ng-message="required">From Date is required</small>
+                                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 m-b-20">
+                        <div class="form-group fg-line"
+                             ng-class="{ 'has-error': BankCashDepositReport.BankDepositReportToDate.$touched && BankCashDepositReport.BankDepositReportToDate.$invalid }" >
+                            <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>To Date</label>
+                            <input type="text" name="BankDepositReportToDate" ng-model="bankDepositsInput.todate" ng-change="todate" ng-focus="BankDepositReportToDate=true" ng-click="BankDepositReportToDate=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="BankDepositReportToDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" chars="none" required >
+                            <span class="help-block"
+                                  ng-messages="BankCashDepositReport.BankDepositReportToDate.$error"
+                                  ng-show="BankCashDepositReport.BankDepositReportToDate.$touched">
+                                                <small ng-message="required">To Date is required</small>
+                                            </span>
+                        </div>
+                    </div>
+
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line">
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>Registration Centres</label>
+                                <select chosen class="form-control"
+                                        ng-options="RegistrationCenter as RegistrationCenter.location for RegistrationCenter in RegistrationCenters"
+                                        ng-model="location"
+                                        ng-change="selectedRegistrationCenters(location)">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="sendBankCaskDetails()" ng-disabled="BankCashDepositReport.$invalid">
+                        <i class="zmdi zmdi-save"></i> Generate Report
+                    </button>
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-disabled="BankCashDepositReport.$invalid" >
+                        <i class="zmdi zmdi-eye"></i>
+                        <a ui-sref="admin.accounts.bankcashdeposits.bankcashdeposit-report-print" style="color: white">Print Report</a>
+                    </button>
+                </div>
+
+               <!-- <dl class="dl-horizontal required">
+                    <dt class="p-t-10">From</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': BankCashDepositReport.BankDepositReportFromDate.$touched && BankCashDepositReport.BankDepositReportFromDate.$invalid }">
+                            <input type="text" name="BankDepositReportFromDate" ng-model="bankDepositsInput.fromdate" ng-change="fromdate" ng-focus="BankDepositReportFromDate=true" ng-click="BankDepositReportFromDate=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="BankDepositReportFromDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="BankCashDepositReport.BankDepositReportFromDate.$error"
+                                  ng-show="BankCashDepositReport.BankDepositReportFromDate.$touched">
+                                                <small ng-message="required">From Date is required</small>
+                                            </span>
+                        </div>
+                    </dd>
+                </dl>-->
+
+
+             <!--   <br>-->
+                <!--<label>To</label>
+                <input type="text" name="joiningDate2" ng-model="toDateCashCollection"  ng-change="toDateCashCollection" ng-focus="joiningDate2=true" ng-click="joiningDate2=true"
+                       uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate2" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+                <!--<dl class="dl-horizontal required">
+                    <dt class="p-t-10">To</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': BankCashDepositReport.BankDepositReportToDate.$touched && BankCashDepositReport.BankDepositReportToDate.$invalid }">
+                            <input type="text" name="BankDepositReportToDate" ng-model="bankDepositsInput.todate" ng-change="todate" ng-focus="BankDepositReportToDate=true" ng-click="BankDepositReportToDate=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="BankDepositReportToDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="BankCashDepositReport.BankDepositReportToDate.$error"
+                                  ng-show="BankCashDepositReport.BankDepositReportToDate.$touched">
+                                                <small ng-message="required">To Date is required</small>
+                                            </span>
+                        </div>
+                    </dd>
+                </dl-->
+               <!-- <br>-->
+                <!-- <button type="button" class="btn btn-icon-text btn-success waves-effect" ng-click="">
+                     <i class="zmdi zmdi-save"></i> Get Details
+                 </button>-->
+               <!-- <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                        ng-click="sendBankCaskDetails()" ng-disabled="BankCashDepositReport.$invalid">
+                    <i class="zmdi zmdi-save"></i> Get Details
+                </button>
+                <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                        ng-click="MyFunction()" ng-disabled="" >
+                    <i class="zmdi zmdi-save"></i> Download
+                </button>-->
+            </form>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive" >
+                <table ng-table="bankDepositsTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="bankDeposits in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                      <!--  <td data-title="'Deposit Date'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                            <a ui-sref="admin.members.edit({id: member._id})">{{member.Name}} {{member.lastName}}</a>
+                        </td>-->
+                        <td data-title="'Deposited Date'" filter="{ emailAddress: 'text'}">
+                            {{bankDeposits.depositDate | date : "dd MMM yy"}}
+                        </td>
+                        <td data-title="'Deposited Transaction ID'" filter="{ emailAddress: 'text'}">
+                            {{bankDeposits.transactionId}}
+                        </td>
+                        <td data-title="'Deposited Amount'" filter="{ phoneNumber: 'text'}">
+                            {{bankDeposits.amount}}
+                        </td>
+                        <td data-title="'Bank-Branch'" filter="{ 'subscriptionType': 'text'}">
+                            {{bankDeposits.bankName + '-' + bankDeposits.branch}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+

@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Docking Stations
+                <small>Add DockingStation Cleaning Information</small>
+            </h2>
+           <!-- <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Docking Station Cleaning" tooltip-placement="left"
+                    ng-click="addDockingStationClean()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>-->
+        </div>
+        <div class="card-body  card-padding">
+
+
+            <!--<button class="btn btn-primary" ng-model="DockingStation" ng-click="getVal($event)" value="MCC-ZONE">MCC-ZONE</button>
+            <br>
+            <br>
+            <button class="btn btn-primary">TENNIS COURT</button>
+            <br>
+            <br>-->
+
+            <!--<div class="btn-colors btn-demo">
+                <button class="btn btn-primary" ng-model="DockingStation" ng-click="getVal($event)" value="MCC-ZONE">MCC-ZONE</button>
+                <button class="btn btn-primary">TENNIS COURT</button>
+            </div>-->
+
+            <div class="btn-colors btn-demo" data-ng-repeat="dockingStation in dockingStations" style="display: inline-flex" > <!-- Optional container for demo porpose only -->
+                    <button  class="btn btn-icon-text btn-success waves-effect" type="button" ng-model="DockingStation" ng-click="getVal($event)" value="{{dockingStation.StationID}}" name="{{dockingStation.name}}">{{dockingStation.name}}</button>
+                    <br>
+                    <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="docking-station-clean.html">
+    <form name="dockingStationClean" novalidate>
+        <div class="modal-header">
+            <h4 class="modal-title">Add Docking Station Cleaning Information</h4>
+        </div>
+        <div class="modal-body">
+            <div class="pmbb-body p-l-30">
+
+                <dl class="dl-horizontal">
+                    <dt class="p-t-10">Station Name</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <input type="text" name="stationName" ng-model="dockingStationCleanInput.stationId"
+                                   class="form-control"
+                                   disabled
+                                   placeholder="eg. 65467476">
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Cleaned By</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <select chosen class="form-control"
+                                    data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                    ng-options="employeeSelection as employeeSelection.Name for employeeSelection in employeeSelections"
+                                    ng-model="employeeName"
+                                    ng-change="selectedEmployee(employeeName)" required>
+                                <option value="0">SELECT THE OPTIONS</option>
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Cleaned At</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': dockingStationClean.CleanDate.$touched && dockingStationClean.CleanDate.$invalid }">
+                            <input type="text" name="CleanDate" ng-model="dockingStationCleanInput.cleaneddate" ng-change="stationName" ng-focus="joiningDate1=true" ng-click="joiningDate1=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate1" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="dockingStationClean.CleanDate.$error"
+                                  ng-show="dockingStationClean.CleanDate.$touched">x
+                               <small ng-message="required">Clean Date is required</small>
+                           </span>
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Cleaning Time</dt>
+                    <dd>
+                        <div class="col-sm-6 p-r-10">
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': dockingStationClean.cleanTimeFrom.$touched && dockingStationClean.cleanTimeFrom.$invalid}">
+                                <input type="text" name="cleanTimeFrom"
+                                       ng-model="dockingStationCleanInput.fromtime"
+                                       class="form-control input-sm form-inline"
+                                       placeholder="From Time (eg. 9:30)" chars="number" required>
+                                <span class="help-block" ng-messages="dockingStationClean.cleanTimeFrom.$error"
+                                      ng-show="dockingStationClean.cleanTimeFrom.$touched">
+                                                <small ng-message="required">From time is required.</small>
+                                            </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="fg-line"
+                                 ng-class="{'has-error': dockingStationClean.cleanTimeTo.$touched && dockingStationClean.cleanTimeTo.$invalid}">
+                                <input type="text" name="cleanTimeTo" class="form-control input-sm form-inline"
+                                       ng-model="dockingStationCleanInput.totime"
+                                       placeholder="To Time (eg. 13:00)" chars="number" required>
+                                <span class="help-block" ng-messages="dockingStationClean.cleanTimeTo.$error"
+                                      ng-show="dockingStationClean.cleanTimeTo.$touched">
+                                                <small ng-message="required">To time is required</small>
+                                            </span>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl class="dl-horizontal">
+                    <dt class="p-t-10">Description</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <input type="text" name="description"
+                                   ng-model="dockingStationCleanInput.description"
+                                   class="form-control" placeholder="Enter cleaning information" chars="letters">
+                        </div>
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-link" type="button" ng-click="cancelAddNewDocknckingStationClean()">Cancel</button>
+            <button class="btn btn-link" type="button" ng-click="addDockingStationClean()" ng-disabled="dockingStationClean.$pristine">Add
+            </button>
+        </div>
+    </form>
+</script>
+

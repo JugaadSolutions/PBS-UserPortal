@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Membership
+                <small>Add or Edit Membership</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Membership"
+                    tooltip-placement="left"
+                    ng-click="addNewMembership()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="membershipData.length == 0">
+                <p class="text-muted">
+                    It looks like there are no membership plans available. Start by <a ui-sref="admin.membership.add">adding
+                    a new plan</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="membershipData.length > 0">
+                <table ng-table="membershipTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="membership in $data">
+                        <td data-title="'Plan'" filter="{ 'subscriptionType': 'text'}">
+                            <a ui-sref="admin.membership.edit({id: membership._id})">{{membership.subscriptionType}}</a>
+                        </td>
+                        <td data-title="'Validity'" filter="{ 'validity': 'text'}">
+                            <span ng-if="membership.validity <= 1">{{membership.validity}} day</span>
+                            <span ng-if="membership.validity > 1">{{membership.validity}} days</span>
+                        </td>
+                        <td data-title="'Fees'" filter="{ 'userFees': 'text'}">
+                            &#8377; {{membership.userFees}}
+                        </td>
+                        <td data-title="'Deposit'" filter="{ 'securityDeposit': 'text'}">
+                            &#8377; {{membership.securityDeposit}}
+                        </td>
+                        <td data-title="'Card Fees'" filter="{ 'smartCardFees': 'text'}">
+                            &#8377; {{membership.smartCardFees}}
+                        </td>
+                        <td data-title="'Processing'" filter="{ 'processingFees': 'text'}">
+                            &#8377; {{membership.processingFees}}
+                        </td>
+                        <td data-title="'Total'" filter="{ 'total': 'text'}">
+                            &#8377; {{membership.total}}
+                        </td>
+                        <td data-title="'Fare Plan'" filter="{ 'planName': 'text'}">
+                            <a ui-sref="admin.fare-plans.edit({id: membership.farePlan._id})">{{membership.planName}}</a>
+                        </td>
+                        <td class="text-center">
+                            <span uib-tooltip="{{membership.status}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': membership.status == 'Active',
+                             'status-color bgm-red': membership.status == 'Inactive'}">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="editMembership(membership._id)">Edit</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

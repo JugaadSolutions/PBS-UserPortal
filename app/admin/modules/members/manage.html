@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Members
+                <small>Add or Edit Members</small>
+            </h2>
+            <br>
+            <div class="card-body">
+            <span ng-class="{'led bgm-yellow':'Prospective'}">
+                </span>
+            <label>Prospective</label>
+            <span ng-class="{'led bgm-green':'Registered'}">
+                </span>
+            <label>Registered</label>
+            <span ng-class="{'led bgm-blue':'Expired'}">
+                </span>
+            <label>Expired</label>
+            <span ng-class="{'led bgm-red':'Cancelled'}">
+                </span>
+            <label>Cancelled</label>
+            <span ng-class="{'led bgm-black':'Suspended'}">
+                </span>
+            <label>Suspended</label>
+            </div>
+
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Member" tooltip-placement="left"
+                    ng-click="addNewMember()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="membersData.length == 0">
+                <p class="text-muted">
+                    It looks like there are no members available. Start by <a ui-sref="admin.members.add">adding a new
+                    member</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="membersData.length > 0">
+                <table ng-table="membersTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="member in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <td data-title="'Full Name'" filter="{ Name: 'text'}" filter="{ lastName: 'text'}">
+                            <a ui-sref="admin.members.edit({id: member._id})">{{member.Name}} {{member.lastName}}</a>
+                        </td>
+                        <td data-title="'Email'" filter="{ email: 'text'}">
+                            {{member.email}}
+                        </td>
+                        <td data-title="'Phone'" filter="{ phoneNumber: 'text'}">
+                            {{member.phoneNumber}}
+                        </td>
+                        <td data-title="'Membership'" filter="{ 'subscriptionType': 'text'}">
+                            {{member.membershipId.subscriptionType}}
+                        </td>
+                        <td data-title="'Balance'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Smart Card'" filter="{ smartCardNumber: 'text'}">
+                            <a ui-sref="admin.smart-cards.edit({id: member.smartCardId})">{{member.cardNum}}</a>
+                        </td>
+                        <td data-title="'Document Number'" filter="{ documentNumber: 'text'}">
+                            {{member.documentNumber}}
+                        </td>
+                        <td class="text-center">
+                            <span uib-tooltip="{{member.status}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': member.status == 'Registered' || member.status == 'Renewed',
+                             'status-color bgm-yellow': member.status == 'Prospective',
+                             'status-color bgm-red': member.status == 'Cancelled',
+                              'status-color bgm-black':member.status == 'Suspended',
+                              'status-color bgm-blue':member.status == 'Expired', }">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="editMember(member._id)">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="changeMemberStatus(member._id)">Change
+                                                Status</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="member-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Member Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="MemberStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="member.status" placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Prospective</option>
+                        <option ng-value="1">Registered</option>
+                        <option ng-value="2">Expired</option>
+                        <option ng-value="-1">Cancelled</option>
+                        <option ng-value="-2">Suspended</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelMemberStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changeMemberStatus()">Save Changes</button>
+    </div>
+</script>

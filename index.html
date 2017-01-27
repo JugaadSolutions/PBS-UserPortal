@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="pbs" ng-controller="PBSController" >
+
+<head>
+    <title>My Trin Trin Admin</title>
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/material-design-iconic-font.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+</head>
+
+<body class="{{containerClass}}">
+<section>
+    <section ui-view></section>
+    <div growl></div>
+</section>
+
+<!-- Core JS Libraries -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/lodash.js"></script>
+<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="assets/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/waves.min.js"></script>
+
+
+
+<!-- Angular Library and its components -->
+<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-sanitize.js"></script>
+<script type="text/javascript" src="assets/js/angular-sanitize.min.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>-->
+<script type="text/javascript" src="assets/js/angular-animate.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-loader.js"></script>
+<script type="text/javascript" src="assets/js/angular-growl.js"></script>
+<script type="text/javascript" src="assets/js/angular-sweet-alert.js"></script>
+<script type="text/javascript" src="assets/js/angular-simple-loader.js"></script>
+<script type="text/javascript" src="assets/js/angular-google-maps.js"></script>
+<script type="text/javascript" src="assets/js/angular-chosen.min.js"></script>
+<script type="text/javascript" src="assets/js/fileinput.js"></script>
+<script type="text/javascript" src="assets/js/input-mask.min.js"></script>
+
+<!-- Angular Plugins -->
+<script type="text/javascript" src="assets/js/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="assets/js/ui-bootstrap.js"></script>
+<script type="text/javascript" src="assets/js/ng-table.min.js"></script>
+
+<!-- PBS Admin app drivers -->
+<script type="text/javascript" src="app/env.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/config.js"></script>
+<script type="text/javascript" src="app/directives.js"></script>
+<script type="text/javascript" src="app/services.js"></script>
+<script type="text/javascript" src="app/controllers.js"></script>
+<script type="text/javascript" src="app/constants.js"></script>
+
+</body>
+</html>

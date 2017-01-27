@@ -1,0 +1,114 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Docking Ports
+                <small>Add or Edit Docking Ports</small>
+            </h2>
+           <!-- <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Docking Port"
+                        tooltip-placement="left" ng-click="addDockingPort()">
+                    <i class="zmdi zmdi-plus"></i>
+            </button>-->
+        </div>
+
+        <div class="card-body">
+            <div class="no-records-block" ng-if="dockingPorts.length == 0">
+                <p class="text-muted">
+                    It looks like there are no docking ports available. Start by <a ui-sref="admin.docking-ports.add">adding
+                    a new port</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="dockingPorts.length > 0">
+                <table ng-table="dockingPortsTable" class="table table-striped" show-filter="true">
+                    <tr ng-repeat="dockingPort in $data">
+                        <td data-title="'Port Number'" filter="{ 'PortID': 'text'}">
+                           <!-- <a ui-sref="admin.docking-ports.edit({id: dockingPort._id})">{{dockingPort.PortID}}</a>-->
+                            {{dockingPort.PortID}}
+                        </td>
+
+                       <!-- <td data-title="'UNIT ID'" filter="{ 'FPGA': 'text'}">
+                            <a ui-sref="admin.docking-stations.edit({id: dockingPort.dockingUnitId._id})">{{dockingPort.FPGA}}</a>
+                        </td>
+                        <td data-title="'PORT Name'" filter="{ 'Name': 'text'}">
+                            <a ui-sref="admin.docking-stations.edit({id: dockingPort.dockingStationId._id})">{{dockingPort.Name}}</a>-->
+
+                        <td data-title="'UNIT ID'" filter="{ 'FPGA': 'text'}">
+                          <!--  <a ui-sref="">{{dockingPort.FPGA}}</a>-->
+                            {{dockingPort.FPGA}}
+                        </td>
+                        <td data-title="'PORT Name'" filter="{ 'Name': 'text'}">
+                          <!--  <a ui-sref="">{{dockingPort.Name}}</a>-->
+                            {{dockingPort.Name}}
+                        </td>
+                     <!--   <td data-title="'Model Type'" filter="{ 'modelType': 'text'}
+                            {{dockingPort.modelType}}
+                        </td>-->
+                      <!--  <td data-title="'Port Position'" filter="{ 'portPosition': 'text'}">
+                            {{dockingPort.portPosition}}
+                        </td>-->
+                        <td data-title="'Bicycle Number'" ><!--filter="{ 'cycleRFID': 'text'}"-->
+                            <!--<a class="pointer" ng-click="cycle(dockingPort.cycleRFID)">{{dockingPort.vehicleId[0].vehicleid.vehicleNumber}}</a>-->
+                        {{dockingPort.vehicleId[0].vehicleid.vehicleNumber}}
+                        </td>
+                        <td class="text-center" data-title="'PORT STATUS'" filter="{ dockingPort.status: 'text'}">
+
+                        </td>
+                        <td class="text-center">
+                            <span uib-tooltip="{{dockingPort.portStatus}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': dockingPort.portStatus == 'Bicycle Available',
+                             'status-color bgm-blue': dockingPort.portStatus == 'Empty Port',
+                             'status-color bgm-red': dockingPort.portStatus == 'Port Error'}">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                       <!-- <li>
+                                            <a href="javascript:void(0);" ng-click="editDockingPort(dockingPort._id)">Edit</a>
+                                        </li>-->
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="changeDockingPortStatus(dockingPort._id)">Change Status</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="docking-port-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Docking Port Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="DockingPortStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="dockingPort.portStatus" placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="1">Bicycle Available</option>
+                        <option ng-value="2">Empty Port</option>
+                        <option ng-value="-1">Port Error</option>
+                       <!-- <option ng-value="3">Bicycle Locked</option>
+                        <option ng-value="4">Port Locked</option>-->
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelDockingPortStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changePortStatus()">Save Changes</button>
+    </div>
+</script>

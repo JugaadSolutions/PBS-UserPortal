@@ -1,0 +1,338 @@
+<div class="container">
+    <div class="block-header">
+        <h2>EDIT REDISTRIBUTION VEHICLE
+            <small>Edit all required details with fields marked as * are mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateRedistributionVehicle()">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+           <!-- <button type="button" class="btn btn-icon-text btn-info waves-effect m-r-5"
+                    ng-click="changeRedistributionVehicleStatus()" ng-disabled="EditRedistributionVehicle.$invalid">
+                <i class="zmdi zmdi-undo"></i> Change Status
+            </button>-->
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateRedistributionVehicle()" ng-disabled="">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new">
+                        <div class="fileinput-preview thumbnail">
+                            <ui-gmap-google-map center='redistributionVehicleMap.center' zoom='redistributionVehicleMap.zoom' draggable="true">
+
+                            </ui-gmap-google-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="EditRedistributionVehicle">
+                <uib-tabset justified="true">
+                    <uib-tab heading="Redistribution Vehicle">
+                        <div class="pmb-block">
+                            <div class="pmbb-header m-t-15">
+                                <h2><i class="zmdi zmdi-truck m-r-10"></i>Redistribution Vehicle Information</h2>
+                            </div>
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Vehicle Number</dt>
+                                    <dd>
+                                        <div class="fg-line"
+                                             ng-class="{ 'has-error': EditRedistributionVehicle.number.$touched && EditRedistributionVehicle.number.$invalid }">
+                                            <input type="text" name="number"
+                                                   ng-model="redistributionVehicle.Name"
+                                                   class="form-control"
+                                                   placeholder="eg. RV10" chars="number" maxlength="15"  required>
+                                            <span class="help-block"
+                                                  ng-messages="EditRedistributionVehicle.number.$error"
+                                                  ng-show="EditRedistributionVehicle.number.$touched">
+                                                <small ng-message="required">Vehicle Number is required</small>
+                                            </span>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Redistribution Stations</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <select chosen class="form-control"
+                                                    data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                                    ng-options="RedistributionStationname as RedistributionStation.name for RedistributionStation in RedistributionStations"
+                                                    ng-model="name"
+                                                    ng-change="selectedRedistributionCentre(name)" required>
+                                                <option value="0">SELECT THE OPTIONS</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Vehicle Number Plate</dt>
+                                    <dd>
+                                        <div class="fg-line"
+                                             ng-class="{ 'has-error': EditRedistributionVehicle.numberPlate.$touched && EditRedistributionVehicle.numberPlate.$invalid }">
+                                            <input type="text" name="numberPlate"
+                                                   ng-model="redistributionVehicle.vehiclePlate"
+                                                   class="form-control"
+                                                   placeholder="eg. KA09 1131" chars="number" maxlength="10"  required>
+                                            <span class="help-block"
+                                                  ng-messages="EditRedistributionVehicle.numberPlate.$error"
+                                                  ng-show="EditRedistributionVehicle.numberPlate.$touched">
+                                                <small ng-message="required">Vehicle Plate Number is required</small>
+                                            </span>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Driver ID</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="numberPlate"
+                                                   ng-model="redistributionVehicle.driverId"
+                                                   class="form-control"
+                                                   placeholder="eg. DL - 04241029856649" chars="number" maxlength="20" >
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <!--<dl class="dl-horizontal">
+                                    <dt class="p-t-10">Model Type</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="modelType"
+                                                   ng-model="redistributionVehicle.modelType"
+                                                   class="form-control"
+                                                   placeholder="eg. LORRY">
+                                        </div>
+                                    </dd>
+                                </dl>-->
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Holding Capacity</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" name="dockingPorts"
+                                                   ng-model="redistributionVehicle.portCapacity"
+                                                   class="form-control"
+                                                   placeholder="eg. 10"  chars="only-numbers">
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <!--<dl class="dl-horizontal">
+                                    <dt class="p-t-10">Total Bicycles</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" name="dockingPorts"
+                                                   ng-model="redistributionVehicle.noOfBicycle"
+                                                   class="form-control"
+                                                   placeholder="eg. 10">
+                                        </div>
+                                    </dd>
+                                </dl>-->
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Zone ID</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <select chosen name="ZoneId" ng-model="redistributionVehicle.zoneId" placeholder-text-single="'Select Zone'"
+                                                    class="form-control w-100" required>
+                                                <option ng-value="1">Zone 1</option>
+                                                <option ng-value="2">Zone 2</option>
+                                                <option ng-value="3">Zone 3</option>
+                                                <option ng-value="4">Zone 4</option>
+                                                <option ng-value="5">Zone 5</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Assigned To</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <select chosen class="form-control"
+                                                    ng-options="RVstaffSelection as RVstaffSelection.Name for RVstaffSelection in RVstaffSelections"
+                                                    ng-model="staffName"
+                                                    ng-change="selectedStaff(staffName)" required>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">GPS Coordinates</dt>
+                                    <dd>
+                                        <div class="col-sm-6 p-r-10">
+                                            <div class="fg-line">
+                                                <input type="text" name="latitude"
+                                                       ng-model="redistributionVehicle.gpsCoordinates.latitude"
+                                                       class="form-control input-sm form-inline"
+                                                       placeholder="Latitude"  chars="only-numbers">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="fg-line">
+                                                <input type="text" name="longitude"
+                                                       class="form-control input-sm form-inline"
+                                                       ng-model="redistributionVehicle.gpsCoordinates.longitude"
+                                                       placeholder="Longitude"  chars="only-numbers">
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+               <!--     <uib-tab heading="Purchase Details">
+                        <div class="pmb-block">
+                            <div class="pmbb-header m-t-15">
+                                <h2><i class="zmdi zmdi-assignment m-r-5"></i> Purchase Details</h2>
+                            </div>
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Manufacturing Date</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="manufacturingDate"
+                                                   ng-model="redistributionVehicle.purchaseDetails.manufacturingDate"
+                                                   ng-focus="manufacturingDate=true" ng-click="manufacturingDate=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="manufacturingDate"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Model Number</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" name="modelNumber"
+                                                   ng-model="redistributionVehicle.purchaseDetails.modelNumber"
+                                                   class="form-control"
+                                                   placeholder="eg. 423424">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Invoice Number</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="invoiceNumber"
+                                                   ng-model="redistributionVehicle.purchaseDetails.invoiceNumber"
+                                                   class="form-control"
+                                                   placeholder="eg. INV 232323">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Invoice Date</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="invoiceDate"
+                                                   ng-model="redistributionVehicle.purchaseDetails.invoiceDate"
+                                                   ng-focus="invoiceDate=true" ng-click="invoiceDate=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="invoiceDate"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Received At</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="receivedAt"
+                                                   ng-model="redistributionVehicle.purchaseDetails.receivedAt"
+                                                   ng-focus="receivedAt=true" ng-click="receivedAt=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="receivedAt"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Received By</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="receivedBy"
+                                                   ng-model="redistributionVehicle.purchaseDetails.receivedBy"
+                                                   class="form-control"
+                                                   placeholder="eg. Ashok">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Account</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="accIfAny"
+                                                   ng-model="redistributionVehicle.purchaseDetails.accIfAny"
+                                                   class="form-control"
+                                                   placeholder="eg. Account Info">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Comments</dt>
+                                    <dd>
+                                        <div class="fg-line p-t-10">
+                                            <textarea type="text" name="comments"
+                                                      ng-model="redistributionVehicle.purchaseDetails.comments"
+                                                      class="form-control"
+                                                      rows="4"
+                                                      placeholder="eg. ">
+                                            </textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </uib-tab>-->
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="redistribution-vehicle-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Redistribution Vehicle Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="RedistributionVehicleStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="redistributionVehicle.status"
+                            placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">On Road</option>
+                        <option ng-value="1">At Brake</option>
+                        <option ng-value="2">At Waiting Area</option>
+                        <option ng-value="3">Miscellaneous Tasks</option>
+                        <option ng-value="-1">Non Operational</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelRedistributionVehicleStatusChange()">Cancel
+        </button>
+        <button class="btn btn-link" type="button" ng-click="changeRedistributionVehicleStatus()">Update</button>
+    </div>
+</script>

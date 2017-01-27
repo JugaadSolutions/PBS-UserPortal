@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Simulate Checkin
+                <small>Add required details</small>
+            </h2>
+        </div>
+        <div class="card-body">
+            <form role="form" class="m-30">
+                <div class="form-group fg-line">
+                    <label for="member">Transaction</label>
+                    <select id="member" class="form-control" chosen placeholder-text-single="'Select Transaction'"
+                            ng-options="memberTransaction._id as memberTransaction.member.name for memberTransaction in memberTransactions"
+                            ng-model="transaction.memberTransactionId" ng-change="selectTransaction()">
+                    </select>
+                </div>
+                <div class="form-group fg-line">
+                    <label for="station">Station</label>
+                    <select id="station" chosen class="form-control"
+                            placeholder-text-single="'Select Station Name'"
+                            ng-options="dockingStation as dockingStation.name for dockingStation in dockingStations"
+                            ng-model="selectedStationName"
+                            ng-change="selectStationName(selectedStationName)">
+                    </select>
+                </div>
+                <div class="form-group fg-line">
+                    <label for="unit">Unit</label>
+                    <select id="unit" chosen class="form-control" placeholder-text-single="'Select Unit Number'"
+                            ng-options="dockingUnit as dockingUnit.unitNumber for dockingUnit in dockingUnits"
+                            ng-model="selectedUnitNumber" ng-change="selectUnit(selectedUnitNumber)">
+                    </select>
+                </div>
+                <div class="form-group fg-line">
+                    <label for="port">Port</label>
+                    <select id="port" chosen class="form-control" placeholder-text-single="'Select Port'"
+                            ng-options="dockingPort._id as dockingPort.portNumber for dockingPort in dockingPorts"
+                            ng-model="transaction.toPort" ng-change="selectPort()">
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm m-t-10 m-b-30 waves-effect" ng-click="checkin()">
+                    Checkin
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

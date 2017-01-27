@@ -1,0 +1,164 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Bicycles
+                <small>Add or Edit Bicycles</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Bicycle" tooltip-placement="left"
+                    ng-click="addNewBicycle()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="bicyclesData.length == 0">
+                <p class="text-muted">
+                    It looks like there are no bicycles available. Start by <a ui-sref="admin.bicycles.add">adding a new
+                    bicycle</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="bicyclesData.length > 0">
+                <table ng-table="bicyclesTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="bicycle in $data"
+                        ng-class="{'active-red': (bicycle.location === 'Temporary Port')}">
+                        <td>
+                            <img ng-src="{{bicycle.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <td data-title="'Bicycle Number'" filter="{ vehicleNumber: 'text'}">
+                            <a ui-sref="admin.bicycles.edit({id: bicycle._id})">{{bicycle.vehicleNumber}}</a>
+                        </td>
+                        <td data-title="'RFID'" filter="{ vehicleRFID: 'text'}">
+                            {{bicycle.vehicleRFID}}
+                        </td>
+                        <td data-title="'With'" filter="{ currentAssociationType: 'text'}">
+                            {{bicycle.currentAssociationType.toUpperCase()}}
+                        </td>
+                        <td data-title="'Name'" filter="{ currentAssociationName: 'text'}">
+                            {{bicycle.currentAssociationName}}
+                        </td>
+                     <!--   <td class="text-center">
+                            <span uib-tooltip="{{bicycle.status}}" tooltip-placement="top"
+                                  ng-class="{ 'status-color bgm-green': bicycle.status == 'Operational',
+                                   'status-color bgm-red': bicycle.status == 'Non-Operational' || bicycle.status == 'Decommissioned'}">&nbsp;</span>
+                        </td>-->
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="editBicycle(bicycle._id)">Edit</a>
+                                        </li>
+                                       <!-- <li>
+                                            <a href="javascript:void(0);"
+                                               ng-if="bicycle.location != 'With a User'"
+                                               ng-click="moveBicycle(bicycle._id)">Move
+                                                Bicycle</a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="move-bicycle.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Move Bicycle</h4>
+    </div>
+    <div class="modal-body">
+        <form name="MoveBicycle" novalidate></form>
+        <p>Currently at {{bicycle.currentAssociationId.Name}}</p>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">To</dt>
+            <dd>
+                <div class="fg-line">
+                    <select name="place" ng-change="placeSelected()" ng-model="bicyclePlace"
+                            placeholder="'Select'"
+                            class="form-control w-100" required>
+                        <option ng-if="bicycle.currentAssociationId._type == 'Redistribution-area'" ng-value="4">Maintenance
+                            Center
+                        </option>
+                        <option ng-if="bicycle.currentAssociationId._type == 'Docking-port' || bicycle.currentAssociationId._type == 'Holding-area' || bicycle.currentAssociationId._type == 'Fleet' || bicycle.currentAssociationId._type == 'Maintenance-area'"
+                                ng-value="2">Redistribution Vehicle
+                        </option>
+                        <option ng-if="bicycle.currentAssociationId._type == 'Redistribution-area'" ng-value="3">Holding Area
+                        </option>
+                        <option ng-if="bicycle.currentAssociationId._type == 'Redistribution-area' || bicycle.location == 'Temporary Port'"
+                                ng-value="0">Docking Station
+                        </option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal required">
+            <dt class="p-t-10">Choose</dt>
+            <dd>
+                <div class="fg-line">
+                    <select ng-if="bicyclePlace == 0" chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="sendTo as sendTo.name for sendTo in sendTo"
+                            ng-model="selectSendTo"
+                            ng-change="selectedSendTo(selectSendTo, selectSendTo.name)">
+                    </select>
+                    <select ng-if="bicyclePlace == 3" chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="sendTo as sendTo.areaName for sendTo in sendTo"
+                            ng-model="selectSendTo"
+                            ng-change="selectedSendTo(selectSendTo, selectSendTo.areaName)">
+                    </select>
+                    <select ng-if="bicyclePlace == 2" chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="sendTo as sendTo.Name for sendTo in sendTo"
+                            ng-model="selectSendTo"
+                            ng-change="selectedSendTo(selectSendTo, selectSendTo.Name)">
+                    </select>
+                    <select ng-if="bicyclePlace == 4" chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="sendTo as sendTo.centreName for sendTo in sendTo"
+                            ng-model="selectSendTo"
+                            ng-change="selectedSendTo(selectSendTo, selectSendTo.centreName)">
+                    </select>
+                </div>
+            </dd>
+        </dl>
+
+        <dl ng-show="dockingStationShow" class="dl-horizontal required">
+            <dt class="p-t-10">Unit Number</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="unit as unit.unitNumber for unit in units"
+                            ng-model="selectUnit"
+                            ng-change="selectedUnit(selectUnit)">
+                    </select>
+                </div>
+            </dd>
+        </dl>
+
+        <dl ng-show="dockingStationShow" class="dl-horizontal required">
+            <dt class="p-t-10">Port Number</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen="form-control"
+                            data-placeholder-text-single="'Select'"
+                            ng-options="port as port.portNumber for port in ports"
+                            ng-model="selectPort"
+                            ng-change="selectedPort(selectPort)">
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="moveBicycleCancel()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="moveBicycle()">Save Changes</button>
+    </div>
+</script>

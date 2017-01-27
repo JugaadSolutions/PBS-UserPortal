@@ -1,0 +1,94 @@
+<div class="container">
+
+    <div class="block-header">
+        <h2>Add Global Keys
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelAddTicketType();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="saveGlobalNameValue()" ng-disabled="GlobalKeysValues.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img src="assets/images/fare-plan.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix p-t-20">
+            <form class="pmbb-edit" name="GlobalKeysValues" novalidate>
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-money-box m-r-5"></i>Key Name</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Key Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': GlobalKeysValues.keyName.$touched && GlobalKeysValues.keyName.$invalid }">
+                                    <input type="text" name="keyName" ng-model="globalKeyValues.name"
+                                           class="form-control"
+                                           placeholder="eg. Maintenance" chars="only-letters" required>
+                                    <span class="help-block" ng-messages="GlobalKeysValues.keyName.$error"
+                                          ng-show="GlobalKeysValues.keyName.$touched">
+                                            <small ng-message="required">Key Name is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <div class="plan-wrap" ng-repeat="globalKeyValues in globalKeyValues.value">
+                            <ng-form name="GlobalForm">
+                                <div class="plan-delete">
+                                    <button class="btn btn-danger btn-icon waves-effect waves-circle"
+                                            ng-click="removeValue($index)" uib-tooltip="Remove Key Value"
+                                            tooltip-placement="left">
+                                        <i class="zmdi zmdi-delete"></i></button>
+                                </div>
+
+                                <dl class="dl-horizontal required col-sm-4">
+                                    <dt class="p-t-10">Key Value</dt>
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': GlobalForm.value.$touched && GlobalForm.value.$invalid }">
+                                        <input type="text" name="value" ng-model="globalKeyValues.value"
+                                               class="form-control"
+                                               placeholder="eg. repair" chars="only-letters" required>
+                                        <span class="help-block" ng-messages="GlobalForm.value.$error"
+                                              ng-show="GlobalForm.value.$touched">
+                                            <small ng-message="required">key value is required</small>
+                                        </span>
+                                    </div>
+                                </dl>
+                                <div class="clear"></div>
+                            </ng-form>
+                        </div>
+
+                        <div class="m-t-30">
+                            <button class="btn btn-primary btn-icon-text waves-effect"
+                                    ng-click="addGlobalTypeDetails()">
+                                <i class="zmdi zmdi-plus"></i>Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

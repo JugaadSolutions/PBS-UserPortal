@@ -1,0 +1,177 @@
+<div class="container">
+    <div class="block-header">
+        <h2>
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="cancelAddDockingStationCleaning();" >
+                <i class="zmdi zmdi-alert-octagon"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="addDockingStationClean();" ng-disabled="DockingStationClean.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new">
+                        <div class="fileinput-preview thumbnail">
+                            <img src="assets/images/no-maps.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="DockingStationClean">
+                <div class="pmb-block">
+                    <div class="pmbb-header m-t-15">
+                        <h2><i class="zmdi zmdi-view-carousel m-r-10"></i>Docking Station Cleaning Details</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+
+                        <!--<dl class="dl-horizontal required">
+                            <dt class="p-t-10">Docking Station Name</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control" ng-model="type"
+                                            data-placeholder-text-single="'Select Type'"
+                                            name="type">
+                                        <option value="0">SELECT THE OPTIONS</option>
+                                        <option value="DS1">DS1</option>
+                                        <option value="DS2">DS2</option>
+                                        <option value="DS3">DS3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>-->
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Docking Stations</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control"
+                                            data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                            ng-options="dockingStationSelection as dockingStationSelection.name for dockingStationSelection in dockingStationSelections"
+                                            ng-model="stationName"
+                                            ng-change="selectedDockingStation(stationName)" required>
+                                        <option value="0">SELECT THE OPTIONS</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Cleaning Employee</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control"
+                                            data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                            ng-options="employeeSelection as employeeSelection.Name for employeeSelection in employeeSelections"
+                                            ng-model="employeeName"
+                                            ng-change="selectedEmployee(employeeName)" required>
+                                        <option value="0">SELECT THE OPTIONS</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Cleaning Date</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': DockingStationClean.CleanDate.$touched && DockingStationClean.CleanDate.$invalid }">
+                                    <input type="text" name="CleanDate" ng-model="dockingStationCleanInput.cleaneddate" ng-change="stationName" ng-focus="joiningDate1=true" ng-click="joiningDate1=true"
+                                           uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDate1" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                                    <span class="help-block"
+                                          ng-messages="DockingStationClean.CleanDate.$error"
+                                          ng-show="DockingStationClean.CleanDate.$touched">
+                               <small ng-message="required">Clean Date is required</small>
+                           </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Cleaning Time</dt>
+                            <dd>
+                                <div class="col-sm-6 p-r-10">
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': DockingStationClean.cleanTimeFrom.$touched && DockingStationClean.cleanTimeFrom.$invalid}">
+                                        <input type="text" name="cleanTimeFrom"
+                                               ng-model="dockingStationCleanInput.fromtime"
+                                               class="form-control input-sm form-inline"
+                                               placeholder="From Time (eg. 9:30)" required>
+                                        <span class="help-block" ng-messages="DockingStationClean.cleanTimeFrom.$error"
+                                              ng-show="DockingStationClean.cleanTimeFrom.$touched">
+                                                <small ng-message="required">From time is required.</small>
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="fg-line"
+                                         ng-class="{'has-error': DockingStationClean.cleanTimeTo.$touched && DockingStationClean.cleanTimeTo.$invalid}">
+                                        <input type="text" name="cleanTimeTo" class="form-control input-sm form-inline"
+                                               ng-model="dockingStationCleanInput.totime"
+                                               placeholder="To Time (eg. 13:00)" required>
+                                        <span class="help-block" ng-messages="DockingStationClean.cleanTimeTo.$error"
+                                              ng-show="DockingStationClean.cleanTimeTo.$touched">
+                                                <small ng-message="required">To time is required</small>
+                                            </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <!-- <dl class="dl-horizontal">
+                             <dt class="p-t-5">Upload Photo</dt>
+                             <dd>
+                                 <div class="fg-line">
+                                     <div class="fileinput fileinput-new" data-provides="fileinput">
+                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                              ng-show="document.documentCopy" style="line-height: 239px;">
+                                             <img ng-src="{{document.documentProof}}">
+                                         </div>
+                                         <span class="btn btn-info btn-file m-r-10 waves-effect">
+                                                     <span class="fileinput-new">Select File</span>
+                                                     <span class="fileinput-exists">Select File</span>
+                                                     <input type="file" accept="image/*" file="document.documentCopy"
+                                                            ng-model="image"
+                                                            name="documentCopy" valid-file required>
+                                                 </span>
+                                         <span class="fileinput-filename"></span>
+                                         <a href="#" class="close fileinput-exists"
+                                            data-dismiss="fileinput">×</a>
+                                     </div>
+                                 </div>
+                             </dd>
+                         </dl>-->
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">Description</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="text" name="description"
+                                           ng-model="dockingStationCleanInput.description"
+                                           class="form-control" placeholder="Enter cleaning information">
+                                </div>
+                            </dd>
+                        </dl>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+

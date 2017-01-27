@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="block-header">
+        <h2>Add Internal Stations
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelAddInternalStations();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="SaveInternalStations();" ng-disabled="MaintenanceCentre.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new">
+                        <div class="fileinput-preview thumbnail">
+                            <img src="assets/images/no-maps.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="InternalStations">
+                <div class="pmb-block">
+                    <div class="pmbb-header m-t-15">
+                        <h2><i class="zmdi zmdi-collection-item m-r-10"></i>Maintenance Centre Information</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Centre Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': InternalStations.centreName.$touched && InternalStations.centreName.$invalid }">
+                                    <input type="text" name="centreName" ng-model="internalStationsDetails.name"
+                                           class="form-control"
+                                           placeholder="eg. " chars="only-letters" required>
+                                    <span class="help-block"
+                                          ng-messages="InternalStations.centreName.$error"
+                                          ng-show="InternalStations.centreName.$touched">
+                                                <small ng-message="required">Centre Name is required</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Center Type</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': InternalStations.centreType.$touched && InternalStations.centreType.$invalid }">
+                                    <select chosen class="form-control" ng-model="internalStationsDetails.type"
+                                            name="centreType"  placeholder="eg. Maintenance" required >
+                                        <option ng-value="Fleet">Fleet</option>
+                                        <option ng-value="MaintenanceCentre">Maintenance Centre</option>
+                                        <option ng-value="HoldingArea">Holding Area</option>
+                                        <option ng-value="RedistributionCentre">Redistribution Centre</option>
+                                    </select>
+                                    <span class="help-block"
+                                          ng-messages="InternalStations.centreType.$error"
+                                          ng-show="InternalStations.centreType.$touched">
+                                                <small ng-message="required">centre Type is required</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">GPS Coordinates</dt>
+                            <dd>
+                                <div class="col-sm-6 p-r-10">
+                                    <div class="fg-line">
+                                        <input type="text" name="latitude"
+                                               ng-model="internalStationsDetails.gpsCoordinates.latitude"
+                                               class="form-control input-sm form-inline"
+                                               placeholder="Latitude" required>
+                                        <span class="help-block"
+                                              ng-messages="InternalStations.latitude.$error"
+                                              ng-show="InternalStations.latitude.$touched">
+                                                 <small ng-message="required">Latitude is required</small>
+                                             </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="fg-line">
+                                        <input type="text" name="longitude" class="form-control input-sm form-inline"
+                                               ng-model="internalStationsDetails.gpsCoordinates.longitude"
+                                               placeholder="Longitude" required>
+                                        <span class="help-block"
+                                              ng-messages="InternalStations.longitude.$error"
+                                              ng-show="InternalStations.longitude.$touched">
+                                                 <small ng-message="required">Longitude is required</small>
+                                             </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

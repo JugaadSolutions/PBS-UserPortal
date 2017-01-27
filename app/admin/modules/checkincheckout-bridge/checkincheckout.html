@@ -1,0 +1,153 @@
+<div class="container">
+    <div class="block-header">
+        <h2>Check In Check Out - Bridge
+            <!--<small>Add all required details with fields marked as * are
+                mandatory
+            </small>-->
+        </h2>
+        Test
+        <!-- <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                 ng-click="cancelAddRegistrationCentre();">
+             <i class="zmdi zmdi-arrow-left"></i> Back to List
+         </button>
+         <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                 ng-click="addRegistrationCentre();" ng-disabled="AddRegistrationCentre.$invalid">
+             <i class="zmdi zmdi-save"></i> Save
+        </button>-->
+    </div>
+</div>
+
+<div class="card" id="profile-main">
+    <div class="pm-overview c-overflow">
+        <div class="pmo-pic">
+            <div class="p-relative">
+                <div class="fileinput fileinput-new">
+                    <div class="fileinput-preview thumbnail">
+                        <img src="assets/images/no-maps.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pm-body clearfix">
+        <form class="pmbb-edit" name="checkIncheckOutBridge">
+            <div class="pmb-block">
+                <div class="pmbb-header m-t-15">
+                    <h2><i class="zmdi zmdi-local-store m-r-10"></i>Bridge Test</h2>
+                </div>
+
+                <div class="pmbb-body p-l-30">
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">User ID</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOutBridge.CardNo.$touched && checkIncheckOutBridge.CardNo.$invalid }">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="member as member.UserID for member in members"
+                                        ng-model="userId"
+                                        ng-change="selectedUserID(userId)" name="CardNo"  required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Bicycle Number</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOutBridge.BicycleNo.$touched && checkIncheckOutBridge.BicycleNo.$invalid }">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="bicycleNum as bicycleNum.vehicleUid for bicycleNum in bicycleNums"
+                                        ng-model="bicycleNo"
+                                        ng-change="selectedBicycle(bicycleNo)" name="BicycleNo"  required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Docking Stations</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="dockingStationSelection as dockingStationSelection.name for dockingStationSelection in dockingStationSelections"
+                                        ng-model="dockingStationName"
+                                        ng-change="selectedDockingStation(dockingStationName)" required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Ports</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="portSelection as portSelection.PortID for portSelection in portSelections"
+                                        ng-model="portsName"
+                                        ng-change="selectedPort(portsName)" required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Date</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOutBridge.BridgeDate.$touched && checkIncheckOutBridge.BridgeDate.$invalid }">
+                                <input type="text" name="BridgeDate" ng-model="checkInOutBridge.bridgeDate" ng-change="bridgeDate" ng-focus="BridgeDate=true" ng-click="BridgeDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="BridgeDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                                <span class="help-block"
+                                      ng-messages="checkIncheckOutBridge.BridgeDate.$error"
+                                      ng-show="checkIncheckOutBridge.BridgeDate.$touched">
+                                                <small ng-message="required">Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Time</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOutBridge.BridgeTime.$touched && checkIncheckOutBridge.BridgeTime.$invalid }">
+                                <input type="text" name="BridgeTime" ng-model="checkInOutBridge.bridgeTime" class="form-control"
+                                       placeholder="eg. 10:15:59:123" required>
+                                <span class="help-block" ng-messages="checkIncheckOutBridge.BridgeTime.$error"
+                                      ng-show="checkIncheckOutBridge.BridgeTime.$touched">
+                                                <small ng-message="required">Time is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="addCheckInCheckOutBridge();" ng-disabled="checkIncheckOutBridge.$invalid" >
+                        <i class="zmdi zmdi-save"></i> Check Out
+                    </button>
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="addCheckInBridge();" ng-disabled="checkIncheckOutBridge.$invalid">
+                        <i class="zmdi zmdi-save"></i> Check In
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>

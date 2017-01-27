@@ -1,0 +1,161 @@
+<div class="container">
+    <div class="block-header">
+        <h2>EDIT REGISTRATION CENTRE
+            <small>Edit all required details with fields marked as * are mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateRegistrationCentre()">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+           <!-- <button type="button" class="btn btn-icon-text btn-info waves-effect m-r-5"
+                    ng-click="" ng-disabled="EditRegistrationCentre.$invalid">
+                <i class="zmdi zmdi-undo"></i> Change Status
+            </button>-->
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateRegistrationCentre();" ng-disabled="EditRegistrationCentre.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new">
+                        <div class="fileinput-preview thumbnail">
+                            <ui-gmap-google-map center='registrationCentreMap.center'
+                                                zoom='registrationCentreMap.zoom'></ui-gmap-google-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="EditRegistrationCentre">
+                <div class="pmb-block">
+                    <div class="pmbb-header m-t-15">
+                        <h2><i class="zmdi zmdi-collection-item m-r-10"></i>Registration Centre Information</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Centre Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': EditRegistrationCentre.centreName.$touched && EditRegistrationCentre.centreName.$invalid }">
+                                    <input type="text" name="centreName" ng-model="registrations.name"
+                                           class="form-control"
+                                           placeholder="eg. KUVEMPUNAGAR" chars="only-letters" required>
+                                    <span class="help-block"
+                                          ng-messages="EditRegistrationCentre.centreName.$error"
+                                          ng-show="EditRegistrationCentre.centreName.$touched">
+                                                <small ng-message="required">Registration Centre Name is required</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Centre Location</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': EditRegistrationCentre.centreLocation.$touched && EditRegistrationCentre.centreLocation.$invalid }">
+                                    <input type="text" name="centreLocation" ng-model="registrations.location"
+                                           class="form-control"
+                                           placeholder="eg. KUVEMPUNAGAR" chars="only-letters" required>
+                                    <span class="help-block"
+                                          ng-messages="EditRegistrationCentre.centreLocation.$error"
+                                          ng-show="EditRegistrationCentre.centreLocation.$touched">
+                                                <small ng-message="required">Registration Location Name is required</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Assigned To</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control"
+                                            ng-options="staffSelection as staffSelection.Name for staffSelection in staffSelections"
+                                            ng-model="staffName"
+                                            ng-change="selectedStaff(staffName)" required>
+                                    </select>
+
+                                    <!--  <select chosen class="form-control"
+                                              ng-options="staffSelection as staffSelection.name for staffSelection in staffSelections">
+                                              ng-model="name"
+                                           ng-change="">
+                                      </select>-->
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">GPS</dt>
+                            <dd>
+                                <div class="col-sm-6 p-r-10">
+                                    <div class="fg-line">
+                                        <input type="text" name="latitude"
+                                               ng-model="registrations.gpsCoordinates.latitude"
+                                               class="form-control input-sm form-inline"
+                                               placeholder="Enter Latitude" chars="only-numbers">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="fg-line">
+                                        <input type="text" name="longitude" class="form-control input-sm form-inline"
+                                               ng-model="registrations.gpsCoordinates.longitude"
+                                               placeholder="Enter Longitude" chars="only-numbers">
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+
+                       <!-- <dl class="dl-horizontal">
+                            <dt class="p-t-10">Status</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="text" name="status"
+                                           ng-model="maintenanceCentre.status"
+                                           class="form-control"
+                                           placeholder="eg. OPERATIONAL">
+                                </div>
+                            </dd>
+                        </dl>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="maintenance-centre-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Maintenance Centre Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="MaintenanceCentreStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="maintenanceCentre.status"
+                            placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Operational</option>
+                        <option ng-value="1">Non Operational</option>
+                        <option ng-value="-1">Shutdown</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="cancelMaintenanceCentreStatusChange()">Cancel</button>
+        <button class="btn btn-success" type="button" ng-click="changeMaintenanceCentreStatus()">Update</button>
+    </div>
+</script>

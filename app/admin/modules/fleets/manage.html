@@ -1,0 +1,89 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <div class="title">
+                <h2>Fleets
+                    <small>Add, Edit Fleets</small>
+                </h2>
+            </div>
+
+            <div class="add-docking-port">
+                <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Fleets"
+                        tooltip-placement="left" ng-click="addNewFleets()">
+                    <i class="zmdi zmdi-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="no-records-block" ng-if="FleetsAreas.length == 0">
+                <p class="text-muted">
+                    It looks like there are no Fleets. Start by <a ui-sref="admin.fleets.add">adding
+                    a new area</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="FleetsAreas.length > 0">
+                <table ng-table="FleetsTable" class="table table-striped" show-filter="true">
+                    <tr ng-repeat="FleetsAreas in $data">
+                        <td data-title="'Fleet Name'" filter="{ 'Name': 'text'}">
+                            <!--<a ui-sref="admin.fleets.edit({id: FleetsAreas._id})">{{FleetsAreas.Name}}</a>-->
+                            {{FleetsAreas.Name}}
+                        </td>
+                        <td data-title="'Station'" filter="{ 'name': 'text'}">
+                            {{FleetsAreas.StationId.name}}
+                        </td>
+                        <td data-title="'Fleet Capacity'" filter="{ 'portCapacity': 'text'}">
+                            {{FleetsAreas.portCapacity}}
+                        </td>
+                        <!--<td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="editHoldingArea(holdingArea._id)">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="changeHoldingAreaStatus(holdingArea._id)">Change Status</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="holding-area-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Holding Area Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="HoldingAreaStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="holdingArea.status" placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Operational</option>
+                        <option ng-value="1">Non Operational</option>
+                        <option ng-value="-1">Shutdown</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelHoldingAreaStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changeHoldingAreaStatus()">Save Changes</button>
+    </div>
+</script>

@@ -1,0 +1,228 @@
+<div class="container">
+
+    <div class="block-header">
+        <h2>Edit Bicycle
+            <small>Edit all required details with fields marked as * are mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateBicycle();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateBicycle()" ng-disabled="BicycleForm.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img ng-src="{{profilePicUrl}}">
+                        </div>
+                        <a href="javascript:void(0);" class="pmop-edit"><i class="zmdi zmdi-camera"></i>
+                            <span class="btn-file">
+                                <span class="hidden-xs fileinput-new ">Change Bicycle Picture</span>
+                                <span class="hidden-xs fileinput-exists">Change</span>
+                                <input type="hidden">
+                                <input type="file" accept="image/*" file="bicycle.profilePic">
+                            </span>
+                            <a href="javascript:void(0);" class="btn btn-danger"
+                               ng-if="profilePicUrl && profilePicUrl != 'assets/images/bicycle.jpg'"
+                               ng-click="removeProfilePic();">Remove Picture</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="BicycleForm" novalidate>
+                <uib-tabset justified="true">
+                    <uib-tab heading="Bicycle">
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <h2><i class="zmdi zmdi-bike m-r-5"></i> Bicycle</h2>
+                            </div>
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Bicycle Number</dt>
+                                    <dd>
+                                        <div class="fg-line"
+                                             ng-class="{ 'has-error': BicycleForm.bicycleNumber.$touched && BicycleForm.bicycleNumber.$invalid }">
+                                            <input type="text" name="bicycleNumber" ng-model="bicycle.vehicleNumber"
+                                                   chars="only-letters"
+                                                   class="form-control"
+                                                   placeholder="eg. B101" required>
+                                        <span class="help-block" ng-messages="BicycleForm.bicycleNumber.$error"
+                                              ng-show="BicycleForm.bicycleNumber.$touched">
+                                            <small ng-message="required">Bicycle Number is required</small>
+                                        </span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Bicycle RFID</dt>
+                                    <dd>
+                                        <div class="fg-line"
+                                             ng-class="{ 'has-error': BicycleForm.cycleRFID.$touched && BicycleForm.cycleRFID.$invalid }">
+                                            <input type="text" name="cycleRFID" ng-model="bicycle.vehicleRFID"
+                                                   class="form-control"
+                                                   minlength="16"
+                                                   maxlength="16"
+                                                   chars="only-letters"
+                                                   placeholder="eg. E00401006B5CF08" required>
+                                            <span class="help-block" ng-messages="BicycleForm.cycleRFID.$error"
+                                                  ng-show="BicycleForm.cycleRFID.$touched">
+                                            <small ng-message="required">Bicycle RFID is required</small>
+                                            <small ng-message="minlength">Bicycle RFID should be 16 characters</small>
+                                        </span>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <!--<dl class="dl-horizontal required">
+                                    <dt class="p-t-10">Model Type</dt>
+                                    <dd>
+                                        <div class="fg-line m-t-10">
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="modelType" ng-model="bicycle.modelType"
+                                                       value="001" required>
+                                                <i class="input-helper"></i>
+                                                001
+                                            </label>
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="modelType" ng-model="bicycle.modelType"
+                                                       value="002" required>
+                                                <i class="input-helper"></i>
+                                                002
+                                            </label>
+                                            <label class="radio radio-inline m-r-20">
+                                                <input type="radio" name="modelType" ng-model="bicycle.modelType"
+                                                       value="003" required>
+                                                <i class="input-helper"></i>
+                                                003
+                                            </label>
+                                        </div>
+                                    </dd>
+                                </dl>-->
+
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                   <!-- <uib-tab heading="Purchase Details">
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <h2><i class="zmdi zmdi-assignment m-r-5"></i> Purchase Details</h2>
+                            </div>
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Manufacturing Date</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="manufacturingDate"
+                                                   ng-model="bicycle.purchaseDetails.manufacturingDate"
+                                                   ng-focus="manufacturingDate=true" ng-click="manufacturingDate=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="manufacturingDate"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Model Number</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" name="modelNumber"
+                                                   ng-model="bicycle.purchaseDetails.modelNumber"
+                                                   class="form-control"
+                                                   placeholder="eg. 423424">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Invoice Number</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="invoiceNumber"
+                                                   ng-model="bicycle.purchaseDetails.invoiceNumber"
+                                                   class="form-control"
+                                                   placeholder="eg. INV 232323">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Invoice Date</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="invoiceDate"
+                                                   ng-model="bicycle.purchaseDetails.invoiceDate"
+                                                   ng-focus="invoiceDate=true" ng-click="invoiceDate=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="invoiceDate"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Received At</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="receivedAt"
+                                                   ng-model="bicycle.purchaseDetails.receivedAt"
+                                                   ng-focus="receivedAt=true" ng-click="receivedAt=true"
+                                                   uib-datepicker-popup="dd/MM/yyyy" is-open="receivedAt"
+                                                   show-button-bar="true" class="form-control"
+                                                   placeholder="eg. 16/09/2012">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Received By</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="receivedBy"
+                                                   ng-model="bicycle.purchaseDetails.receivedBy"
+                                                   class="form-control"
+                                                   placeholder="eg. Ashok">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Account</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="text" name="accIfAny"
+                                                   ng-model="bicycle.purchaseDetails.accIfAny"
+                                                   class="form-control"
+                                                   placeholder="eg. Account Info">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Comments</dt>
+                                    <dd>
+                                        <div class="fg-line p-t-10">
+                                            <textarea type="text" name="comments"
+                                                      ng-model="bicycle.purchaseDetails.comments"
+                                                      class="form-control"
+                                                      rows="4"
+                                                      placeholder="eg. Its a brand new bicycle">
+                                            </textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </uib-tab>-->
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>

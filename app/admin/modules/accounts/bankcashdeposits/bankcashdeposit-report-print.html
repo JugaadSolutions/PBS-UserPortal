@@ -1,0 +1,162 @@
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        border: none;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt text-center">
+            <img src="assets/images/trintrin.jpg" class="i-logo"/>
+            <h3>Trin Trin</h3>
+            <h2>Mysuru</h2>
+            <!--<button type="button" class="btn btn-icon-text btn-success waves-effect"
+               ng-click="cancelTotalCashReport()" >
+           <i class="zmdi zmdi-save"></i> Back
+       </button>-->
+        </div>
+
+        <br>
+
+        <div class="card-header ch-alt text-center">
+            <h2>Bank Cash Deposit Report</h2>
+        </div>
+        <br>
+        <form class="pmbb-edit" name="TotalCashReport"  novalidate>
+            <div class="card-header ch-alt text-center">
+                &nbsp;&nbsp;<label>From &nbsp;:</label> <span ng-bind="bankCashDepositInput.bankCashDepositfromdate | date : 'dd MMM yy '"></span>&nbsp;&nbsp;-&nbsp;&nbsp;<label>To&nbsp;:</label> <span ng-bind="bankCashDepositInput.bankCashDeposittodate | date : 'dd MMM yy '"></span>&nbsp; | &nbsp;<label>Registration Centre&nbsp;:</label> <span ng-bind="bankCashDepositInput.bankCashDepositlocation"></span>
+            </div>
+            <div class="card-body card-padding">
+                <div class="row">
+                    <!--<div class="col-sm-3 m-b-20">
+                        <div class="form-group fg-line" >
+                            &nbsp;&nbsp;<label>From</label>
+                            <input type="text" class="form-control" name="totalFromDate" ng-model="totalCashPrintInput.TotalCashfromdate | date : 'dd MMM yy '" disabled>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 m-b-20">
+                        <div class="form-group fg-line" >
+                            &nbsp;&nbsp;<label>To</label>
+                            <input type="text" class="form-control" name="totalFromDate" ng-model="totalCashPrintInput.TotalCashtodate | date : 'dd MMM yy '" disabled>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="col-sm-3 m-b-20">
+         <div class="form-group fg-line">
+             &nbsp;&nbsp;<label>From Date</label>
+              <input type="text" class="form-control" name="totalFromDate" ng-model="totalCashPrintInput.TotalCashfromdate | date : 'dd MMM yy '" disabled>
+         </div>
+     </div>-->
+
+    <!--  <div class="col-sm-3 m-b-20">
+          <div class="form-group fg-line">
+              &nbsp;&nbsp;<label>To Date</label>
+              <input type="text" class="form-control" name="totalFromDate" ng-model="totalCashPrintInput.TotalCashtodate | date : 'dd MMM yy '" disabled>
+          </div>
+      </div>-->
+
+
+    <!--<button type="button" class="btn btn-icon-text btn-success waves-effect"
+            ng-click="myFun()">
+        <i class="zmdi zmdi-print"></i> Print
+    </button>-->
+
+
+    <!--<div class="card-body">-->
+    <!-- <div class="table-responsive" >
+         <table ng-table="totalCashTable" class="table table-striped table-vmiddle" show-filter="false">
+             <tr ng-repeat="New1 in $data">
+                 <td>
+                     <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                 </td>
+                 <td data-title="'Date'" filter="{ date: 'text'}">
+                     {{New1.date | date : "dd MMM yy"}}
+                 </td>
+                 <td data-title="'POS Collection Amount'" filter="{ pos: 'text'}">
+                     {{New1.pos}}
+                 </td>
+                 <td data-title="'PG Collection Amount'" filter="{ gateway: 'text'}">
+                     {{New1.gateway}}
+                 </td>
+                 <td data-title="'Cash Collection Amount'" filter="{ 'cash': 'text'}">
+                     {{New1.cash}}
+                 </td>
+                 <td data-title="'Total'" filter="{ 'subscriptionType': 'text'}">
+                     {{New1.pos + New1.gateway + New1.cash }}
+                 </td>
+             </tr>
+         </table>
+     </div>-->
+    <!--  </div>-->
+    <div >
+        <table ng-table="BankCashDepositPrintTable" class="table" >
+            <tr ng-repeat="BankCashDepositPrint in $data">
+                <td data-title="'Deposited Date'">
+                    {{BankCashDepositPrint.depositDate | date : "dd MMM yy"}}
+                </td>
+                <td data-title="'Deposited Transaction ID'">
+                    {{BankCashDepositPrint.transactionId}}
+                </td>
+                <td data-title="'Deposited Amount'">
+                    {{BankCashDepositPrint.amount}}
+                </td>
+                <td data-title="'Bank-Branch'">
+                    {{BankCashDepositPrint.bankName + '-' + BankCashDepositPrint.branch}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--  <div class="table-responsive">
+          <table class="table table-striped" ng-table="totalCashTable">
+              <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>POS Collection Amount</th>
+                  <th>PG Collection Amount</th>
+                  <th>Cash Collection Amount</th>
+                  <th>Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="New1 in $data">
+                  <td>
+                      {{New1.date | date : "dd MMM yy"}}
+                  </td>
+                  <td >
+                      {{New1.pos}}
+                  </td>
+                  <td>
+                      {{New1.gateway}}
+                  </td>
+                  <td >
+                      {{New1.cash}}
+                  </td>
+                  <td >
+                      {{New1.pos + New1.gateway + New1.cash }}
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>-->
+</div>
+<button  class="btn btn-float bgm-red m-btn" ng-click="myFun()"><i class="zmdi zmdi-print"></i></button>
+<!--</div>-->
+
+
+
+

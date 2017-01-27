@@ -1,0 +1,117 @@
+<div class="container">
+
+    <div class="block-header">
+        <h2>Add Fare Plan
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelAddFarePlan();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="addFarePlan()" ng-disabled="farePlanForm.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img src="assets/images/fare-plan.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix p-t-20">
+            <form class="pmbb-edit" name="farePlanForm" novalidate>
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-money-box m-r-5"></i> Fare Plan</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Plan Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': farePlanForm.planName.$touched && farePlanForm.planName.$invalid }">
+                                    <input type="text" name="planName" ng-model="farePlan.planName"
+                                           class="form-control"
+                                           placeholder="eg. Plan A" chars="only-letters" required>
+                                        <span class="help-block" ng-messages="farePlanForm.planName.$error"
+                                              ng-show="farePlanForm.planName.$touched">
+                                            <small ng-message="required">Plan Name is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <div class="plan-wrap" ng-repeat="farePlan in farePlan.plans">
+                            <ng-form name="plansForm">
+                                <div class="plan-delete">
+                                    <button class="btn btn-danger btn-icon waves-effect waves-circle"
+                                            ng-click="removePlan($index)" uib-tooltip="Remove Plan"
+                                            tooltip-placement="left">
+                                        <i class="zmdi zmdi-delete"></i></button>
+                                </div>
+                                <dl class="dl-horizontal required col-sm-4">
+                                    <dt class="p-t-10">Start Time</dt>
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': plansForm.startTime.$touched && plansForm.startTime.$invalid }">
+                                        <input type="number" name="startTime" ng-model="farePlan.startTime"
+                                               class="form-control"
+                                               placeholder="eg. 30" required>
+                                        <span class="help-block" ng-messages="plansForm.startTime.$error"
+                                              ng-show="plansForm.startTime.$touched">
+                                            <small ng-message="required">Start Time is required</small>
+                                        </span>
+                                    </div>
+                                </dl>
+                                <dl class="dl-horizontal required col-sm-4">
+                                    <dt class="p-t-10">End Time</dt>
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': plansForm.endTime.$touched && plansForm.endTime.$invalid }">
+                                        <input type="number" name="endTime" ng-model="farePlan.endTime"
+                                               class="form-control"
+                                               placeholder="eg. 30" required>
+                                        <span class="help-block" ng-messages="plansForm.endTime.$error"
+                                              ng-show="plansForm.endTime.$touched">
+                                            <small ng-message="required">End Time is required</small>
+                                        </span>
+                                    </div>
+                                </dl>
+                                <dl class="dl-horizontal required col-sm-4">
+                                    <dt class="p-t-10">Fee</dt>
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': plansForm.fee.$touched && plansForm.fee.$invalid }">
+                                        <input type="number" name="fee" ng-model="farePlan.fee"
+                                               class="form-control"
+                                               placeholder="eg. 150 INR" required>
+                                        <span class="help-block" ng-messages="plansForm.fee.$error"
+                                              ng-show="plansForm.fee.$touched">
+                                            <small ng-message="required">Fee is required</small>
+                                        </span>
+                                    </div>
+                                </dl>
+                                <div class="clear"></div>
+                            </ng-form>
+                        </div>
+                        <div class="m-t-30">
+                            <button class="btn btn-primary btn-icon-text waves-effect"
+                                    ng-click="addFarePlanDetails()">
+                                <i class="zmdi zmdi-plus"></i>Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

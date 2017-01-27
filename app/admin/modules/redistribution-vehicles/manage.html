@@ -1,0 +1,111 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <div class="title">
+                <h2>Manage Redistribution Vehicles
+                    <small>Add or Edit Redistribution Vehicles</small>
+                </h2>
+            </div>
+
+            <div class="add-docking-port">
+                <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Vehicle"
+                        tooltip-placement="left" ng-click="addRedistributionVehicle()">
+                    <i class="zmdi zmdi-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="no-records-block" ng-if="redistributionVehicles.length == 0">
+                <p class="text-muted">
+                    It looks like there are no redistribution vehicles available. Start by <a
+                        ui-sref="admin.redistribution-vehicles.add">adding a new vehicle</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="redistributionVehicles.length > 0">
+                <table ng-table="redistributionVehiclesTable" class="table table-striped" show-filter="true">
+                    <tr ng-repeat="redistributionVehicle in $data">
+                        <td data-title="'Vehicle Name'" filter="{ 'Name': 'text'}">
+                            <a ui-sref="admin.redistribution-vehicles.edit({id: redistributionVehicle._id})">{{redistributionVehicle.Name}}</a>
+                        </td>
+                        <td data-title="'Station'" filter="{ 'name': 'text'}">
+                            {{redistributionVehicle.StationId.name}}
+                        </td>
+                        <td data-title="'Driver ID'" filter="{ 'driverId': 'text'}">
+                            {{redistributionVehicle.driverId}}
+                        </td>
+                       <!-- <td data-title="'Model Type'" filter="{ 'modelType': 'text'}">
+                            {{redistributionVehicle.modelType}}
+                        </td>-->
+                        <td data-title="'Holding Capacity'" filter="{ 'portCapacity': 'text'}">
+                            {{redistributionVehicle.portCapacity}}
+                        </td>
+                        <td data-title="'Number Plate'" filter="{ 'vehiclePlate': 'text'}">
+                            {{redistributionVehicle.vehiclePlate}}
+                        </td>
+                      <!--  <td data-title="'Bicycles'" filter="{ 'noOfBicycle': 'text'}">
+                            {{redistributionVehicle.noOfBicycle}}
+                        </td>-->
+                     <!--   <td data-title="'GPS'" filter="{ 'latitude': 'text'}">
+                            {{redistributionVehicle.gpsCoordinates.latitude}},{{redistributionVehicle.gpsCoordinates.longitude}}
+                        </td>-->
+                       <!-- <td data-title="'Status'" filter="{ 'status': 'text'}">
+                            {{redistributionVehicle.status}}
+                        </td>-->
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="editRedistributionVehicle(redistributionVehicle._id)">Edit</a>
+                                        </li>
+                                      <!--  <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="changeRedistributionVehicleStatus(redistributionVehicle._id)">Change
+                                                Status</a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="redistribution-vehicle-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Redistribution Vehicle Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="RedistributionVehicleStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="redistributionVehicle.status"
+                            placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">On Road</option>
+                        <option ng-value="1">At Brake</option>
+                        <option ng-value="2">At Waiting Area</option>
+                        <option ng-value="3">Miscellaneous Tasks</option>
+                        <option ng-value="-1">Non Operational</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelRedistributionVehicleStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changeRedistributionVehicleStatus()">Save Changes</button>
+    </div>
+</script>

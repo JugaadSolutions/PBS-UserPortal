@@ -1,0 +1,92 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Bicycle Maintenance Report
+                <small>Bicycle Details</small>
+                <br> </h2>
+            <form class="pmbb-edit" name="BicycleMaintenanceReport"  novalidate>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line"
+                                 ng-class="{ 'has-error': BicycleMaintenanceReport.bicycleMaintenanceFromDate.$touched && BicycleMaintenanceReport.bicycleMaintenanceFromDate.$invalid }" >
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>From Date</label>
+                                <input type="text"  name="bicycleMaintenanceFromDate" ng-model="bicyleMaintenanceInputs.from_date" ng-change="bicycleMaintenanceFromDate" ng-focus="bicycleMaintenanceFromDate=true" ng-click="bicycleMaintenanceFromDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="bicycleMaintenanceFromDate" show-button-bar="true" class="form-control" color="red" required >
+                                <span class="help-block"
+                                      ng-messages="BicycleMaintenanceReport.bicycleMaintenanceFromDate.$error"
+                                      ng-show="BicycleMaintenanceReport.bicycleMaintenanceFromDate.$touched">
+                                                <small ng-message="required">From Date is required</small>
+                                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line"
+                                 ng-class="{ 'has-error': BicycleMaintenanceReport.bicycleMaintenanceToDate.$touched && BicycleMaintenanceReport.bicycleMaintenanceToDate.$invalid }" >
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>To Date</label>
+                                <input type="text" name="bicycleMaintenanceToDate" ng-model="bicyleMaintenanceInputs.to_date" ng-change="bicycleMaintenanceToDate" ng-focus="bicycleMaintenanceToDate=true" ng-click="bicycleMaintenanceToDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="bicycleMaintenanceToDate" show-button-bar="true" class="form-control" required >
+                                <span class="help-block"
+                                      ng-messages="BicycleMaintenanceReport.bicycleMaintenanceToDate.$error"
+                                      ng-show="BicycleMaintenanceReport.bicycleMaintenanceToDate.$touched">
+                                                <small ng-message="required">To Date is required</small>
+                                            </span>
+                            </div>
+                        </div>
+
+                       <!-- <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line">
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>Docking Station</label>
+                                <select chosen class="form-control"
+                                        ng-options="DockingStation as DockingStation.name for DockingStation in DockingStations"
+                                        ng-model="location"
+                                        ng-change="selectedDockingStation(location)">
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="sendBicyleMaintenanceInputs()" ng-disabled="BicycleMaintenanceReport.$invalid">
+                        <i class="zmdi zmdi-view-list"></i> Generate Report
+                    </button>
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-disabled="BicycleMaintenanceReport.$invalid" ng-click="printBicycleMaintenanceReport();" >
+                        <i class="zmdi zmdi-eye"></i>
+                       Print Report
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive" >
+                <table ng-table="totalCashTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="cashTotals in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <td data-title="'Bicycle Number'" filter="{ date: 'text'}">
+                            <!--  {{DockingStationClean.stationId.name}}-->
+                        </td>
+                        <td data-title="'Maintened By'" filter="{ pos: 'text'}">
+                            <!-- {{DockingStationClean.empId.Name}}-->
+                        </td>
+                        <td data-title="'Maintained On'" filter="{ gateway: 'text'}">
+                            <!--    {{DockingStationClean.cleaneddate | date}}-->
+                        </td>
+                        <td data-title="'Maintened At'" filter="{ 'cash': 'text'}">
+                            <!-- {{DockingStationClean.fromtime | date:'HH:mm'}}&nbsp;-&nbsp;{{DockingStationClean.totime | date:'HH:mm'}}-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

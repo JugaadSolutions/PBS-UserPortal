@@ -1,0 +1,47 @@
+<div class="sidebar-inner c-overflow">
+    <div class="profile-menu">
+        <a href="javascript:void(0);" toggle-submenu>
+            <div class="profile-pic">
+                <img src="assets/images/profile-pic.png" alt="{{profileName}}">
+            </div>
+
+            <div class="profile-info">
+                {{profileName}} <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </a>
+
+        <ul class="main-menu">
+           <!-- <li ng-class="{active: $state.includes('admin.profile.edit')}">
+                <a ui-sref="admin.profile.edit"><i class="zmdi zmdi-account"></i> View Profile</a>
+            </li>-->
+            <li>
+                <a href="javascript:void(0);" ng-click="logout()"><i class="zmdi zmdi-time-restore"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu" ng-if="role=='admin'">
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-ok"></i> Select Plans</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-credit-card"></i> Payment History</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-menu-right"></i> Ride History</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-envelope"></i> Contact/Feedback</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+        </li>
+
+    </ul>
+</div>

@@ -1,0 +1,206 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Monitor Transactions
+                <small>Monitor transactions live from this report</small>
+            </h2>
+            <ul class="actions">
+                <li>
+                    <a href="javascript:void(0);" uib-tooltip="Refresh List" tooltip-placement="left"
+                       ng-click="loadTransactions();">
+                        <i class="zmdi zmdi-refresh"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="transactions.length == 0">
+                <p class="text-muted">
+                    It looks like there are no transactions available.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="transactions.length > 0">
+           <!-- <div class="table-responsive" ng-if="transactions.length == 0">-->
+                <table ng-table="transactionsTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="transaction in $data"
+                        ng-class="{'active': (transaction.status === 'In Progress'), 'active-red': (transaction.status === 'Canceled')}">
+                        <td data-title="'Member'" >
+                            <a ui-sref="admin.members.edit({id: transaction.member._id})">
+                                {{transaction.user.Name + ' ' + transaction.user.lastName}}</a>
+                        </td>
+                        <td data-title="'Bicycle Number'" filter="{ vehicleNumber: 'text'}">
+                            <a ui-sref="admin.bicycles.edit({id: transaction.bicycle._id})">{{transaction.vehicle.vehicleNumber}}</a>
+                        </td>
+                        <td data-title="'From'">
+                            <a ui-sref="admin.docking-stations.edit({id: transaction.fromPort.dockingStationId._id})">{{transaction.fromPort.Name}}</a>
+                        </td>
+                        <td data-title="'Checkout'">
+                            {{transaction.checkOutTime | date : "dd MMM yy', ' h:mma"}}
+                        </td>
+                        <td data-title="'To'">
+                            <a ng-if="transaction.status != 'Canceled'"
+                               ui-sref="admin.docking-stations.edit({id: transaction.toPort.dockingStationId._id})">{{transaction.toPort.Name}}</a>
+                            <a ng-if="transaction.status != 'Canceled' && transaction.temporaryPort">{{transaction.temporaryPort.name}}</a>
+                            <a ng-if="transaction.status == 'Canceled'">--</a>
+                        </td>
+                        <td data-title="'Checkin'">
+                            {{transaction.checkInTime | date : "dd MMM yy', ' h:mma"}}
+                        </td>
+                        <td data-title="'Duration'">
+                            <a ng-if="transaction.status == 'Canceled'">--</a>
+                            <a ng-if="transaction.status != 'Canceled'">{{(transaction.duration).toFixed(0)}} {{transaction.duration
+                                === undefined ? "" : "mins"}}</a>
+                        </td>
+                        <td data-title="'Cost'">
+                            &#8377; {{transaction.creditsUsed}}
+                        </td>
+                        <td data-title="'Status'">
+                            {{transaction.status}}
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="transactionDetails(transaction._id)">Details</a>
+                                        </li>
+                                        <li>
+                                            <a ng-if="transaction.status == 'In Progress'" href="javascript:void(0);"
+                                               ng-click="closeTransaction(transaction)">Close Transactions</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<script type="text/ng-template" id="close-transaction-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Close Transaction</h4>
+    </div>
+    <div class="modal-body">
+        <form name="CloseTransaction" novalidate>
+            <dl class="dl-horizontal required">
+                <dt class="p-t-10 p-l-30">Check In Date</dt>
+                <dd>
+                    <div class="fg-line">
+                        <input type="text" name="joiningDate" ng-model="transactionData.checkInDate"
+                               ng-focus="checkInDate=true" ng-click="checkInDate=true"
+                               uib-datepicker-popup="dd/MM/yyyy" is-open="checkInDate"
+                               show-button-bar="true" class="form-control" required
+                               placeholder="eg. 16/09/2012">
+
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="dl-horizontal required">
+                <dt class="p-t-10 p-l-30">Check In Time</dt>
+                <dd>
+                    <div uib-timepicker ng-model="transactionData.checkInTime" hour-step="transactionData.hstep"
+                         minute-step="transactionData.mstep" show-meridian="transactionData.ismeridian" required></div>
+                </dd>
+            </dl>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="closePostTransaction()">Close</button>
+        <button class="btn btn-link" ng-disabled="CloseTransaction.$invalid" type="button" ng-click="postTransaction()">
+            Save Changes
+        </button>
+    </div>
+</script>-->
+
+<!--
+<script type="text/ng-template" id="transaction-details-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Transaction Details</h4>
+    </div>
+    <div class="modal-body">
+        <div class="transaction-details">
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Name:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.member.name + " " + transaction.member.lastName }}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">From:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.fromPort.dockingStationId.name + ", Unit: " +
+                            transaction.fromPort.dockingUnitId.unitNumber + ", Port: " + transaction.fromPort.portNumber
+                            }}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl ng-if="transaction.toPort" class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">To:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.toPort.dockingStationId.name + ", Unit: " +
+                            transaction.toPort.dockingUnitId.unitNumber + ", Port: " + transaction.toPort.portNumber
+                            }}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Check Out Time:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.checkOutTime | date: 'dd/MM/yyyy At h:mma'}}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl ng-if="transaction.checkInTime" class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Check In Time:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.checkInTime | date: 'dd/MM/yyyy At h:mma'}}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Duration:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.duration}} mins</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Credits Used:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>Rs. {{transaction.creditsUsed}}</h5>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10 p-l-30">Bicycle:</dt>
+                <dd>
+                    <div class="fg-line">
+                        <h5>{{transaction.bicycle.cycleRFID}}</h5>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="closeTransactionDetails()">Close</button>
+    </div>
+</script>-->

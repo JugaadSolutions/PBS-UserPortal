@@ -1,0 +1,91 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h2>Manage Smart Cards
+                <small>Add or Edit Smart Cards</small>
+            </h2>
+
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Smart Card"
+                    tooltip-placement="left" ng-click="addSmartCard()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+
+        <div class="card-body">
+            <div class="no-records-block" ng-if="smartCards.length == 0">
+                <p class="text-muted">
+                    It looks like there are no smart cards available. Start by <a ui-sref="admin.smart-cards.add">adding
+                    a new card</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="smartCards.length > 0">
+                <table ng-table="smartCardsTable" class="table table-striped" show-filter="true">
+                    <tr ng-repeat="smartCard in $data">
+
+                        <td data-title="'Card Number'" filter="{ 'cardNumber': 'text'}">
+                            <a ui-sref="admin.smart-cards.edit({id: smartCard._id})">{{smartCard.cardNumber}}</a>
+                        </td>
+                        <td data-title="'Card RFID'" filter="{ 'cardRFID': 'text'}">
+                            <a ui-sref="admin.smart-cards.edit({id: smartCard._id})">{{smartCard.cardRFID}}</a>
+                        </td>
+                        <td data-title="'Type'" filter="{ 'Type': 'text'}">
+                            {{smartCard.assignedTo._type}}
+                        </td>
+                        <td data-title="'Assigned To'" filter="{ 'AssignedTo': 'text'}">
+                            <!--<a ui-sref="admin.members.edit({id: smartCard._id})">{{smartCard.assignedTo.Name}}</a>-->
+                            {{smartCard.assignedTo.Name}}
+                        </td>
+                        <td data-title="'Balance'">
+                            {{smartCard.balance}}
+                        </td>
+                        <td data-title="'Membership'">
+                            {{smartCard.membershipId.subscriptionType}}
+                        </td>
+                        <td data-title="'Validity'">
+                            {{smartCard.assignedTo.validity | date : "dd MMM yy"}}
+                        </td>
+                        <td data-title="'Issued by'">
+                            {{smartCard.issuedBy.Name}}
+                        </td>
+                        <td data-title="'Issued on'">
+                            {{smartCard.issuedDate | date : "dd MMM yy"}}
+                        </td>
+                        <!-- <td data-title="'Card Level'" filter="{ 'cardLevel': 'text'}">
+                           {{smartCard.cardLevel}}
+                       </td>-->
+                       <!-- <td data-title="'Card Level'" filter="{ 'cardLevel': 'text'}">
+                            {{smartCard.cardLevel}}
+                        </td>-->
+                        <!--<td data-title="'Assigned to'" filter="{ 'name': 'text'}" filter="{ 'lastName': 'text'}">
+                            <a ui-sref="admin.members.edit({id: smartCard.assignedTo._id})">{{smartCard.name}}
+                                {{smartCard.lastName}}</a>
+                        </td>-->
+                        `
+                        <td class="text-center">
+                            <span uib-tooltip="{{smartCard.status}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': smartCard.status == 'Active',
+                             'status-color bgm-red': smartCard.status == 'Inactive'}">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="editSmartCard(smartCard._id)">Edit</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

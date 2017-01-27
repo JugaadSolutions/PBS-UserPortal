@@ -1,0 +1,104 @@
+
+<div class="container">
+    <div class="card">
+
+        <div class="card-header ch-alt m-b-20">
+            <h2>Docking Station Cleaning Report</h2>
+            <!--<small>Cash Details</small>-->
+                <br>
+            <br>
+            <form class="pmbb-edit" name="DockingStationCleaningReport"  novalidate>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line"
+                                 ng-class="{ 'has-error': DockingStationCleaningReport.cleanReportFrom.$touched && DockingStationCleaningReport.cleanReportFrom.$invalid }" >
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>From Date</label>
+                                <!-- <input type="text" class="form-control" data-input-mask="{mask: '00/00/0000'}" placeholder="eg: 23/05/2014">-->
+                                <input type="text"  name=cleanReportFrom ng-model="dockingStationCleaningInputs.cleanFromDate" ng-change="totalCashReportFrom" ng-focus="TotalCashFrom=true" ng-click="TotalCashFrom=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="TotalCashFrom" show-button-bar="true" class="form-control" color="red" required >
+                                <span class="help-block"
+                                      ng-messages="DockingStationCleaningReport.cleanReportFrom.$error"
+                                      ng-show="DockingStationCleaningReport.cleanReportFrom.$touched">
+                                                <small ng-message="required">From Date is required</small>
+                                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line"
+                                 ng-class="{ 'has-error': DockingStationCleaningReport.cleanReportFromTo.$touched && DockingStationCleaningReport.cleanReportFromTo.$invalid }" >
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>To Date</label>
+                                <!-- <input type="text" class="form-control" data-input-mask="{mask: '00/00/0000'}" placeholder="eg: 23/05/2014">-->
+                                <input type="text" name="cleanReportFromTo" ng-model="dockingStationCleaningInputs.cleanToDate" ng-change="totalCashReportTo" ng-focus="TotalCashTo=true" ng-click="TotalCashTo=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="TotalCashTo" show-button-bar="true" class="form-control" required >
+                                <span class="help-block"
+                                      ng-messages="DockingStationCleaningReport.cleanReportFromTo.$error"
+                                      ng-show="DockingStationCleaningReport.cleanReportFromTo.$touched">
+                                                <small ng-message="required">To Date is required</small>
+                                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 m-b-20">
+                            <div class="form-group fg-line">
+                                <i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;<label>Docking Station</label>
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="dockingStationSelection as dockingStationSelection.name for dockingStationSelection in dockingStationSelections"
+                                        ng-model="dockingStation"
+                                        ng-change="selectedDockingStation(dockingStation)" required>
+                                   <!-- <option value="0">SELECT THE OPTIONS</option>-->
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                                ng-click="sendDockingStationCleaningDetails();" ng-disabled="DockingStationCleaningReport.$invalid">
+                            <i class="zmdi zmdi-view-list"></i> Get Details
+                        </button>
+                        <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                                ng-disabled="DockingStationCleaningReport.$invalid" ng-click="dockingStationCleaningReportPrint();" >
+                            <i class="zmdi zmdi-eye"></i>
+                            <a ui-sref="" style="color: white">Show</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive" >
+                <table ng-table="totalCashTable" class="table table-striped table-vmiddle" show-filter="false">
+                    <tr ng-repeat="cashTotals in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <!--  <td data-title="'Deposit Date'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                              <a ui-sref="admin.members.edit({id: member._id})">{{member.Name}} {{member.lastName}}</a>
+                          </td>-->
+                        <td data-title="'Docking Station'" filter="{ date: 'text'}">
+                           <!-- {{cashTotals.date | date : "dd MMM yy"}}-->
+                        </td>
+                        <td data-title="'Cleaned Date'" filter="{ pos: 'text'}">
+                           <!-- {{cashTotals.pos}}-->
+                        </td>
+                        <td data-title="'Time-From'" filter="{ gateway: 'text'}">
+                            <!--{{cashTotals.gateway}}-->
+                        </td>
+                        <td data-title="'Time-To'" filter="{ 'cash': 'text'}">
+                            <!--{{cashTotals.cash}}-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--<button  class="btn btn-float bgm-red m-btn" print><i class="zmdi zmdi-print"></i></button>-->
+
+

@@ -1,0 +1,158 @@
+<div class="container">
+    <div class="block-header">
+        <h2>ADD HOLDING AREA
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelAddHoldingArea();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="addHoldingArea();" ng-disabled="AddHoldingArea.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new">
+                        <div class="fileinput-preview thumbnail">
+                            <img src="assets/images/no-maps.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="AddHoldingArea">
+                <div class="pmb-block">
+                    <div class="pmbb-header m-t-15">
+                        <h2><i class="zmdi zmdi-collection-item m-r-10"></i>Holding Area Information</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Area Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': AddHoldingArea.areaName.$touched && AddHoldingArea.areaName.$invalid }">
+                                    <input type="text" name="areaName" ng-model="holdingArea.Name"
+                                           class="form-control"
+                                           placeholder="eg. Chamundi Hills" chars="only-letters" required>
+                                            <span class="help-block"
+                                                  ng-messages="AddHoldingArea.areaName.$error"
+                                                  ng-show="AddHoldingArea.areaName.$touched">
+                                                <small ng-message="required">Holding Area Name is required</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Holding Stations</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control"
+                                            data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                            ng-options="HoldingStation as HoldingStation.name for HoldingStation in HoldingStations"
+                                            ng-model="name"
+                                            ng-change="selectedHoldingStation(name)" required>
+                                        <option value="0">SELECT THE OPTIONS</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">Area Capacity</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="number" name="capacity" ng-model="holdingArea.portCapacity"
+                                           class="form-control"
+                                           placeholder="eg. 100" chars="only-numbers">
+                                </div>
+                            </dd>
+                        </dl>
+
+                       <!-- <dl class="dl-horizontal">
+                            <dt class="p-t-10">Model Type</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="text" name="modelType" ng-model="holdingArea.modelType"
+                                           class="form-control"
+                                           placeholder="eg. LORRY">
+                                </div>
+                            </dd>
+                        </dl>-->
+
+                       <!-- <dl class="dl-horizontal">
+                            <dt class="p-t-10">Minimum Cycles Alert</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="number" name="minCyclesAlert" ng-model="holdingArea.maxCyclesAlert"
+                                           class="form-control"
+                                           placeholder="eg. 3">
+                                </div>
+                            </dd>
+                        </dl>-->
+
+                       <!-- <dl class="dl-horizontal">
+                            <dt class="p-t-10">Maximum Cycles Alert</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="number" name="minCyclesAlert"
+                                           ng-model="holdingArea.minCyclesAlert"
+                                           class="form-control"
+                                           placeholder="eg. 100">
+                                </div>
+                            </dd>
+                        </dl>-->
+
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-t-10">GPS Coordinates</dt>
+                            <dd>
+                                <div class="col-sm-6 p-r-10">
+                                    <div class="fg-line">
+                                        <input type="text" name="latitude"
+                                               ng-model="holdingArea.gpsCoordinates.latitude"
+                                               class="form-control input-sm form-inline"
+                                               placeholder="Latitude" chars="only-numbers">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="fg-line">
+                                        <input type="text" name="longitude" class="form-control input-sm form-inline"
+                                               ng-model="holdingArea.gpsCoordinates.longitude"
+                                               placeholder="Longitude" chars="only-numbers">
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Status</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control" ng-model="holdingArea.status" name="status"
+                                            data-placeholder-text-single="'Select Area Status'">
+                                        <option ng-value="0">Operational</option>
+                                        <option ng-value="1">Non-Operational</option>
+                                        <option ng-value="-1">Shutdown</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+<ul class="header-inner clearfix ">
+    <li id="menu-trigger" data-target="mainmenu" ng-class="{ 'open': lvMenuStat }" ng-click="lvMenuStatFun()">
+        <div class="line-wrap">
+            <div class="line top"></div>
+            <div class="line center"></div>
+            <div class="line bottom"></div>
+        </div>
+    </li>
+
+    <li class="logo hidden-xs">
+        <img class="w-75" ui-sref="admin" src="assets/images/logo.png" alt="logo">
+    </li>
+
+    <li class="pull-right">
+        <ul class="top-menu">
+
+           <!-- <li id="top-search">
+                <a href="" data-ng-click="hctrl.openSearch()"><i class="tm-icon zmdi zmdi-search"></i></a>
+            </li>-->
+
+        </ul>
+    </li>
+</ul>
+
+<!-- Top Search Content -->
+<div id="top-search-wrap">
+    <div class="tsw-inner">
+        <i id="top-search-close" class="zmdi zmdi-arrow-left" data-ng-click="hctrl.closeSearch()"></i>
+        <input type="text">
+    </div>
+</div>

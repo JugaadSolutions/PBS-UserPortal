@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Docking Units
+                <small>Add or Edit Docking Units</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Docking Unit"
+                    tooltip-placement="left" ng-click="addDockingUnit()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+
+        <div class="card-body">
+            <div class="no-records-block" ng-if="dockingUnits.length == 0">
+                <p class="text-muted">
+                    It looks like there are no docking units available. Start by <a ui-sref="admin.docking-units.add">adding
+                    a new unit</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="dockingUnits.length > 0">
+                <table ng-table="dockingUnitsTable" class="table table-striped" show-filter="true">
+                    <tr ng-repeat="dockingUnit in $data">
+                        <td data-title="'FPGA Address'" filter="{ 'unitNumber': 'text'}">
+                            <a ui-sref="admin.docking-units.edit({id: dockingUnit._id})">{{dockingUnit.unitNumber}}</a>
+                        </td>
+                        <td data-title="'Belongs To'" filter="{ 'name': 'text'}">
+                            <a ui-sref="admin.docking-stations.edit({id: dockingUnit.dockingStationId._id})">{{dockingUnit.name}}</a>
+                        </td>
+                        <td data-title="'Model Type'" filter="{ 'modelType': 'text'}">
+                            {{dockingUnit.modelType}}
+                        </td>
+                        <td data-title="'Total Ports'" filter="{ 'noOfPorts': 'text'}">
+                            {{dockingUnit.noOfPorts}}
+                        </td>
+                        <td data-title="'Unit Position'" filter="{ 'unitPosition': 'text'}">
+                            {{dockingUnit.unitPosition}}
+                        </td>
+                        <td class="text-center">
+                            <span uib-tooltip="{{dockingUnit.status}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': dockingUnit.status == 'Operational',
+                             'status-color bgm-red': dockingUnit.status == 'Non Operational'}">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="editDockingUnit(dockingUnit._id)">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="changeDockingUnitStatus(dockingUnit._id)">Change Status</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="docking-unit-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Docking Unit Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="DockingUnitStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="dockingUnit.status" placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Operational</option>
+                        <option ng-value="1">Non Operational</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal" ng-if="dockingUnit.status == -1">
+            <dt class="p-t-10 p-l-30">Reason</dt>
+            <dd>
+                <div class="fg-line">
+                    <input type="text" name="reason" ng-model="dockingUnit.reason"
+                           class="form-control"
+                           placeholder="Reason for shutdown">
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelDockingUnitStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changeUnitStatus()">Save Changes</button>
+    </div>
+</script>

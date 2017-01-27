@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt ">
+            <h2>Redistribution Vehicle Tracking
+                <small>Find out where redistribution vehicles are available</small>
+            </h2>
+            <ul class="actions">
+               <!-- <li>
+                    <a href="javascript:void(0);" uib-tooltip="Docking Station View" tooltip-placement="left"
+                       ng-click="swapView(0);">
+                        <i class="zmdi zmdi-view-dashboard"></i>
+                    </a>
+                </li>-->
+               <!-- <li>
+                    <a href="javascript:void(0);" uib-tooltip="Map View" tooltip-placement="left"
+                       ng-click="swapView(2);">
+                        <i class="zmdi zmdi-google-maps"></i>
+                    </a>
+                </li>-->
+            </ul>
+            <!--<button class="btn bgm-amber btn-float waves-effect" uib-popover="{{stations.lastModifiedAt}}"
+                    popover-title="Last Sync" popover-placement="left" popover-trigger="mouseenter"
+                    ng-click="initiateSync()" ng-if="view == 0"><i class="zmdi zmdi-refresh-sync"></i></button>-->
+        </div>
+
+        <div class="card-body">
+            <div class="map-view">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                    <ui-gmap-markers models="markers" coords="'self'" icon="'icon'">
+                        <ui-gmap-windows show="show">
+                            <div ng-non-bindable>
+                                <section>
+                                    <div class="mapHeading map-card-heading">
+                                        {{title}}
+                                    </div>
+                                    <div class="subHeading map-card-content p-t-10">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="zmdi zmdi-bike"></i>
+                                                </td>
+                                                <td>
+                                                    <h5>Cycles</h5>
+                                                    <p>Capacity</p>
+                                                    <p>Available</p>
+                                                </td>
+                                                <td>
+                                                    <h5>&nbsp;</h5>
+                                                    <p>{{bicycleCapacity}}</p>
+                                                    <p>{{bicycleCount}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="zmdi zmdi-alert-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <h5>Status</h5>
+                                                </td>
+                                                <td>
+                                                    <p>{{dockingStationStatus}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="zmdi zmdi-time"></i>
+                                                </td>
+                                                <td>
+                                                    <h5 ng-click="akon()">Working Hours</h5>
+                                                </td>
+                                                <td>
+                                                    <p>06:00 am - 10:00 pm</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="zmdi zmdi-map"></i>
+                                                </td>
+                                                <td>
+                                                    <h5>Direction</h5>
+                                                </td>
+                                                <td>
+                                                    <a target="_blank" href="{{mapUrl}}{{latitude}},{{longitude}}"
+                                                       class="pull-right text-muted"><p>Click here</p></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </ui-gmap-windows>
+                    </ui-gmap-markers>
+                </ui-gmap-google-map>
+            </div>
+        </div>
+    </div>
+</div>

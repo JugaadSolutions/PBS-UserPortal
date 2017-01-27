@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Tickets details
+                <small>Add, Edit or Delete Tickets</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Tickets"
+                    tooltip-placement="left"
+                    ng-click="addNewTicketDetails()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card" id="profile-main">
+            <form class="pmbb-edit" name="MemberForm" novalidate>
+                <uib-tabset justified="true">
+                    <uib-tab heading="Assigned Tickets">
+                        <div class="card-body">
+                            <div class="table-responsive" >
+                                <table ng-table="totalCashTable" class="table table-striped table-vmiddle" show-filter="true">
+                                    <tr ng-repeat="cashTotals in $data">
+                                        <td>
+                                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                                        </td>
+                                        <td data-title="'Date'" filter="{ date: 'text'}">
+                                            {{cashTotals.date | date : "dd MMM yy"}}
+                                        </td>
+                                        <td data-title="'Member Name'" filter="{ pos: 'text'}">
+                                            {{cashTotals.pos}}
+                                        </td>
+                                        <td data-title="'Ticket Subject'" filter="{ gateway: 'text'}">
+                                            {{cashTotals.gateway}}
+                                        </td>
+                                        <td data-title="'Priority'" filter="{ 'cash': 'text'}">
+                                            {{cashTotals.cash}}
+                                        </td>
+                                        <td data-title="'Department'" filter="{ 'subscriptionType': 'text'}">
+                                            {{cashTotals.pos + cashTotals.gateway + cashTotals.cash }}
+                                        </td>
+                                        <td data-title="'Type'" filter="{ 'subscriptionType': 'text'}">
+                                            {{cashTotals.pos + cashTotals.gateway + cashTotals.cash }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Raised Tickets">
+                        <div class="card-body">
+                            <div class="table-responsive" >
+                                <table ng-table="SearchMemberDetailsTable" class="table table-striped table-vmiddle" show-filter="true">
+                                    <tr ng-repeat="SearchDetails in $data">
+                                        <td>
+                                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                                        </td>
+                                        <td data-title="'Date'" filter="{ date: 'text'}">
+                                            {{cashTotals.date | date : "dd MMM yy"}}
+                                        </td>
+                                        <td data-title="'Member Name'" filter="{ pos: 'text'}">
+                                            {{cashTotals.pos}}
+                                        </td>
+                                        <td data-title="'Ticket Subject'" filter="{ gateway: 'text'}">
+                                            {{cashTotals.gateway}}
+                                        </td>
+                                        <td data-title="'Priority'" filter="{ 'cash': 'text'}">
+                                            {{cashTotals.cash}}
+                                        </td>
+                                        <td data-title="'Department'" filter="{ 'subscriptionType': 'text'}">
+                                            {{cashTotals.pos + cashTotals.gateway + cashTotals.cash }}
+                                        </td>
+                                        <td data-title="'Type'" filter="{ 'subscriptionType': 'text'}">
+                                            {{cashTotals.pos + cashTotals.gateway + cashTotals.cash }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,215 @@
+<div class="container">
+
+    <div class="block-header">
+        <h2>ADD BANK CASH DEPOSITS
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelAddEmployee();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="" ng-disabled="BankCashDeposit.$invalid">
+                <i class="zmdi zmdi-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+<div class="card" id="profile-main">
+    <div class="pm-overview c-overflow">
+        <div class="pmo-pic">
+            <div class="p-relative">
+                <div class="fileinput fileinput-new">
+                    <div class="fileinput-preview thumbnail">
+                        <img src="assets/images/no-maps.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pm-body clearfix">
+        <form class="pmbb-edit" name="BankCashDeposit">
+            <div class="pmb-block">
+                <div class="pmbb-header m-t-15">
+                    <h2><i class="zmdi zmdi-local-store m-r-10"></i>Bank Cash Details Information</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+
+                    <!--<dl class="dl-horizontal required">
+                        <dt class="p-t-10">From</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.DateFrom.$touched && BankCashDeposit.DateFrom.$invalid }">
+                                <input type="text" name="DateFrom" ng-model="bankCashDepositFromDate" ng-change="bankCashDepositFromDate" ng-focus="DateFrom=true" ng-click="DateFrom=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="DateFrom" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.DateFrom.$error"
+                                      ng-show="BankCashDeposit.DateFrom.$touched">
+                                                <small ng-message="required">From Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>-->
+
+                    <!--<dl class="dl-horizontal required">
+                        <dt class="p-t-10">To</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.DateTo.$touched && BankCashDeposit.DateTo.$invalid }">
+                                <input type="text" name="DateTo" ng-model="bankCashDepositToDate" ng-change="bankCashDepositToDate" ng-focus="DateTo=true" ng-click="DateTo=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="DateTo" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.DateTo.$error"
+                                      ng-show="BankCashDeposit.DateTo.$touched">
+                                                <small ng-message="required">To Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>-->
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Cash Collected Date</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.CashCollectedDate.$touched && BankCashDeposit.CashCollectedDate.$invalid }">
+                                <input type="text" name="CashCollectedDate" ng-model="cashCollectedDate" ng-change="cashCollectedDate" ng-focus="CashCollectedDate=true" ng-click="CashCollectedDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="CashCollectedDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" chars="none" required >
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.CashCollectedDate.$error"
+                                      ng-show="BankCashDeposit.CashCollectedDate.$touched">
+                                                <small ng-message="required">Cash Collected Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Deposited Date</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.DepositedDate.$touched && BankCashDeposit.DepositedDate.$invalid }">
+                                <input type="text" name="DepositedDate" ng-model="depositedDate" ng-change="depositedDate" ng-focus="DepositedDate=true" ng-click="DepositedDate=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="DepositedDate" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" chars="none" required >
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.DepositedDate.$error"
+                                      ng-show="BankCashDeposit.DepositedDate.$touched">
+                                                <small ng-message="required">Deposited Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Registration Centres</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select chosen class="form-control" ng-model="RegCentre"
+                                        name="RegCentre"  placeholder="eg. Registration Centre" required >
+                                    <option ng-value="RegistrationCentre1">Registration Centre1</option>
+                                    <option ng-value="RegistrationCentre2">Registration Centre2</option>
+                                    <option ng-value="RegistrationCentre3">Registration Centre3</option>
+                                    <option ng-value="RegistrationCentre4">Registration Centre4</option>
+                                    <option ng-value="RegistrationCentre5">Registration Centre5</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Deposited Amount</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.DepositedAmount.$touched && BankCashDeposit.DepositedAmount.$invalid }">
+                                <input type="text" name="DepositedAmount" ng-model="depAmount"
+                                       class="form-control"
+                                       placeholder="eg. 5000" required>
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.DepositedAmount.$error"
+                                      ng-show="BankCashDeposit.DepositedAmount.$touched">
+                                                <small ng-message="required">Deposited Amount is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Bank Name</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.BankName.$touched && BankCashDeposit.BankName.$invalid }">
+                                <input type="text" name="" ng-model=""
+                                       class="form-control"
+                                       placeholder="eg. 5000" required>
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.BankName.$error"
+                                      ng-show="BankCashDeposit.BankName.$touched">
+                                                <small ng-message="required">Bank Name is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Branch Name</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.BranchName.$touched && BankCashDeposit.BranchName.$invalid }">
+                                <input type="text" name="" ng-model=""
+                                       class="form-control"
+                                       placeholder="eg. 5000" required>
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.BranchName.$error"
+                                      ng-show="BankCashDeposit.BranchName.$touched">
+                                                <small ng-message="required">Branch Name is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Transaction ID</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.TransactionID.$touched && BankCashDeposit.TransactionID.$invalid }">
+                                <input type="text" name="TransactionID" ng-model="transactionID"
+                                       class="form-control"
+                                       placeholder="eg. 12345789" required>
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.TransactionID.$error"
+                                      ng-show="BankCashDeposit.TransactionID.$touched">
+                                                <small ng-message="required">Transaction ID is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Remarks</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': BankCashDeposit.Remarks.$touched && BankCashDeposit.Remarks.$invalid }">
+                                <input type="text" name="Remarks" ng-model="remarks"
+                                       class="form-control"
+                                       placeholder="eg. any description" required>
+                                <span class="help-block"
+                                      ng-messages="BankCashDeposit.Remarks.$error"
+                                      ng-show="BankCashDeposit.Remarks.$touched">
+                                                <small ng-message="required">Remarks is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+
+</div>

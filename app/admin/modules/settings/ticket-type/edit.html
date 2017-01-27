@@ -1,0 +1,90 @@
+<div class="container">
+
+    <div class="block-header">
+        <h2>Edit Setting Type
+            <small>Edit all required details with fields marked as * are mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateSettingtype();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateSettingType()" ng-disabled="SettingTypeForm.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img src="assets/images/fare-plan.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix p-t-20">
+            <form class="pmbb-edit" name="SettingTypeForm" novalidate>
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-money-box m-r-5"></i> Fare Plan</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Setting Type</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': SettingTypeForm.settingType.$touched && SettingTypeForm.settingType.$invalid }">
+                                    <input type="text" name="settingType" ng-model="farePlan.planName"
+                                           class="form-control"
+                                           placeholder="eg. Maintenance" required>
+                                    <span class="help-block" ng-messages="SettingTypeForm.settingType.$error"
+                                          ng-show="SettingTypeForm.settingType.$touched">
+                                            <small ng-message="required">setting type is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <div class="plan-wrap" ng-repeat="globalKeyValues in globalKeyValues.value">
+                            <ng-form name="editTypeForm">
+                                <div class="plan-delete">
+                                    <button class="btn btn-danger btn-icon waves-effect waves-circle"
+                                            ng-click="removePlan($index)" uib-tooltip="Remove Setting Type"
+                                            tooltip-placement="left">
+                                        <i class="zmdi zmdi-delete"></i></button>
+                                </div>
+                                <dl class="dl-horizontal required col-sm-4">
+                                    <dt class="p-t-10">Key Value</dt>
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': plansForm.value.$touched && plansForm.value.$invalid }">
+                                        <input type="number" name="value" ng-model="globalKeyValues.value"
+                                               class="form-control"
+                                               placeholder="eg. repaire" required>
+                                        <span class="help-block" ng-messages="plansForm.value.$error"
+                                              ng-show="plansForm.value.$touched">
+                                            <small ng-message="required">value is required</small>
+                                        </span>
+                                    </div>
+                                </dl>
+                                <div class="clear"></div>
+                            </ng-form>
+                        </div>
+                        <div class="m-t-30">
+                            <button class="btn btn-primary btn-icon-text waves-effect"
+                                    ng-click="addFarePlanDetails()">
+                                <i class="zmdi zmdi-plus"></i>Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

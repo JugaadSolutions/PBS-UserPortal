@@ -1,0 +1,145 @@
+<div class="container">
+    <div class="block-header">
+        <h2>Edit Membership
+            <small>Update all required details in the sections</small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateMembership();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateMembership()" ng-disabled="MembershipForm.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img src="assets/images/membership.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix p-t-20">
+            <form class="pmbb-edit" name="MembershipForm" novalidate>
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-assignment-o m-r-5"></i> Membership Plans</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Plan Name</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.subscriptionType.$touched && MembershipForm.subscriptionType.$invalid }">
+                                    <input type="text" name="subscriptionType" ng-model="membership.subscriptionType"
+                                           class="form-control"
+                                           placeholder="eg. One year pass" chars="only-letters" required>
+                                        <span class="help-block" ng-messages="MembershipForm.subscriptionType.$error"
+                                              ng-show="MembershipForm.subscriptionType.$touched">
+                                            <small ng-message="required">Subscription Type is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Validity</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.validity.$touched && MembershipForm.validity.$invalid }">
+                                    <input type="number" name="validity" ng-model="membership.validity"
+                                           class="form-control"
+                                           placeholder="eg. 365" required>
+                                        <span class="help-block" ng-messages="MembershipForm.validity.$error"
+                                              ng-show="MembershipForm.validity.$touched">
+                                            <small ng-message="required">Validity is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Fees</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.userFees.$touched && MembershipForm.userFees.$invalid }">
+                                    <input type="number" name="userFees" ng-model="membership.userFees"
+                                           class="form-control"
+                                           placeholder="eg. 1000" required>
+                                        <span class="help-block" ng-messages="MembershipForm.userFees.$error"
+                                              ng-show="MembershipForm.userFees.$touched">
+                                            <small ng-message="required">Fees is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Security Deposit</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.securityDeposit.$touched && MembershipForm.securityDeposit.$invalid }">
+                                    <input type="number" name="securityDeposit" ng-model="membership.securityDeposit"
+                                           class="form-control"
+                                           placeholder="eg. 250" required>
+                                        <span class="help-block" ng-messages="MembershipForm.securityDeposit.$error"
+                                              ng-show="MembershipForm.securityDeposit.$touched">
+                                            <small ng-message="required">Security Deposit is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Smart Card Fees</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.smartCardFees.$touched && MembershipForm.smartCardFees.$invalid }">
+                                    <input type="number" name="smartCardFees" ng-model="membership.smartCardFees"
+                                           class="form-control"
+                                           placeholder="eg. 100" required>
+                                        <span class="help-block" ng-messages="MembershipForm.smartCardFees.$error"
+                                              ng-show="MembershipForm.smartCardFees.$touched">
+                                            <small ng-message="required">Smart Card Fees is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Processing Fees</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': MembershipForm.processingFees.$touched && MembershipForm.processingFees.$invalid }">
+                                    <input type="number" name="processingFees" ng-model="membership.processingFees"
+                                           class="form-control"
+                                           placeholder="eg. 0" required>
+                                        <span class="help-block" ng-messages="MembershipForm.processingFees.$error"
+                                              ng-show="MembershipForm.processingFees.$touched">
+                                            <small ng-message="required">Processing Fees is required</small>
+                                        </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Fare Type</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control"
+                                            ng-options="farePlan._id as farePlan.planName for farePlan in farePlans"
+                                            ng-model="selectPlan"
+                                            ng-change="selectedFarePlan(selectPlan)" required>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

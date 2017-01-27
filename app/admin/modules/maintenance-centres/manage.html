@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Maintenance centres
+                <small>Add, Edit or Delete Maintenance centres</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Maintenance Centre"
+                    tooltip-placement="left"
+                    ng-click="addNewMaintenanceCentre()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="maintenanceCentres.length == 0">
+                <p class="text-muted">
+                    It looks like there are no maintenance centres available. Start by <a
+                        ui-sref="admin.maintenance-centres.add">adding a new centre</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="maintenanceCentres.length > 0">
+                <table ng-table="maintenanceCentresTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="maintenanceCentre in $data">
+                        <td data-title="'Centre Name'" filter="{ 'name': 'text'}">
+                            <a ui-sref="admin.maintenance-centres.edit({id: maintenanceCentre._id})">{{maintenanceCentre.Name}}</a>
+                        </td>
+                        <td data-title="'Station'" filter="{ 'name': 'text'}">
+                            {{maintenanceCentre.StationId.name}}
+                        </td>
+                        <td data-title="'GPS'" >
+                            {{maintenanceCentre.gpsCoordinates.latitude}},&nbsp;{{maintenanceCentre.gpsCoordinates.longitude}}
+                        </td>
+                        <td data-title="'Capacity'" >
+                            {{maintenanceCentre.portCapacity}}
+                        </td>
+                        <td data-title="'Total Bicycles'">
+                            {{maintenanceCentre.vehicleId.length}}
+                        </td>
+                   <!--     <td data-title="'GPS'" filter="{ 'latitude': 'text'}" filter="{ 'longitude': 'text'}">
+                            {{maintenanceCentre.latitude}},
+                            {{maintenanceCentre.longitude}}
+                        </td>
+                        <td data-title="'Status'" filter="{ 'status': 'text'}">
+                            {{maintenanceCentre.status}}
+                        </td>-->
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="editMaintenanceCentre(maintenanceCentre._id)">Edit</a>
+                                        </li>
+                                        <!--<li>
+                                            <a href="javascript:void(0);"
+                                               ng-click="changeMaintenanceCentreStatus(maintenanceCentre._id)">Change
+                                                Status</a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="maintenance-centre-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Maintenance Centre Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="MaintenanceCentreStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="maintenanceCentre.status"
+                            placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Operational</option>
+                        <option ng-value="1">Non Operational</option>
+                        <option ng-value="-1">Shutdown</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelMaintenanceCentreStatusChange()">Close</button>
+        <button class="btn btn-link" type="button" ng-click="changeMaintenanceCentreStatus()">Save Changes</button>
+    </div>
+</script>

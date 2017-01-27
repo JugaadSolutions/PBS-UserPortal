@@ -1,0 +1,157 @@
+<div class="container">
+    <div class="block-header">
+        <h2>EDIT DOCKING UNIT
+            <small>Edit all required details with fields marked as * are mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelUpdateDockingUnit()">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-info waves-effect m-r-5"
+                    ng-click="changeDockingUnitStatus()" ng-disabled="EditDockingUnit.$invalid">
+                <i class="zmdi zmdi-undo"></i> Change Status
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateDockingUnit()" ng-disabled="EditDockingUnit.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="line-height: 239px;">
+                            <img src="assets/images/docking-unit.jpg">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-body clearfix">
+            <form class="pmbb-edit" name="EditDockingUnit">
+                <div class="pmb-block">
+                    <div class="pmbb-header m-t-15">
+                        <h2><i class="zmdi zmdi-view-carousel m-r-10"></i>Docking Unit Information</h2>
+                    </div>
+                    <div class="pmbb-body p-l-30">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Station Name</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control" disabled
+                                            ng-options="dockingStation._id as dockingStation.name for dockingStation in dockingStations"
+                                            ng-model="selectedStationName"
+                                            ng-change="selectStationName(selectedStationName)"
+                                            data-placeholder-text-single="'Select Station Name'">
+                                    </select></div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">FPGA Address</dt>
+                            <dd>
+                                <div class="fg-line"
+                                     ng-class="{ 'has-error': EditDockingUnit.unitNumber.$touched && EditDockingUnit.unitNumber.$invalid }">
+                                    <input type="text" name="unitNumber" disabled ng-model="dockingUnit.unitNumber"
+                                           class="form-control"
+                                           placeholder="eg. A1" required>
+                                            <span class="help-block"
+                                                  ng-messages="EditDockingUnit.unitNumber.$error"
+                                                  ng-show="EditDockingUnit.unitNumber.$touched">
+                                                <small ng-message="required">Docking Unit Number is required</small>
+                                                <small ng-message="minlength">FPGA address should be 2 digits</small>
+                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Model Type</dt>
+                            <dd>
+                                <div class="fg-line m-t-10">
+                                    <label class="radio radio-inline m-r-20">
+                                        <input type="radio" name="modelType" ng-model="dockingUnit.modelType"
+                                               value="001">
+                                        <i class="input-helper"></i>
+                                        001
+                                    </label>
+                                    <label class="radio radio-inline m-r-20">
+                                        <input type="radio" name="modelType" ng-model="dockingUnit.modelType"
+                                               value="002">
+                                        <i class="input-helper"></i>
+                                        002
+                                    </label>
+                                    <label class="radio radio-inline m-r-20">
+                                        <input type="radio" name="modelType" ng-model="dockingUnit.modelType"
+                                               value="003">
+                                        <i class="input-helper"></i>
+                                        003
+                                    </label>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Unit Position</dt>
+                            <dd>
+                                <div class="col-sm-6 p-r-10">
+                                    <div class="fg-line"
+                                         ng-class="{ 'has-error': EditDockingUnit.unitPosition.$touched && EditDockingUnit.unitPosition.$invalid}">
+                                        <input type="text" name="unitPosition"
+                                               ng-model="dockingUnit.unitPosition"
+                                               class="form-control input-sm form-inline"
+                                               placeholder="eg. L1R3" required>
+                                            <span class="help-block" ng-messages="EditDockingUnit.unitPosition.$error"
+                                                  ng-show="EditDockingUnit.unitPosition.$touched">
+                                                <small ng-message="required">Docking Unit Position is required.</small>
+                                            </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="docking-unit-status-modal.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Change Docking Unit Status</h4>
+    </div>
+    <div class="modal-body">
+        <form name="DockingUnitStatus" novalidate></form>
+        <dl class="dl-horizontal">
+            <dt class="p-t-10 p-l-30">Status</dt>
+            <dd>
+                <div class="fg-line">
+                    <select chosen name="status" ng-model="dockingUnit.status" placeholder-text-single="'Select Status'"
+                            class="form-control w-100" required>
+                        <option ng-value="0">Operational</option>
+                        <option ng-value="1">Non Operational</option>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal" ng-if="dockingUnit.status == -1">
+            <dt class="p-t-10 p-l-30">Reason</dt>
+            <dd>
+                <div class="fg-line">
+                    <input type="text" name="reason" ng-model="dockingUnit.reason"
+                           class="form-control"
+                           placeholder="Reason for shutdown">
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancelDockingUnitStatusChange()">Cancel</button>
+        <button class="btn btn-link" type="button" ng-click="changeUnitStatus()">Update</button>
+    </div>
+</script>

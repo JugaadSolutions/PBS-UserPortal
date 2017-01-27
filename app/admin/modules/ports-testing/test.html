@@ -1,0 +1,153 @@
+<div class="container">
+    <div class="block-header">
+        <h2>Ports Test
+            <!--<small>Add all required details with fields marked as * are
+                mandatory
+            </small>-->
+        </h2>
+       Check In Check Out
+       <!-- <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                ng-click="cancelAddRegistrationCentre();">
+            <i class="zmdi zmdi-arrow-left"></i> Back to List
+        </button>
+        <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                ng-click="addRegistrationCentre();" ng-disabled="AddRegistrationCentre.$invalid">
+            <i class="zmdi zmdi-save"></i> Save-->
+        </button>
+    </div>
+</div>
+
+<div class="card" id="profile-main">
+    <div class="pm-overview c-overflow">
+        <div class="pmo-pic">
+            <div class="p-relative">
+                <div class="fileinput fileinput-new">
+                    <div class="fileinput-preview thumbnail">
+                        <img src="assets/images/no-maps.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pm-body clearfix">
+        <form class="pmbb-edit" name="checkIncheckOut">
+            <div class="pmb-block">
+                <div class="pmbb-header m-t-15">
+                    <h2><i class="zmdi zmdi-local-store m-r-10"></i>Ports Test</h2>
+                </div>
+
+                <div class="pmbb-body p-l-30">
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Card Number</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOut.CardNo.$touched && checkIncheckOut.CardNo.$invalid }">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="member as member.cardNum for member in members"
+                                        ng-model="checkMember"
+                                        ng-change="selectedMembers(checkMember)" name="CardNo"  required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Bicycle Number</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOut.CardNo.$touched && checkIncheckOut.CardNo.$invalid }">
+                                 <select chosen class="form-control"
+                                         data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                         ng-options="bicycleNum as bicycleNum.vehicleNumber for bicycleNum in bicycleNums"
+                                         ng-model="bicycleNo"
+                                         ng-change="selectedBicycleNumber(bicycleNo)" required>
+                                     <option value="0">SELECT THE OPTIONS</option>
+                                 </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Docking Stations</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="dockingStationSelection as dockingStationSelection.name for dockingStationSelection in dockingStationSelections"
+                                        ng-model="dockingStationName"
+                                        ng-change="selectedDockingStation(dockingStationName)" required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Ports</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select chosen class="form-control"
+                                        data-placeholder-text-single="'SELECT THE OPTIONS'"
+                                        ng-options="portSelection as portSelection.Name for portSelection in portSelections"
+                                        ng-model="portsName"
+                                        ng-change="selectedPort(portsName)" required>
+                                    <option value="0">SELECT THE OPTIONS</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+
+                   <!-- <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Date</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOut.Date.$touched && checkIncheckOut.Date.$invalid }">
+                                <input type="text" name="Date" ng-model="checkInOut.checkIncheckOutDate" ng-change="checkIncheckOutDate" ng-focus="Date=true" ng-click="Date=true"
+                                       uib-datepicker-popup="dd/MM/yyyy" is-open="Date" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                                <span class="help-block"
+                                      ng-messages="checkIncheckOut.Date.$error"
+                                      ng-show="checkIncheckOut.Date.$touched">
+                                                <small ng-message="required">Date is required</small>
+                                            </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Time</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': checkIncheckOut.Time.$touched && checkIncheckOut.Time.$invalid }">
+                                <input type="text" name="Time" ng-model="checkInOut.checkIncheckOutTime" class="form-control"
+                                       placeholder="eg. 09:00 am" required>
+                                <span class="help-block" ng-messages="checkIncheckOut.Time.$error"
+                                      ng-show="checkIncheckOut.Time.$touched">
+                                    <small ng-message="required">Time is required</small>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>-->
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="addCheckInCheckOut();" ng-disabled="checkIncheckOut.$invalid" >
+                        <i class="zmdi zmdi-save"></i> Check Out
+                    </button>
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="addCheckIn();" ng-disabled="checkIncheckOut.$invalid">
+                        <i class="zmdi zmdi-save"></i> Check In
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>

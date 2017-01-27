@@ -1,0 +1,12 @@
+<header ng-include="'app/admin/common/header.html'" id="header" class="clearfix" data-current-skin="blue"
+        ng-controller="HeaderController"></header>
+
+<section id="main">
+    <aside id="sidebar" ng-class="{'toggled': sideBar == true}"
+           ng-include="'app/admin/common/sidebar-left.html'"></aside>
+
+    <section id="content" ui-view>
+
+    </section>
+</section>
+

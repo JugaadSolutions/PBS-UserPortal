@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Bicycle Life Cycle
+                <small>Monitor Bicycle Movement</small>
+            </h2>
+            <ul class="actions">
+                <li>
+                    <a href="javascript:void(0);" uib-tooltip="Refresh List" tooltip-placement="left"
+                       ng-click="loadBicycleLifeCycle();">
+                        <i class="zmdi zmdi-refresh"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="bicycleLifeCycle.length == 0">
+                <p class="text-muted">
+                    No bicycle life cycle data available yet.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="bicycleLifeCycle.length > 0">
+                <table ng-table="bicycleLifeCycleTable" class="table table-striped table-vmiddle">
+                    <tr ng-repeat="bicycleLifeCycle in $data">
+                        <td data-title="'Bicycle RFID'">
+                            <a ui-sref="admin.bicycles.edit({id: bicycleLifeCycle.bicycleId.id})">{{bicycleLifeCycle.bicycleId.cycleRFID}}</a>
+                        </td>
+                        <td data-title="'From'">
+                            {{bicycleLifeCycle.fromName}}
+                        </td>
+                        <td data-title="'To'">
+                            {{bicycleLifeCycle.toName}}
+                        </td>
+                        <td data-title="'Time'">
+                            {{bicycleLifeCycle.createdAt | date: 'dd/MM/yyyy HH:mm a'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

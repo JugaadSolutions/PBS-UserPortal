@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Manage Fare Plan
+                <small>Add or Edit Fare Plan</small>
+            </h2>
+            <button class="btn bgm-blue btn-float waves-effect" uib-tooltip="Add New Fare Plan" tooltip-placement="left"
+                    ng-click="addNewFarePlan()">
+                <i class="zmdi zmdi-plus"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="no-records-block" ng-if="farePlansData.length == 0">
+                <p class="text-muted">
+                    It looks like there are no fare plans available. Start by <a ui-sref="admin.fare-plans.add">adding a
+                    new plan</a>.
+                </p>
+            </div>
+            <div class="table-responsive" ng-if="farePlansData.length > 0">
+                <table ng-table="farePlansTable" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="farePlan in $data">
+                        <td data-title="'Plan Name'" filter="{ 'planName': 'text'}">
+                            <a ui-sref="admin.fare-plans.edit({id: farePlan._id})">{{farePlan.planName}}</a>
+                        </td>
+                        <td data-title="'Details'">
+                            <div class="fare-plan-chips">
+                                <span class="fare-plan-chip" ng-repeat="plan in farePlan.plans">({{plan.startTime}} - {{plan.endTime === -1 ? "above" : plan.endTime}}) = &#8377;{{plan.fee}}</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span uib-tooltip="{{farePlan.status}}" tooltip-placement="top" ng-class="{
+                             'status-color bgm-green': farePlan.status == 'Active',
+                             'status-color bgm-red': farePlan.status == 'Inactive'}">&nbsp;</span>
+                        </td>
+                        <td data-title="''" class="table-actions">
+                            <ul class="actions">
+                                <li class="dropdown" uib-dropdown>
+                                    <a href="" uib-dropdown-toggle class="dropdown-toggle">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="editFarePlan(farePlan._id)">Edit</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

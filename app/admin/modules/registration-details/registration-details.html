@@ -1,0 +1,178 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Registration Details
+                <small>Cash Details</small></h2>
+                <br>
+
+            <!-- <label>From</label>&nbsp;&nbsp;
+              <input type="text" name="joiningDateFrom" ng-model="FromDateRegDetails" ng-change="FromDateRegDetails" ng-focus="joiningDateFrom=true" ng-click="joiningDateFrom=true"
+                     uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDateFrom" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+            <form class="pmbb-edit" name="RegistrationDetailsForm" novalidate>
+
+
+
+            <dl class="dl-horizontal required">
+                <dt class="p-t-10">From</dt>
+                <dd>
+                    <div class="fg-line"
+                         ng-class="{ 'has-error': RegistrationDetailsForm.joiningDateFrom.$touched && RegistrationDetailsForm.joiningDateFrom.$invalid }">
+                        <input type="text" name="joiningDateFrom" ng-model="registrationDetails.FromDateRegDetails" ng-change="FromDateRegDetails" ng-focus="joiningDateFrom=true" ng-click="joiningDateFrom=true"
+                               uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDateFrom" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                        <span class="help-block"
+                              ng-messages="RegistrationDetailsForm.joiningDateFrom.$error"
+                              ng-show="RegistrationDetailsForm.joiningDateFrom.$touched">
+                                <small ng-message="required">To Date is required</small>
+                            </span>
+                    </div>
+                </dd>
+            </dl>
+
+                <br>
+               <!-- <label>To</label>
+                <input type="text" name="joiningDateTo" ng-model="ToDateRegDetails" ng-change="ToDateRegDetails"  ng-focus="joiningDateTo=true" ng-click="joiningDateTo=true"
+                       uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDateTo" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" >-->
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">To</dt>
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': RegistrationDetailsForm.joiningDateTo.$touched && RegistrationDetailsForm.joiningDateTo.$invalid }">
+                            <input type="text" name="joiningDateTo" ng-model="registrationDetails.ToDateRegDetails" ng-change="ToDateRegDetails" ng-focus="joiningDateTo=true" ng-click="joiningDateTo=true"
+                                   uib-datepicker-popup="dd/MM/yyyy" is-open="joiningDateTo" show-button-bar="true" class="form-control" placeholder="eg. 16/09/2012" required >
+                            <span class="help-block"
+                                  ng-messages="RegistrationDetailsForm.joiningDateTo.$error"
+                                  ng-show="RegistrationDetailsForm.joiningDateTo.$touched">
+                                <small ng-message="required">To Date is required</small>
+                            </span>
+                        </div>
+                    </dd>
+                </dl>
+                <br>
+                <dl class="dl-horizontal required">
+                    <dt class="p-t-10">Registration Centers</dt>
+                    <dd>
+                        <div class="fg-line">
+                            <select chosen class="form-control"
+                                    ng-options="RegistrationCenter as RegistrationCenter.location for RegistrationCenter in RegistrationCenters"
+                                    ng-model="RegCenters"
+                                    ng-change="selectedRegistrationCenter(RegCenters)" required>
+                                <!--<option value="Registration center1">Registration center 1</option>
+                                <option value="Registration center2">Registration center 2</option>
+                                <option value="Registration center3">Registration center 3</option>
+                                <option value="Registration center4">Registration center 4</option>
+                                <option value="Registration center5">Registration center 5</option>-->
+                            </select>
+                        </div>
+                    </dd>
+                </dl>
+                <br>
+                <!--<button type="button" class="btn btn-icon-text btn-success waves-effect" ng-click="">
+                    <i class="zmdi zmdi-save"></i> Get Details
+                </button>-->
+                <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                        ng-click="sendDetails()" ng-disabled="RegistrationDetailsForm.$invalid">
+                    <i class="zmdi zmdi-save"></i> Get Details
+                </button>
+                <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                        ng-click="MyFunction()" ng-disabled="">
+                    <i class="zmdi zmdi-save"></i> Report
+                </button>
+
+            </form>
+
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive" >
+                <table ng-table="" class="table table-striped table-vmiddle" show-filter="true">
+                    <tr ng-repeat="member in $data">
+                        <td>
+                            <img ng-src="{{member.profilePicUrl}}" style="width: 40px;" class="img-rounded">
+                        </td>
+                        <td data-title="'Date'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                            <a ui-sref="admin.members.edit({id: member._id})">{{member.Name}} {{member.lastName}}</a>
+                        </td>
+                        <td data-title="'Name '" filter="{ emailAddress: 'text'}">
+                            {{member.emailAddress}}
+                        </td>
+                        <td data-title="'Phone'" filter="{ phoneNumber: 'text'}">
+                            {{member.phoneNumber}}
+                        </td>
+                        <td data-title="'Email'" filter="{ 'subscriptionType': 'text'}">
+                            {{member.subscriptionType}}
+                        </td>
+                        <td data-title="'Membership Type'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Security Deposite'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Processing Fee'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Smart Card Fee'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Usage Fee'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Expiry Date'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                        <td data-title="'Total'" filter="{ creditBalance: 'text'}">
+                            &#8377; {{member.creditBalance}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>21/10/16</td>
+                        <td>Shivu</td>
+                        <td>1234567890</td>
+                        <td>shiv.mytrintrin@gmail.com</td>
+                        <td>Casual User</td>
+                        <td>250</td>
+                        <td>90</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>21/11/16</td>
+                        <td>3700000000000000000000</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>21/10/16</td>
+                        <td>Shivu</td>
+                        <td>1234567890</td>
+                        <td>shiv.mytrintrin@gmail.com</td>
+                        <td>Casual User</td>
+                        <td>250</td>
+                        <td>90</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>21/11/16</td>
+                        <td>3700000000000000000000</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>21/10/16</td>
+                        <td>Shivu</td>
+                        <td>1234567890</td>
+                        <td>shiv.mytrintrin@gmail.com</td>
+                        <td>Casual User</td>
+                        <td>250</td>
+                        <td>90</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>21/11/16</td>
+                        <td>3700000000000000000000</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
