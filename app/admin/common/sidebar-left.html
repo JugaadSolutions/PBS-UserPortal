@@ -20,28 +20,30 @@
         </ul>
     </div>
 
-    <ul class="main-menu" ng-if="role=='admin'">
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-ok"></i> Select Plans</a>
+    <ul class="main-menu">
+        <li ng-class="{active: $state.includes('admin.plans')}">
+            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i> Select Plans</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.payment-history')}">
+            <a ui-sref="admin.payment-history.view-payments"><i class="glyphicon glyphicon-credit-card"></i> Payment History</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.ride-history')}">
+            <a ui-sref="admin.ride-history.view-history"><i class="glyphicon glyphicon-menu-right"></i> Ride History</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.stations')}">
+            <a ui-sref="admin.stations.view-stations"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations</a>
         </li>
         <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-credit-card"></i> Payment History</a>
+            <a href="http://www.mytrintrin.com/?page_id=4472"><i class="glyphicon glyphicon-envelope"></i> Contact/Feedback</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.help')}">
+            <a href="http://www.mytrintrin.com/?page_id=4308"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.change-password')}">
+            <a ui-sref="admin.change-password.manage-password"><i class="zmdi zmdi-lock"></i> Change Password</a>
         </li>
         <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-menu-right"></i> Ride History</a>
+            <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
         </li>
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations</a>
-        </li>
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-envelope"></i> Contact/Feedback</a>
-        </li>
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
-        </li>
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a ui-sref="admin.members.manage"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
-        </li>
-
     </ul>
 </div>

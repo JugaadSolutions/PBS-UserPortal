@@ -1,4 +1,4 @@
-<div class="lc-block toggled" ng-if="login" id="l-login">
+<div class="lc-block toggled" ng-if="login" id="l-login" >
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
         <div class="fg-line">
@@ -21,11 +21,16 @@
        class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
             class="zmdi zmdi-arrow-forward"></i></a>
 
-    <ul class="login-navigation">
+    <ul class="login-navigation" style="">
         <li block="#l-forget-password" class="bgm-orange"
             ng-click="for()">Forgot Password?
         </li>
     </ul>
+  <!--  <ul class="login-navigation">
+        <li data-block="#l-register" class="bgm-red" data-ng-click="lctrl.login = 0; lctrl.register = 1">Register</li>
+        <li data-block="#l-forget-password" class="bgm-orange" data-ng-click="lctrl.login = 0; lctrl.forgot = 1">Forgot Password?</li>
+    </ul>-->
+
 </div>
 
 
@@ -57,4 +62,11 @@
         <br>
         Thank You!!
     </p>
+    <ul class="login-navigation">
+        <li block="#l-login" class="bgm-green" ng-click="log()">
+            Login
+        </li>
+    </ul>
 </div>
+
+

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card-header">
+        <h2>Payment History
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table ng-table="userPaymentTable " class="table table-striped table-vmiddle" show-filter="false">
+                <tr ng-repeat="payemntsinData in userPaymentHistory">
+                    <td data-title="'Date'">
+                        {{payemntsinData.createdAt | date : "dd MMM yy"}}
+                    </td>
+                    <td data-title="'Payment ID'">
+                        {{payemntsinData.invoiceNo}}
+                    </td>
+                    <td data-title="'Payment Mode'" >
+                        {{payemntsinData.paymentMode}}
+                    </td>
+                    <td data-title="'Amount'" >
+                        {{payemntsinData.credit}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

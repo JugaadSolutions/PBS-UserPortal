@@ -348,9 +348,9 @@
             }
         },
         user: {
-            user: 'user',
+            user: 'users',
             password: 'password/change',
-            forgotPassword: 'user/forgotpassword'
+            forgotPassword: 'users/forgotpassword'
         }
     });
 

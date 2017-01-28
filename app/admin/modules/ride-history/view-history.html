@@ -1,0 +1,37 @@
+<div class="container">
+        <div class="card-header">
+            <h2>Previous Rides
+            </h2>
+        </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table ng-table="ridesTableUser " class="table table-striped table-vmiddle" show-filter="false">
+                <tr ng-repeat="ridesinData in ridesDataUser">
+                    <td data-title="'Checkout Date/time'">
+                        {{ridesinData.checkOutTime | date : "dd MMM yy"}}
+                    </td>
+                    <td data-title="'Checkout station'">
+                        {{ridesinData.FromStation}} mins
+                    </td>
+                    <td data-title="'Checkin Date/time'" >
+                        {{ridesinData.checkInTime | date : "dd MMM yy"}}
+                    </td>
+                    <td data-title="'Checkin station'" >
+                        {{ridesinData.ToStation}}
+                    </td>
+                    <td data-title="'Duration (Mins)'" >
+                        {{ridesinData.duration.toFixed(2)}}
+                    </td>
+                    <td data-title="'Fare (Rs)'" >
+                        {{ridesinData.fare}}
+                    </td>
+                    <td data-title="'Balance (Rs)'" >
+                        {{ridesinData.balance}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

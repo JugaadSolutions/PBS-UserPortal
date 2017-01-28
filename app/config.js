@@ -10,8 +10,8 @@
     app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
 
         /* Views Path */
-        var adminViewPath = "/PBS-Admin-UI/app/admin/modules/";
-        var loginViewPath = "/PBS-Admin-UI/app/login/";
+        var adminViewPath = "/PBS-UserPortal/app/admin/modules/";
+        var loginViewPath = "/PBS-UserPortal/app/login/";
 
         $urlRouterProvider.otherwise("/login");
 
@@ -33,7 +33,7 @@
 
             .state('403', {
                 url: '/403',
-                templateUrl: '/PBS-Admin-UI/app/admin/common/403.html',
+                templateUrl: '/PBS-UserPortal/app/admin/common/403.html',
                 controller: '403Controller',
                 containerClass: 'four-zero-content'
             })
@@ -111,30 +111,6 @@
                 controller: 'EditProfile',
                 containerClass: 'sw-toggled'
             })
-            
-            .state("admin.docking-stations", {
-                url: "/docking-stations",
-                templateUrl: adminViewPath + 'docking-stations/docking-stations.html',
-                containerClass: 'sw-toggled'
-            })
-            .state("admin.docking-stations.manage", {
-                url: "/manage",
-                templateUrl: adminViewPath + 'docking-stations/manage.html',
-                controller: 'ManageDockingStation',
-                containerClass: 'sw-toggled'
-            })
-            .state("admin.docking-stations.add", {
-                url: "/add",
-                templateUrl: adminViewPath + 'docking-stations/add.html',
-                controller: 'AddDockingStation',
-                containerClass: 'sw-toggled'
-            })
-            .state("admin.docking-stations.edit", {
-                url: "/edit/:id",
-                templateUrl: adminViewPath + 'docking-stations/edit.html',
-                controller: 'EditDockingStation',
-                containerClass: 'sw-toggled'
-            })
 
             .state("admin.docking-stations.docking-station-more-details", {
                 url: "/docking-station-more-details/:id",
@@ -166,6 +142,78 @@
                 controller: 'EditDockingUnit',
                 containerClass: 'sw-toggled'
             })
+
+            // Stations
+            .state("admin.stations", {
+                url: "/stations",
+                templateUrl: adminViewPath + 'stations/stations.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.stations.view-stations", {
+                url: "/view-stations",
+                templateUrl: adminViewPath + 'stations/view-stations.html',
+                controller: 'DockingStations',
+                containerClass: 'sw-toggled'
+            })
+
+            // Plans
+            .state("admin.plans", {
+                url: "/plans",
+                templateUrl: adminViewPath + 'plans/plans.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.plans.view-plans", {
+                url: "/view-plans",
+                templateUrl: adminViewPath + 'plans/view-plans.html',
+                controller: 'SelectPlans',
+                containerClass: 'sw-toggled'
+            })
+
+            //ride history
+            .state("admin.ride-history", {
+                url: "/ride-history",
+                templateUrl: adminViewPath + 'ride-history/ride-history.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.ride-history.view-history", {
+                url: "/view-history",
+                templateUrl: adminViewPath + 'ride-history/view-history.html',
+                controller: 'RideHistory',
+                containerClass: 'sw-toggled'
+            })
+
+            // payment history
+            .state("admin.payment-history", {
+                url: "/payment-history",
+                templateUrl: adminViewPath + 'payment-history/payment-history.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.payment-history.view-payments", {
+                url: "/view-payments",
+                templateUrl: adminViewPath + 'payment-history/view-payments.html',
+                controller: 'PaymentHistory',
+                containerClass: 'sw-toggled'
+            })
+
+            // change password
+            .state("admin.change-password", {
+                url: "/change-password",
+                templateUrl: adminViewPath + 'change-password/change-password.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.change-password.manage-password", {
+                url: "/manage-password",
+                templateUrl: adminViewPath + 'change-password/manage-password.html',
+                controller: 'ChangePassword',
+                containerClass: 'sw-toggled'
+            })
+
+
             .state("admin.docking-ports", {
                 url: "/docking-ports",
                 templateUrl: adminViewPath + 'docking-ports/docking-ports.html',
@@ -828,14 +876,14 @@
             // Temporary Simulator Routes
             .state("checkout", {
                 url: "/simulator/checkout",
-                templateUrl: '/PBS-Admin-UI/app/simulator/checkout.html',
+                templateUrl: '/PBS-UserPortal/app/simulator/checkout.html',
                 controller: 'SimulateCheckout',
                 containerClass: 'sw-toggled'
             })
 
             .state("checkin", {
                 url: "/simulator/checkin",
-                templateUrl: '/PBS-Admin-UI/app/simulator/checkin.html',
+                templateUrl: '/PBS-UserPortal/app/simulator/checkin.html',
                 controller: 'SimulateCheckin',
                 containerClass: 'sw-toggled'
             })

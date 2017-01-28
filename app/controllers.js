@@ -10,19 +10,21 @@
     /*newly added*/
     var login_email;
     var login_id;
-
+    var _login_id;
+    var _user_id;
     app.controller('PBSController', ['$scope', '$state', 'auth', 'AWS', '$rootScope', function ($scope, $state, auth, AWS, $rootScope) {
 
         $scope.$on('userInfo', function (event, user) {
             $scope.profileName = user.profileName;
            /* $scope.admin = user.role !== 'employee';*/
-            $scope.admin = user.role !== 'member';
+            $scope.admin = user.role == 'member';
             $scope.role = user.role;
             /*newly added*/
             $scope.email=user.email;
+            login_id=user.id;
             login_email = user.email;
 
-            login_id=user.id;
+
             //$scope.profilePic = AWS + 'Employee/' + user._id + '/' + member.picture + '.png';
 
             /*if ($scope.role=="member")
@@ -61,7 +63,6 @@
     }]);
 
     //Login Controller
-    var _login_id;
     app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl', 'user', 'auth', 'DataService', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService) {
         $scope.login = true;
 
@@ -81,6 +82,7 @@
                     if (!response.error) {
                         $scope.successForgot = true;
                         $scope.forget = false;
+
                         growl.success(response.data.message);
                     } else {
                         growl.error(response.message);
@@ -93,6 +95,7 @@
         $scope.log = function () {
             $scope.login = true;
             $scope.forget = false;
+            $scope.successForgot = false;
         };
 
         $rootScope.$emit('auth');
@@ -108,6 +111,7 @@
         function handleRequest(res) {
             var token = res.data.data.token;
             _login_id=res.data.data.id;
+            _user_id=res.data.data.uid;
           /*  alert(_login_id);*/
             if (token) {
                 auth.saveToken(token);
@@ -1942,20 +1946,89 @@
 
     }]);
 
-    var Number_of_DockingStations;
-    app.controller('ManageDockingStation', ['$scope', 'NgTableParams', '$state', '$uibModal', 'DataService', 'StatusService', 'growl', 'sweet', '$filter', function ($scope, NgTableParams, $state, $uibModal, DataService, StatusService, growl, sweet, $filter) {
 
-        $scope.dockingStations = [];
+    app.controller('DockingStations', ['$scope','$interval', 'DataService', 'growl', 'StatusService', 'NgTableParams', '$filter', 'sweet', 'loggedInUser', '$state', 'GOOGLEMAPURL', function ($scope,$interval, DataService, growl, StatusService, NgTableParams, $filter, sweet, loggedInUser, $state, GOOGLEMAPURL)
+    {
+        var multiDockingStations = [];
 
-        DataService.getDockingStations().then(function (response) {
+        $scope.dockingStationsData = [];
+            DataService.getDockingStations().then(function (response) {
+
+                if (!response.error) {
+                    $scope.dockingStationsData = response.data;
+                    $scope.dockingStations = response.data;
+                    for (var i = 0; i < $scope.dockingStations.length; i++) {
+                        var longAndLat = {
+                            longitude: $scope.dockingStations[i].gpsCoordinates.longitude,
+                            latitude: $scope.dockingStations[i].gpsCoordinates.latitude,
+                            mapUrl: GOOGLEMAPURL,
+                            show: false,
+                            title: $scope.dockingStations[i].name,
+                            bicycleCount: $scope.dockingStations[i].bicycleCount,
+                            bicycleCapacity: $scope.dockingStations[i].bicycleCapacity,
+                            dockingStationStatus: StatusService.getDockingStationStatus($scope.dockingStations[i].status),
+                            id: i
+                        };
+                        multiDockingStations.push(longAndLat);
+                    }
+
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+                growl.error(response.data.description);
+            });
+
+
+            $scope.map = {
+                center: {
+                    latitude: 12.3024314,
+                    longitude: 76.6615633
+                }, zoom: 13
+            };
+
+            $scope.options = {scrollwheel: false};
+            $scope.markers = multiDockingStations;
+
+            $scope.windowOptions = {
+                visible: false
+            };
+
+            $scope.onClick = function (marker, eventName, model) {
+                model.show = !model.show;
+            };
+
+            $scope.closeClick = function () {
+                $scope.windowOptions.visible = false;
+            };
+
+            $scope.swapView = function (viewType) {
+                $scope.view = viewType;
+            };
+
+        $scope.loadBicycleAvaliability = function () {
+            $state.reload();
+        };
+    }]);
+
+    app.controller('SelectPlans', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'NgTableParams', '$filter', '$uibModal', 'StatusService', function ($scope, $state, $stateParams, DataService, growl, sweet, NgTableParams, $filter, $uibModal, StatusService) {
+        $scope.membershipData = [];
+
+        var filters = {
+            filter: {
+                populate: {path: 'farePlan'}
+            }
+        };
+
+        DataService.getMemberships(filters).then(function (response) {
             if (!response.error) {
-                $scope.dockingStations = response.data;
-                Number_of_DockingStations =  response.data.length;
-                $scope.dockingStations.forEach(function (dockingStation) {
-                   /* dockingStation.status = StatusService.getDockingStationStatus(dockingStation.status);*/
-                    dockingStation.status = StatusService.getDockingStationStatus(dockingStation.operationStatus);
-                });
-                $scope.dockingStationsTable.reload();
+                $scope.membershipData = response.data;
+              /*  $scope.membershipData.forEach(function (membership) {
+                    membership.status = StatusService.getMembershipStatus(membership.status);
+                    membership.planName = membership.farePlan.planName;
+                    membership.total = membership.userFees + membership.securityDeposit + membership.smartCardFees +
+                        membership.processingFees;
+                });*/
             } else {
                 growl.error(response.message);
             }
@@ -1963,51 +2036,178 @@
             growl.error(response.data.description['0']);
         });
 
-
-        $scope.dockingStationsTable = new NgTableParams(
+        $scope.membershipTable = new NgTableParams(
             {
-                count: 10
+                count: 6
             },
             {
                 getData: function ($defer, params) {
-                    var orderedData = params.filter() ? $filter('filter')($scope.dockingStations, params.filter()) : $scope.dockingStations;
+                    var orderedData = params.filter() ? $filter('filter')($scope.membershipData, params.filter()) : $scope.membershipData;
                     params.total(orderedData.length);
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 }
             }
         );
 
-        $scope.changeDockingStationStatus = function (id) {
-            var selectedDockingStation = {};
-            $scope.dockingStations.forEach(function (dockingStation) {
-                if (dockingStation._id === id) {
-                    selectedDockingStation = dockingStation;
-                }
-            });
-            return $uibModal.open({
-                templateUrl: 'docking-station-status-modal.html',
-                controller: 'DockingStationStatus',
-                size: 'md',
-                resolve: {
-                    dockingStation: function () {
-                        return selectedDockingStation;
+            $scope.Selectplan = function (size) {
+                $uibModal.open({
+                    templateUrl: 'Error-popup.html',
+                    controller: 'ErrorPopUp',
+                    size: size,
+                    resolve: {
+                        items: function () {
+                        }
                     }
+                });
+            };
+    }]);
+
+    // Select plan error pop up message (temporary)
+    app.controller('ErrorPopUp', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModalInstance', 'loggedInUser', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModalInstance, loggedInUser)
+    {
+        $scope.ok = function () {
+            $uibModalInstance.dismiss();
+        };
+    }]);
+
+    // ride history
+/*    app.controller('RideHistory', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModal','$filter', 'NgTableParams', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModal, $filter, NgTableParams)
+    {
+        alert(_login_id);
+
+        $scope.ridesDataUser = [];
+        DataService.getRidesUser(_login_id).then(function (response) {
+            if (!response.error) {
+                for (var i=0;i<response.data.length;i++) {
+                    $scope.ridesDataUser = response.data[i];
                 }
-            });
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
+        });
+
+        $scope.ridesTableUser = new NgTableParams(
+            {
+                count: 6
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.ridesDataUser, params.filter()) : $scope.ridesDataUser;
+                    params.total(orderedData.length);
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            }
+        );
+
+    }]);*/
+
+    app.controller('RideHistory', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    {
+
+      /*  $scope.user_id = _user_id;*/
+        $scope.user_id = _login_id;
+
+        $scope.ridesDataUser = [];
+
+        DataService.getRidesUser($scope.user_id).then(function (response) {
+            if (!response.error) {
+                var i=0;
+               /* $scope.ridesDataUser= response.data;*/
+                for(i=0;i<response.data.length;i++)
+                {
+                var _rides = response.data[i];
+                $scope.ridesDataUser.push(_rides);
+                }
+
+            }
+            else
+                {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description['0']);
+        });
+
+        $scope.ridesTableUser = new NgTableParams(
+            {
+                count: 10
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.ridesDataUser, params.filter()) : $scope.ridesDataUser;
+                    params.total(orderedData.length);
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            }
+        );
+    }]);
+
+    // Payment Histroy
+    app.controller('PaymentHistory', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    {
+        $scope.user_id = _user_id;
+
+        $scope.userPaymentHistory = [];
+
+        DataService.getUserPayment($scope.user_id).then(function (response) {
+            if (!response.error) {
+                var i=0;
+                /* $scope.ridesDataUser= response.data;*/
+                for(i=0;i<response.data.length;i++)
+                {
+                    var _payments = response.data[i];
+                    $scope.userPaymentHistory.push(_payments);
+                }
+                var k=0;
+            }
+            else
+            {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description['0']);
+        });
+
+        $scope.userPaymentTable = new NgTableParams(
+            {
+                count: 10
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.userPaymentHistory, params.filter()) : $scope.userPaymentHistory;
+                    params.total(orderedData.length);
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            }
+        );
+
+    }]);
+
+    // Change password
+    app.controller('ChangePassword', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    {
+        $scope.user = {
+            oldpassword:'',
+            password: '',
+            confirmPassword: ''
         };
 
-        $scope.addDockingStation = function () {
-            $state.go('admin.docking-stations.add');
+        $scope.passwordChange=function(){
+        DataService.changePassword($scope.user).then(function (response) {
+            if (!response.error)
+            {
+                growl.success(response.message);
+            }
+            else
+            {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description['0']);
+        });
         };
-
-        $scope.editDockingStation = function (id) {
-            $state.go('admin.docking-stations.edit', {'id': id});
-        };
-
-        $scope.DockingStationMore = function (id) {
-            $state.go('admin.docking-stations.docking-station-more-details', {'id': id});
-        };
-
     }]);
 
     // Docking Station Status Controller
@@ -7396,23 +7596,9 @@ var _station_id;
     {
         var multiDockingStations = [];
 
-        //new
-      /*  $scope.date;
-        var c=0;
-        $scope.message=" This DIV is refreshed "+c+" time.";
-        $interval(function () {
-            $scope.date=new Date();
-            $scope.message=" This DIV is refreshed "+c+" time.";
-            c++;
-            },1000);*/
-        //new
-
-
-        $scope.view = 0;
+    //    $scope.view = 0;
         $scope.dockingStationsData = [];
 
-         $interval(function () {
-           /*  $state.reload();*/
             DataService.getDockingStations().then(function (response) {
 
                 if (!response.error) {
@@ -7489,78 +7675,6 @@ var _station_id;
                     growl.error(response.data.description);
                 });
             });
-        };
-
-        $scope.stations = [];
-
-        $scope.test1 =[];
-
-        $scope.dockingStationDetails =[];
-
-        DataService.getBicycleAvailability().then(function (response) {
-            if (!response.error) {
-                // if (response.data.requests) {
-                if (!response.error) {
-                    $scope.stations = response.data;
-                    /* $scope.test1= $filter('orderBy')($scope.stations.portIds,'dockingPortId.FPGA');*/
-                    $scope.stations.forEach(function (requests) {
-                        requests.status = StatusService.getDockingStationStatus(requests.stationStatus);
-                    });
-                    var lastModifiedAt = new Date(response.data.lastModifiedAt);
-                    $scope.stations.lastModifiedAt = lastModifiedAt.getDate() + '-' + lastModifiedAt.getMonth() + '-' + lastModifiedAt.getFullYear();
-                    $scope.stations.forEach(function (station) {
-                        station.portIds.forEach(function (dockingPortId) {
-                            /*if (dockingPortId.dockingPortId.portStatus == 0) {
-                             dockingPortId.tooltipMessage = dockingPortId.vehicleRFID;
-                             }*/
-
-                            if (dockingPortId.dockingPortId.portStatus == 1) {
-                                dockingPortId.tooltipMessage = dockingPortId.vehicleRFID;
-                            }
-
-                            if (dockingPortId.dockingPortId.portStatus== 2) {
-                                dockingPortId.tooltipMessage = "Empty";
-                            }
-
-                            /* if(dockingPortId.dockingPortId.FPGA == 3 || dockingPortId.dockingPortId.FPGA == 4)
-                             {
-                             dockingPortId.tooltipMessage = "FPGA";
-                             }*/
-                            /* if (dockingPortId.dockingPortId.portStatus == 3) {
-                             dockingPortId.tooltipMessage = "Port Locked";
-                             }
-
-                             if (dockingPortId.dockingPortId.portStatus == 4) {
-                             dockingPortId.tooltipMessage = "Non Operational";
-                             }*/
-                        })
-                    });
-                    $scope.dockingStationsTable.reload();
-                }
-            } else {
-                growl.error(response.message);
-            }
-        }, function (response) {
-            /*growl.error(response.data.description);*/
-        });
-
-
-        $scope.dockingStationsTable = new NgTableParams(
-            {
-                count: 50
-            },
-            {
-                getData: function ($defer, params) {
-                    params.total($scope.stations.length);
-                    $defer.resolve($scope.stations.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                }
-            }
-        );
-
-         },40000);
-
-        $scope.loadBicycleAvaliability = function () {
-            $state.reload();
         };
 
     }]);

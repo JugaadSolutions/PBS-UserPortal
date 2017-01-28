@@ -258,7 +258,7 @@
             },
             saveChangePassword: function (data) {
                 var deferred = $q.defer();
-                $http.put(API + APIEndPoint.user.user + '/' + data._id + '/' + APIEndPoint.user.password, data).then(function (result) {
+                $http.put(APINew + APIEndPoint.user.user + '/' + data._id + '/' + APIEndPoint.user.password, data).then(function (result) {
                     deferred.resolve(result.data);
                 }, function (error) {
                     deferred.reject(error);
@@ -1457,6 +1457,39 @@
                 });
                 return deferred.promise;
             },
+
+           /* getRidesUser: function (data,filters) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.member.memberTransaction + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },*/
+
+            getRidesUser: function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.member.memberTransaction + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+            getUserPayment: function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.member.memberIndividualPaymentTransation + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+
+
             getMemberPaymentTransaction: function (filters) {
                 var deferred = $q.defer();
                 $http.get(APINew + APIEndPoint.member.memberPaymentTransaction, {
@@ -1547,7 +1580,7 @@
             },
             forgotPassword: function (data) {
                 var deferred = $q.defer();
-                $http.put(API + APIEndPoint.user.forgotPassword, data).then(function (result) {
+                $http.put(APINew + APIEndPoint.user.forgotPassword, data).then(function (result) {
                     deferred.resolve(result.data);
                 }, function (error) {
                     deferred.reject(error);
