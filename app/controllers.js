@@ -63,16 +63,18 @@
     }]);
 
     //Login Controller
-    app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl', 'user', 'auth', 'DataService', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService) {
+    app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl','md5', 'user', 'auth', 'DataService', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService,md5) {
         $scope.login = true;
 
         $scope.reg = function () {
             $scope.login = false;
             $scope.forget = false;
+            $scope.signup = false;
         };
         $scope.for = function () {
             $scope.login = false;
             $scope.forget = true;
+
 
             $scope.forgot = function (email) {
                 var data = {
@@ -92,10 +94,36 @@
                 })
             };
         };
+
+        $scope.demo = function () {
+            $scope.login = false;
+            $scope.forget = false;
+            $scope.signup = true;
+
+            $scope.forgot = function (email) {
+                var data = {
+                    email: email
+                };
+                DataService.forgotPassword(data).then(function (response) {
+                    if (!response.error) {
+                        $scope.successForgot = true;
+                        $scope.forget = false;
+
+                        growl.success(response.data.message);
+                    } else {
+                        growl.error(response.message);
+                    }
+                }, function (response) {
+                    growl.error(response.data.description);
+                })
+            };
+        };
+
         $scope.log = function () {
             $scope.login = true;
             $scope.forget = false;
             $scope.successForgot = false;
+            $scope.signup=false;
         };
 
         $rootScope.$emit('auth');
@@ -134,6 +162,50 @@
             $state.reload();
             };
         }
+
+
+        $scope.signupDetails={
+            Name:'',
+            lastName:'',
+            email:'',
+            phoneNumber:'',
+            password:''
+        };
+
+        $scope.UserSignup = function ()
+        {
+                /*var _pass = md5.createHash($scope.signupDetails.password || '')*/;
+
+            if( $scope.signupDetails.Name == "" || $scope.signupDetails.Name == null)
+            {
+                growl.error("Please enter username");
+            }
+            if( $scope.signupDetails.phoneNumber == "" || $scope.signupDetails.phoneNumber == null)
+            {
+                growl.error("Please enter mobile number");
+            }
+            if( $scope.signupDetails.email == "" || $scope.signupDetails.email == null)
+            {
+                growl.error("Please enter email");
+            }
+            if( $scope.signupDetails.password == "" || $scope.signupDetails.password == null)
+            {
+                growl.error("Please enter password");
+            }
+            else
+                {
+                DataService.userSignup($scope.signupDetails).then(function (response) {
+                    if (!response.error) {
+                        growl.success(response.data.message);
+                    } else {
+                        growl.error(response.message);
+                    }
+                }, function (response) {
+                    growl.error(response.data.description);
+                })
+            }
+        };
+
     }]);
 
     // Manage Members Controller
@@ -2186,28 +2258,29 @@
     }]);
 
     // Change password
-    app.controller('ChangePassword', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    app.controller('ChangePassword', ['$scope', '$state', 'sweet', 'DataService', 'growl', '$uibModal', function ($scope, $state, sweet, DataService, growl, $uibModal)
     {
-        $scope.user = {
+      /*  $scope.user = {
             oldpassword:'',
             password: '',
-            confirmPassword: ''
-        };
+            userid:_user_id
+        };*/
 
-        $scope.passwordChange=function(){
-        DataService.changePassword($scope.user).then(function (response) {
-            if (!response.error)
-            {
-                growl.success(response.message);
-            }
-            else
-            {
-                growl.error(response.message);
-            }
-        }, function (response) {
-            growl.error(response.data.description['0']);
-        });
-        };
+        $scope.resetNewPassword = function ()
+        {
+            alert("hi");
+        }
+            /*DataService.saveChangePassword($scope.user).then(function (response) {
+                if (!response.error) {
+                    growl.success(response.message);
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+                growl.error(response.data.description['0']);
+            })
+        };*/
+
     }]);
 
     // Docking Station Status Controller

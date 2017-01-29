@@ -200,19 +200,18 @@
             })
 
             // change password
-            .state("admin.change-password", {
-                url: "/change-password",
-                templateUrl: adminViewPath + 'change-password/change-password.html',
+            .state("admin.resetpassword", {
+                url: "/changepassword",
+                templateUrl: adminViewPath + 'resetpassword/changepassword.html',
                 containerClass: 'sw-toggled'
             })
 
-            .state("admin.change-password.manage-password", {
-                url: "/manage-password",
-                templateUrl: adminViewPath + 'change-password/manage-password.html',
+            .state("admin.resetpassword.managepassword", {
+                url: "/managepassword",
+                templateUrl: adminViewPath + 'resetpassword/managepassword.html',
                 controller: 'ChangePassword',
                 containerClass: 'sw-toggled'
             })
-
 
             .state("admin.docking-ports", {
                 url: "/docking-ports",

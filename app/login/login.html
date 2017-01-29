@@ -1,3 +1,4 @@
+
 <div class="lc-block toggled" ng-if="login" id="l-login" >
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
@@ -21,22 +22,22 @@
        class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
             class="zmdi zmdi-arrow-forward"></i></a>
 
-    <ul class="login-navigation" style="">
+  <!--  <ul class="login-navigation" style="">
         <li block="#l-forget-password" class="bgm-orange"
             ng-click="for()">Forgot Password?
         </li>
-    </ul>
-  <!--  <ul class="login-navigation">
-        <li data-block="#l-register" class="bgm-red" data-ng-click="lctrl.login = 0; lctrl.register = 1">Register</li>
-        <li data-block="#l-forget-password" class="bgm-orange" data-ng-click="lctrl.login = 0; lctrl.forgot = 1">Forgot Password?</li>
     </ul>-->
+
+    <ul class="login-navigation">
+        <li block="#l-user-signup" class="" style="color: green;font-weight: bold;font-size:medium" ng-click="demo()">Signup</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li block="#l-forget-password" class="" style="color: red;font-weight: bold;font-size:medium" ng-click="for()">Forgot Password?</li>
+    </ul>
 
 </div>
 
 
 <div class="lc-block toggled" id="l-forget-password" ng-if="forget">
     <p class="text-left">Enter your email to reset your password</p>
-
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
         <div class="fg-line">
@@ -49,8 +50,8 @@
             class="zmdi zmdi-arrow-forward"></i></a>
 
     <ul class="login-navigation">
-        <li block="#l-login" class="bgm-green" ng-click="log()">
-            Login
+        <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
+           Back to Login
         </li>
     </ul>
 </div>
@@ -63,8 +64,65 @@
         Thank You!!
     </p>
     <ul class="login-navigation">
-        <li block="#l-login" class="bgm-green" ng-click="log()">
-            Login
+        <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
+           Back to Login
+        </li>
+    </ul>
+</div>
+
+<!--Sign Up-->
+<div class="lc-block toggled" id="l-user-signup" ng-if="signup" style="margin-top:110px">
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+        <div class="fg-line">
+            <input type="text" class="form-control" ng-model="signupDetails.Name" chars="only-letters"  placeholder="First Name">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+        <div class="fg-line">
+            <input type="text" class="form-control" ng-model="signupDetails.lastName" chars="only-letters" placeholder="Last Name">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+        <div class="fg-line">
+            <input type="text" class="form-control" ng-model="signupDetails.phoneNumber" chars="numbers" minlength="10" maxlength="10"  placeholder="Mobile No">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+        <div class="fg-line">
+            <input type="email" class="form-control" ng-model="signupDetails.email"  placeholder="Email">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+        <div class="fg-line">
+            <input type="password" class="form-control" ng-model="signupDetails.password" placeholder="Password">
+        </div>
+    </div>
+
+    <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+        <div class="fg-line">
+            <input type="password" class="form-control" placeholder="Confirm Password">
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <a href=""  ng-click="UserSignup();"
+       class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
+            class="zmdi zmdi-arrow-forward"></i></a>
+
+    <ul class="login-navigation">
+        <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
+           Back to Login
         </li>
     </ul>
 </div>
