@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('pbs', ['ngSanitize', 'ngAnimate', 'ngMessages', 'ui.bootstrap', 'ui.router', 'ngTable', 'angular-growl', 'hSweetAlert', 'angular-loading-bar', 'localytics.directives', 'uiGmapgoogle-maps']);
+    var app = angular.module('pbs', ['ngSanitize', 'ngAnimate','angular-md5', 'ngMessages', 'ui.bootstrap', 'ui.router', 'ngTable', 'angular-growl', 'hSweetAlert', 'angular-loading-bar', 'localytics.directives', 'uiGmapgoogle-maps']);
 
     var __env = {};
     if (window) {
@@ -59,6 +59,9 @@
             request:'cancelmemberrequest',
             suspend:'suspendmembership',
             cancel:'cancelmembership'
+        },
+        signup: {
+            save:'member'
         },
         employee: {
             getAll: 'employee',

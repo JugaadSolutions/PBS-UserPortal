@@ -37,6 +37,13 @@
                 controller: '403Controller',
                 containerClass: 'four-zero-content'
             })
+
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: '/PBS-UserPortal/app/admin/common/dashboard.html',
+                controller: 'DashBoard',
+                containerClass: 'four-zero-content'
+            })
             
             .state('admin', {
                 url: '/admin',
@@ -200,16 +207,30 @@
             })
 
             // change password
-            .state("admin.resetpassword", {
-                url: "/changepassword",
-                templateUrl: adminViewPath + 'resetpassword/changepassword.html',
+            .state("admin.change-password", {
+                url: "/change-password",
+                templateUrl: adminViewPath + 'change-password/passwordchange.html',
                 containerClass: 'sw-toggled'
             })
 
-            .state("admin.resetpassword.managepassword", {
-                url: "/managepassword",
-                templateUrl: adminViewPath + 'resetpassword/managepassword.html',
+            .state("admin.change-password.manage", {
+                url: "/manage",
+                templateUrl: adminViewPath + 'change-password/manage.html',
                 controller: 'ChangePassword',
+                containerClass: 'sw-toggled'
+            })
+
+            //feedback
+            .state("admin.feedback", {
+                url: "/feedback",
+                templateUrl: adminViewPath + 'feedback/feedback.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.feedback.manage", {
+                url: "/manage",
+                templateUrl: adminViewPath + 'feedback/manage.html',
+                controller: 'UserFeedBack',
                 containerClass: 'sw-toggled'
             })
 

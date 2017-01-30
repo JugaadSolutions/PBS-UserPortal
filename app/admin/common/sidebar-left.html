@@ -1,25 +1,27 @@
 <div class="sidebar-inner c-overflow">
     <div class="profile-menu">
-        <a href="javascript:void(0);" toggle-submenu>
+        <a>
             <div class="profile-pic">
-                <img src="assets/images/profile-pic.png" alt="{{profileName}}">
+               <!-- <img src="assets/images/profile-pic.png" alt="{{Name}}">-->
             </div>
-
-            <div class="profile-info">
-                {{profileName}} <i class="zmdi zmdi-caret-down"></i>
-            </div>
+        <!--    <div class="profile-info">
+                {{Name}}
+            </div>-->
         </a>
-
-        <ul class="main-menu">
-           <!-- <li ng-class="{active: $state.includes('admin.profile.edit')}">
+      <!--  <ul class="main-menu">
+            <li ng-class="{active: $state.includes('admin.profile.edit')}">
                 <a ui-sref="admin.profile.edit"><i class="zmdi zmdi-account"></i> View Profile</a>
-            </li>-->
-            <li>
-                <a href="javascript:void(0);" ng-click="logout()"><i class="zmdi zmdi-time-restore"></i> Logout</a>
             </li>
-        </ul>
+        </ul>-->
     </div>
-
+    <ul class="main-menu">
+    <li>
+      <!--  <a ng-click="" type="file"><i class="zmdi zmdi-mood"></i> Change Profile Photo</a>-->
+        <a href="" class="pmop-edit">
+            <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+        </a>
+    </li>
+    </ul>
     <ul class="main-menu">
         <li ng-class="{active: $state.includes('admin.plans')}">
             <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i> Select Plans</a>
@@ -31,16 +33,16 @@
             <a ui-sref="admin.ride-history.view-history"><i class="glyphicon glyphicon-menu-right"></i> Ride History</a>
         </li>
         <li ng-class="{active: $state.includes('admin.stations')}">
-            <a ui-sref="admin.stations.view-stations"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations</a>
+            <a ui-sref="admin.stations.view-stations"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations Map</a>
         </li>
-        <li ng-class="{active: $state.includes('admin.members')}">
-            <a href="http://www.mytrintrin.com/?page_id=4472"><i class="glyphicon glyphicon-envelope"></i> Contact/Feedback</a>
+        <li ng-class="{active: $state.includes('admin.change-password')}">
+            <a ui-sref="admin.change-password.manage"><i class="zmdi zmdi-lock"></i> Change Password</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.feedback')}">
+            <a ui-sref="admin.feedback.manage"><i class="glyphicon glyphicon-envelope"></i> Feedback</a>
         </li>
         <li ng-class="{active: $state.includes('admin.help')}">
-            <a href="http://www.mytrintrin.com/?page_id=4308"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
-        </li>
-        <li ng-class="{active: $state.includes('admin.resetpassword')}">
-            <a ui-sref="admin.resetpassword.managepassword"><i class="zmdi zmdi-lock"></i> Change Password</a>
+            <a href="http://www.mytrintrin.com/?page_id=4308" target="_blank"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
         </li>
         <li ng-class="{active: $state.includes('admin.members')}">
             <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>

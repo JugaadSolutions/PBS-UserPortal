@@ -12,6 +12,7 @@
     var login_id;
     var _login_id;
     var _user_id;
+    var _user_name;
     app.controller('PBSController', ['$scope', '$state', 'auth', 'AWS', '$rootScope', function ($scope, $state, auth, AWS, $rootScope) {
 
         $scope.$on('userInfo', function (event, user) {
@@ -62,8 +63,12 @@
 
     }]);
 
+    app.controller('DashBoard',['$scope', '$state', 'auth', 'growl', function ($scope, $state, auth, growl)
+    {
+
+    }]);
     //Login Controller
-    app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl','md5', 'user', 'auth', 'DataService', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService,md5) {
+    app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl', 'user', 'auth', 'DataService','md5', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService,md5) {
         $scope.login = true;
 
         $scope.reg = function () {
@@ -140,6 +145,18 @@
             var token = res.data.data.token;
             _login_id=res.data.data.id;
             _user_id=res.data.data.uid;
+
+            DataService.getUserDetails(_user_id).then(function (response) {
+                if (!response.error) {
+                    _user_name=response.data.Name;
+                    growl.success(response.data.message);
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+                growl.error(response.data.description);
+            })
+
           /*  alert(_login_id);*/
             if (token) {
                 auth.saveToken(token);
@@ -149,6 +166,19 @@
             }
         }
 
+
+        /*$scope.passValidation=false;
+        $scope.changepassword=function () {
+            var regexp=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9:@#$%^&*]{8,12}$/;
+            if(regexp($scope.password)===false)
+            {
+                $scope.passValidation=false;
+            }
+            else {
+                $scope.passValidation=true;
+            }
+        };*/
+
         $scope.loginUser = function (username, password)
         {
             if(username == "" || username == null || password == "" || password == null)
@@ -157,6 +187,7 @@
             }
             else
             {
+                password = md5.createHash(password || '');
             user.login(username, password)
                 .then(handleRequest, handleRequest);
             $state.reload();
@@ -171,6 +202,8 @@
             phoneNumber:'',
             password:''
         };
+
+
 
         $scope.UserSignup = function ()
         {
@@ -194,9 +227,25 @@
             }
             else
                 {
-                DataService.userSignup($scope.signupDetails).then(function (response) {
+                    var _first_name =  $scope.signupDetails.Name;
+                    var _last_name =  $scope.signupDetails.lastName;
+                    var _email =  $scope.signupDetails.email;
+                    var _phoneno =  $scope.signupDetails.phoneNumber;
+                    var _password = md5.createHash($scope.signupDetails.password || '');
+
+                    $scope.signupDetailsHash={
+                        Name:_first_name,
+                        lastName:_last_name,
+                        email:_email,
+                        phoneNumber:_phoneno,
+                        password:_password
+                    };
+                DataService.signup($scope.signupDetailsHash).then(function (response) {
                     if (!response.error) {
-                        growl.success(response.data.message);
+
+                        growl.success('Sign Up Successful');
+
+                        $scope.log();
                     } else {
                         growl.error(response.message);
                     }
@@ -2282,6 +2331,40 @@
         };*/
 
     }]);
+
+    //Feedback
+    app.controller('UserFeedBack', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
+    {
+        var _subject = "UserFeedBack";
+        alert(_user_name);
+        alert(_user_id);
+
+        $scope.buttontest=function () {
+            alert('Hi');
+        };
+
+        $scope.FeedbackDetails={
+        name:_user_name,
+        createdBy:_user_id,
+            ticketdate:date,
+            subject:_subject,
+            channels:5,
+            priority:1,
+            description:''
+        };
+
+        $scope.usercomments = function () {
+            DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response) {
+                if (!response.error) {
+                    growl.success(response.message);
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+            });
+        };
+    }]);
+
 
     // Docking Station Status Controller
     app.controller('DockingStationStatus', ['$scope', '$state', 'DataService', 'growl', 'sweet', '$uibModalInstance', 'dockingStation', function ($scope, $state, DataService, growl, sweet, $uibModalInstance, dockingStation) {
