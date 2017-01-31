@@ -1,0 +1,41 @@
+
+<div class="container">
+
+    <div class="card">
+
+
+        <div class="card-header ch-alt m-b-20">
+            <h2>Feedback</h2>
+
+                <br>
+
+            <form class="pmbb-edit" name="Feedback" ng-click="buttontest()" novalidate>
+
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <dl class="dl-horizontal required">
+                            <dt class="p-t-10">Description</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <input type="text" name="description"
+                                           ng-model="FeedbackDetails.description"
+                                           class="form-control" chars="letters">
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <!--<button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="usercomments()" >
+                        <i class="zmdi zmdi-view-list"></i> Submit
+                    </button>-->
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
