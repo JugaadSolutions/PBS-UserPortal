@@ -2307,28 +2307,69 @@
     }]);
 
     // Change password
-    app.controller('ChangePassword', ['$scope', '$state', 'sweet', 'DataService', 'growl', '$uibModal', function ($scope, $state, sweet, DataService, growl, $uibModal)
+    app.controller('PasswordChange', ['$scope', '$state', 'sweet', 'DataService', 'growl', '$uibModal','md5', function ($scope, $state, sweet, DataService, growl, $uibModal,md5)
     {
-      /*  $scope.user = {
-            oldpassword:'',
-            password: '',
-            userid:_user_id
+     /*   $scope.oldPasswordChange={
+            oldPassword:'',
+            newPassword:'',
+            confirmPassword:''
         };*/
 
-        $scope.resetNewPassword = function ()
+      /*  var _old_password = $scope.oldPasswordChange.oldPassword;
+        var _new_password = $scope.oldPasswordChange.newPassword;
+        var _confirm_password = $scope.oldPasswordChange.confirmPassword;*/
+
+      /*  var _old_password_hash = md5.createHash($scope.oldPasswordChange.oldPassword || '');*/
+      /*  var _new_password_hash = md5.createHash(_new_password || '');
+        var _confirm_password_hash = md5.createHash(_confirm_password || '');*/
+
+    /*    $scope.hashedPasswords={
+            oldPassword:_old_password_hash,
+            newPassword:_new_password_hash,
+            confirmPassword:_confirm_password_hash
+        }*/
+
+        $scope.passValidation=false;
+        $scope.changepassword=function () {
+            var regexp=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9:@#$%^&*]{6,20}$/;
+            if(!$scope.password.match(regexp))
+            {
+                $scope.passValidation=false;
+            }
+            else {
+                $scope.passValidation=true;
+            }
+        };
+
+        $scope.submit = function (oldPassword,newPassword,confirmPassword)
         {
-            alert("hi");
-        }
-            /*DataService.saveChangePassword($scope.user).then(function (response) {
-                if (!response.error) {
-                    growl.success(response.message);
-                } else {
-                    growl.error(response.message);
+
+            oldPassword =  md5.createHash(oldPassword || '');
+            newPassword =  md5.createHash(newPassword || '');
+
+            $scope.passwords={
+                currentPassword:oldPassword,
+                newPassword:newPassword,
+                uid:_user_id
+            }
+
+
+            DataService.saveNewPassword($scope.passwords).then(function (response) {
+                if (!response.error)
+                {
+                    growl.success("Password Resetted Successfully");
+                    oldPassword = "";
+                    newPassword = "";
+                    confirmPassword = "";
+
+                } else
+                    {
+                    growl.error("old password does not match");
                 }
             }, function (response) {
-                growl.error(response.data.description['0']);
-            })
-        };*/
+                growl.error("old password does not match");
+            });
+        };
 
     }]);
 
@@ -2336,27 +2377,49 @@
     app.controller('UserFeedBack', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
     {
         var _subject = "UserFeedBack";
-        alert(_user_name);
-        alert(_user_id);
-
-        $scope.buttontest=function () {
-            alert('Hi');
-        };
 
         $scope.FeedbackDetails={
         name:_user_name,
         createdBy:_user_id,
-            ticketdate:date,
+            ticketdate:new Date(),
             subject:_subject,
-            channels:5,
-            priority:1,
+            channel:5,
+            priority:2,
             description:''
         };
 
-        $scope.usercomments = function () {
+        $scope.userfeedback = function () {
             DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response) {
                 if (!response.error) {
-                    growl.success(response.message);
+                    growl.success("Feedback submitted successfully");
+                    $scope.FeedbackDetails.description = "";
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+            });
+        };
+    }]);
+
+    app.controller('CC', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
+    {
+        var _subject = "UserFeedBack";
+
+        $scope.FeedbackDetails={
+            name:_user_name,
+            createdBy:_user_id,
+            ticketdate:new Date(),
+            subject:_subject,
+            channel:5,
+            priority:2,
+            description:''
+        };
+
+        $scope.userfeedback = function () {
+            DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response) {
+                if (!response.error) {
+                    growl.success("Feedback submitted successfully");
+                    $scope.FeedbackDetails.description = "";
                 } else {
                     growl.error(response.message);
                 }

@@ -1,100 +1,156 @@
+
 <div class="container">
-    <div class="block-header">
-        <h2>CHANGE PASSWORD
-            <small>Add all required details with fields marked as * are
-                mandatory
-            </small>
-        </h2>
-        <div class="actions m-t-10">
-            <!-- <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
-                     ng-click="cancelAddSmartCard();">
-                 <i class="zmdi zmdi-arrow-left"></i> Back to List
-             </button>-->
 
-        </div>
-    </div>
+    <div class="card">
 
-    <div class="card" id="profile-main">
-       <!-- <div class="pm-overview c-overflow">
-            <div class="pmo-pic">
-                <div class="p-relative">
-                    <div class="fileinput fileinput-new">
-                        <div class="fileinput-preview thumbnail">
-                            <img src="assets/images/no-maps.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
 
-      <!--  <div class="pm-body clearfix">-->
-            <form class="pmbb-edit" name="ResetPassword" novalidate>
-                <div class="pmb-block">
-                    <div class="pmbb-header m-t-15">
-                        <h2><i class="zmdi zmdi-lock"></i> Change Password</h2>
-                    </div>
-                    <div class="pmbb-body p-l-30">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Reset Password</h2>
 
-                        <dl class="dl-horizontal required">
-                            <dt class="p-t-10">Old Password</dt>
-                            <dd>
-                                <div class="fg-line"
-                                     ng-class="{ 'has-error': ResetPassword.oldPassword.$touched && ResetPassword.oldPassword.$invalid }">
-                                    <input type="text" name="oldPassword" ng-model="user.oldpassword"
-                                           class="form-control"
-                                           placeholder="" required>
-                                    <span class="help-block"
-                                          ng-messages="ResetPassword.oldPassword.$error"
-                                          ng-show="ResetPassword.oldPassword.$touched">
+            <br>
+
+            <form class="pmbb-edit" name="PwdChange">
+
+                <div class="pmbb-body p-l-30">
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Old Password</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': PwdChange.oldPassword.$touched && PwdChange.oldPassword.$invalid }">
+                                <input type="password" name="oldPassword" ng-model="oldPassword"
+                                       class="form-control"
+                                       placeholder="" required>
+                                <span class="help-block"
+                                      ng-messages="PwdChange.oldPassword.$error"
+                                      ng-show="PwdChange.oldPassword.$touched">
                                                 <small ng-message="required">old Password is required</small>
                                             </span>
-                                </div>
-                            </dd>
-                        </dl>
+                            </div>
+                        </dd>
+                    </dl>
 
-                        <dl class="dl-horizontal required">
-                            <dt class="p-t-10">New Password</dt>
-                            <dd>
-                                <div class="fg-line"
-                                     ng-class="{ 'has-error': ResetPassword.newPassword.$touched && ResetPassword.newPassword.$invalid }">
-                                    <input type="text" name="newPassword" ng-model="user.password"
-                                           class="form-control"
-                                           placeholder="" required>
-                                    <span class="help-block"
-                                          ng-messages="ResetPassword.newPassword.$error"
-                                          ng-show="ResetPassword.newPassword.$touched">
-                                                <small ng-message="required">new Password is required</small>
-                                            </span>
-                                </div>
-                            </dd>
-                        </dl>
 
-                        <dl class="dl-horizontal required">
-                            <dt class="p-t-10">Confirm Password</dt>
-                            <dd>
-                                <div class="fg-line"
-                                     ng-class="{ 'has-error': ResetPassword.confirmPassword.$touched && ResetPassword.confirmPassword.$invalid }">
-                                    <input type="text" name="confirmPassword" ng-model="user.confirmPassword"
-                                           class="form-control"
-                                           placeholder="" required>
-                                    <span class="help-block"
-                                          ng-messages="ResetPassword.confirmPassword.$error"
-                                          ng-show="ResetPassword.confirmPassword.$touched">
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">New Password</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': PwdChange.password.$touched && PwdChange.password.$invalid }">
+                                <input type="password" name="password" ng-model="password" required
+                                       ng-init="password_error_show=0"
+                                       class="form-control"
+                                       ng-focus="password_error_show=1"
+                                       ng-change="password_error_show = password_error_show + 1;changepassword()"
+                                       style="font-size: 25px">
+
+                                <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
+                                    <!--   <div>Please enter your password</div>-->
+                                    <div style="margin-left: 24px;">
+                                        password must be alphanumeric , one lower , upper letter and one special character.
+                                    </div>
+                                    <div style="margin-left: 6em">
+                                        password length minimum 6 characters
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+
+                  <!--  <dl class="dl-horizontal required">
+                        <dt class="p-t-10">New Password</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': PwdChange.newPassword.$touched && PwdChange.newPassword.$invalid }">
+                                <input type="password" name="newPassword" ng-model="newPassword" ng-enter="submit(oldPassword,newPassword,confirmPassword)"
+                                       class="form-control"
+                                       placeholder="" required>
+                                <span class="help-block"
+                                      ng-messages="PwdChange.newPassword.$error"
+                                      ng-show="PwdChange.newPassword.$touched">
+                                    <small ng-message="required">new Password is required</small>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>-->
+
+
+                    <!--<dt class="p-t-10">New Password</dt>
+                    <div class="form-group">
+                        <input type="password" class="form-control"  ng-model="newPassword" ng-enter="submit(oldPassword,newPassword,confirmPassword)" placeholder="Password" name="newPassword"required="required" ng-minlength="6"/>
+                        <div ng-if="PwdChange.newPassword.$touched || signupSubmitted" class="fg-line">
+                            <p ng-show="PwdChange.newPassword.$error.required" class="help-block">Password is required</p>
+                            <p ng-show="PwdChange.newPassword.$error.minlength" class="help-block">
+                                password must contain alphanumeric,one lower,<br>one upper case letters and one special character
+                                Minimum 6 character</p>
+                        </div>
+                    </div>
+
+                    <dt class="p-t-10">Confirm Password</dt>
+                    <div class="form-group">
+                        <input type="password" class="form-control"  name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm password" match-password="newPassword" required>
+                        <div ng-if="PwdChange.confirmPassword.$touched || signupSubmitted">
+                            <p ng-show="PwdChange.confirmPassword.$error.required" class="help-block">Confirm password is required</p>
+                            <p ng-show="PwdChange.confirmPassword.$error.matchPassword && !signupForm.confirmPassword.$error.required" class="help-block">Confirm password didn't match</p>
+                        </div>
+                    </div>-->
+
+                  <!--  <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Confirm Password</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': PwdChange.confirmPassword.$touched && PwdChange.confirmPassword.$invalid }">
+                                <input type="password" name="confirmPassword" ng-model="confirmPassword" ng-enter="submit(oldPassword,newPassword,confirmPassword)"
+                                       class="form-control"
+                                       placeholder="" required>
+                                <span class="help-block"
+                                      ng-messages="PwdChange.confirmPassword.$error"
+                                      ng-show="PwdChange.confirmPassword.$touched">
                                                 <small ng-message="required">confirm Password is required</small>
                                             </span>
-                                </div>
-                            </dd>
-                        </dl>
+                            </div>
+                        </dd>
+                    </dl>-->
 
-                        <br>
-                        <button type="button" class="btn btn-icon-text btn-success waves-effect"
-                                ng-click="resetNewPassword();" >
-                            <i class="zmdi zmdi-save"></i> Save
-                        </button>
+                      <dl class="dl-horizontal required">
+                       <dt class="p-t-10">Confirm Password</dt>
+                       <dd>
+                           <div class="fg-line"
+                                ng-class="{ 'has-error': PwdChange.confirmPassword.$touched && PwdChange.confirmPassword.$invalid }">
+                               <input type="text" name="cpassword"
+                                      ng-model="cpassword"
+                                      required
+                                      class="form-control"
+                                      ng-init="cpassword_error_show=0"
+                                      ng-focus="cpassword_error_show=1"
+                                      ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
+                                      style="font-size: 35px" >
+                               <p>
+                                   <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && password !== cpassword">Password Mismatch</span>
+                                   <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && password === cpassword && passValidation">Password match</span>
+                               </p>
+                           </div>
+                       </dd>
+                   </dl>
 
-                    </div>
+                  <!--  <div class="fg-line">
+                    <textarea name="description"
+                              ng-model="FeedbackDetails.description" class="form-control"
+                              rows="4"
+                              placeholder="" chars="only-letters" required>
+                    </textarea>
+                    </div>-->
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="submit(oldPassword,password,cpassword)" ng-disabled="PwdChange.$invalid">
+                        <i class="zmdi zmdi-view-list"></i> Submit
+                    </button>
                 </div>
+
             </form>
-      <!--  </div>-->
+        </div>
     </div>
 </div>
+
+
+
+

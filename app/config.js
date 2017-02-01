@@ -216,7 +216,7 @@
             .state("admin.change-password.manage", {
                 url: "/manage",
                 templateUrl: adminViewPath + 'change-password/manage.html',
-                controller: 'ChangePassword',
+                controller: 'PasswordChange',
                 containerClass: 'sw-toggled'
             })
 
@@ -230,6 +230,20 @@
             .state("admin.feedback.manage", {
                 url: "/manage",
                 templateUrl: adminViewPath + 'feedback/manage.html',
+                controller: 'UserFeedBack',
+                containerClass: 'sw-toggled'
+            })
+
+            //ccavenu
+            .state("admin.ccavenurequest", {
+                url: "/ccavenurequest",
+                templateUrl: adminViewPath + 'ccavenurequest/ccavenu.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.ccavenurequest.manage", {
+                url: "/manage",
+                templateUrl: adminViewPath + 'ccavenurequest/manage.html',
                 controller: 'UserFeedBack',
                 containerClass: 'sw-toggled'
             })

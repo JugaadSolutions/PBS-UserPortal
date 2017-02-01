@@ -1509,14 +1509,23 @@
 
             saveUserFeedback: function (data) {
             var deferred = $q.defer();
-            $http.post(API + APIEndPoint.reports.transactions.checkOut, data).then(function (result) {
+            $http.post(APINew + APIEndPoint.feedback.save, data).then(function (result) {
                 deferred.resolve(result.data);
             }, function (error) {
                 deferred.reject(error);
             });
             return deferred.promise;
-        },
+            },
 
+            saveNewPassword: function (data) {
+            var deferred = $q.defer();
+            $http.put(APINew + "users/" + data.uid + "/password/change" ,  data).then(function (result) {
+                deferred.resolve(result.data);
+            }, function (error) {
+                deferred.reject(error);
+            });
+            return deferred.promise;
+            },
 
             getMemberPaymentTransaction: function (filters) {
                 var deferred = $q.defer();

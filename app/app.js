@@ -63,6 +63,11 @@
         signup: {
             save:'member'
         },
+
+        feedback:{
+            save:'tickets'
+        },
+
         employee: {
             getAll: 'employee',
             get: 'employee',
@@ -350,10 +355,14 @@
                 checkIn: 'member/checkIn'
             }
         },
-        user: {
+        users: {
             user: 'users',
             password: 'password/change',
             forgotPassword: 'users/forgotpassword'
+        },
+
+        newpassword:{
+            password: 'password/change',
         }
     });
 

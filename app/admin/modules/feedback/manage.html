@@ -5,32 +5,38 @@
 
 
         <div class="card-header ch-alt m-b-20">
-            <h2>Feedback</h2>
+            <h2>Feedback/Message</h2>
 
                 <br>
 
-            <form class="pmbb-edit" name="Feedback" ng-click="buttontest()" novalidate>
+            <form class="pmbb-edit" name="Feedback">
 
-                <div class="card-body card-padding">
-                    <div class="row">
-                        <dl class="dl-horizontal required">
-                            <dt class="p-t-10">Description</dt>
-                            <dd>
-                                <div class="fg-line">
-                                    <input type="text" name="description"
+                <div class="pmbb-body p-l-30">
+
+                              <!--  <div class="fg-line">
+                                    <input type="" name="description"
                                            ng-model="FeedbackDetails.description"
-                                           class="form-control" chars="letters">
-                                </div>
-                            </dd>
-                        </dl>
+                                           class="form-control" chars="letters" required >
+                                </div>-->
+
+                    <div class="fg-line">
+                    <textarea name="description"
+                              ng-model="FeedbackDetails.description" class="form-control"
+                              rows="4"
+                              placeholder="" chars="only-letters" required>
+                    </textarea>
                     </div>
 
-                    <!--<button type="button" class="btn btn-icon-text btn-success waves-effect"
-                            ng-click="usercomments()" >
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="userfeedback()" ng-disabled="Feedback.$invalid">
                         <i class="zmdi zmdi-view-list"></i> Submit
-                    </button>-->
-                    <button type="submit">Submit</button>
+                    </button>
                 </div>
+
+
+
             </form>
         </div>
     </div>
