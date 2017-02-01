@@ -123,8 +123,8 @@
     </div>-->
 
 
-
-    <div class="form-group">
+        <!--working-->
+    <!--<div class="form-group">
         <input type="password" class="form-control"  ng-model="signupDetails.password" placeholder="Password" name="password"required="required" ng-minlength="6"/>
         <div ng-if="signupForm.password.$touched || signupSubmitted" class="fg-line">
             <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
@@ -132,7 +132,48 @@
                 password must contain alphanumeric,one lower,<br>one upper case letters and one special character
                 Minimum 6 character</p>
         </div>
-    </div>
+    </div>-->
+
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+            <div class="fg-line">
+                <input type="password" name="password" ng-model="signupDetails.password" required
+                       ng-init="password_error_show=0"
+                       class="form-control"
+                       placeholder="Password"
+                       ng-focus="password_error_show=1"
+                       ng-change="password_error_show = password_error_show + 1;changepassword()"
+                       style="font-size: 12px">
+                <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
+                    <div>
+                        Password must be alphanumeric,one upper letter and one special character.Password length minimum 6 characters
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<dl class="dl-horizontal required">
+                <div class="fg-line"
+                     ng-class="{ 'has-error': PwdChange.password.$touched && PwdChange.password.$invalid }">
+                    <input type="password" name="password" ng-model="signupDetails.password" required
+                           ng-init="password_error_show=0"
+                           class="form-control"
+                           placeholder="Password"
+                           ng-focus="password_error_show=1"
+                           ng-change="password_error_show = password_error_show + 1;changepassword()"
+                           style="font-size: 10px">
+
+                    <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
+                        <div style="margin-left: 24px;">
+                            password must be alphanumeric , one lower , upper letter and one special character.
+                        </div>
+                        <div style="margin-left: 6em">
+                            password length minimum 6 characters
+                        </div>
+                    </div>
+                </div>
+        </dl>-->
 
    <!-- <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
@@ -151,13 +192,54 @@
         </div>
     </div>-->
 
-    <div class="form-group">
+        <!--working-->
+    <!--<div class="form-group">
         <input type="password" class="form-control"  name="confirm_password" ng-model="confirm_password" placeholder="Confirm password" match-password="signupDetails.password" required>
         <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
             <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
             <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
         </div>
-    </div>
+    </div>-->
+
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+            <div class="fg-line">
+                <input type="password" name="cpassword"
+                       ng-model="cpassword"
+                       required
+                       placeholder="Confirm password"
+                       class="form-control"
+                       ng-init="cpassword_error_show=0"
+                       ng-focus="cpassword_error_show=1"
+                       ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
+                       style="font-size: 12px" >
+                <p>
+                    <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== cpassword">Password Mismatch</span>
+                    <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === cpassword && passValidation">Password match</span>
+                </p>
+            </div>
+        </div>
+
+<!--        <dl class="dl-horizontal required">
+            <dd>
+                <div class="fg-line"
+                     ng-class="{ 'has-error': PwdChange.confirmPassword.$touched && PwdChange.confirmPassword.$invalid }">
+                    <input type="password" name="cpassword"
+                           ng-model="cpassword"
+                           required
+                           placeholder="Confirm password"
+                           class="form-control"
+                           ng-init="cpassword_error_show=0"
+                           ng-focus="cpassword_error_show=1"
+                           ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
+                           style="font-size: 25px" >
+                    <p>
+                        <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== cpassword">Password Mismatch</span>
+                        <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === cpassword && passValidation">Password match</span>
+                    </p>
+                </div>
+            </dd>
+        </dl>-->
 
     <div class="clearfix"></div>
 

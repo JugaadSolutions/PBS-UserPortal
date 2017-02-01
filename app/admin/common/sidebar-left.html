@@ -17,9 +17,19 @@
     <ul class="main-menu">
     <li>
       <!--  <a ng-click="" type="file"><i class="zmdi zmdi-mood"></i> Change Profile Photo</a>-->
-        <a href="" class="pmop-edit">
+      <!--  <a href="" class="pmop-edit">
             <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
-        </a>
+        </a>-->
+        <a href="#"><i class="zmdi zmdi-camera"></i>Update Profile Picture</a>
+        <script type="text/javascript">
+            $("a").click(function() {
+                // creating input on-the-fly
+                var input = $(document.createElement('input'));
+                input.attr("type", "file");
+                input.trigger('click'); // opening dialog
+                return false; // avoiding navigation
+            });
+        </script>
     </li>
     </ul>
     <ul class="main-menu">

@@ -195,6 +195,18 @@
         }
 
 
+        $scope.passValidation=false;
+        $scope.changepassword=function () {
+            var regexp=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9:@#$%^&*]{6,20}$/;
+            if(!$scope.signupDetails.password.match(regexp))
+            {
+                $scope.passValidation=false;
+            }
+            else {
+                $scope.passValidation=true;
+            }
+        };
+
         $scope.signupDetails={
             Name:'',
             lastName:'',
@@ -2132,6 +2144,15 @@
         };
     }]);
 
+    var cc_member_name;
+    var cc_member_uid;
+    var cc_member_email;
+    var cc_member_mobile;
+    var plan_name="";
+    var security_deposit=0;
+    var smart_card_fee=0;
+    var useage_fees=0;
+    var total_fees =0;
     app.controller('SelectPlans', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'NgTableParams', '$filter', '$uibModal', 'StatusService', function ($scope, $state, $stateParams, DataService, growl, sweet, NgTableParams, $filter, $uibModal, StatusService) {
         $scope.membershipData = [];
 
@@ -2170,8 +2191,39 @@
             }
         );
 
-            $scope.Selectplan = function (size) {
-                $uibModal.open({
+        DataService.getUserDetails(_user_id).then(function (response) {
+            if (!response.error) {
+                cc_member_name=response.data.Name;
+                cc_member_uid=response.data.UserID;
+                cc_member_email = response.data.email;
+                cc_member_mobile = response.data.phoneNumber;
+                growl.success(response.data.message);
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
+        })
+
+            $scope.Selectplan = function (event) {
+                var _plan_obj_id = event.currentTarget.value;
+                DataService.getPlanDetails(_plan_obj_id).then(function (response) {
+                    if (!response.error) {
+                         plan_name = response.data.subscriptionType;
+                         security_deposit =response.data.securityDeposit;
+                         smart_card_fee = response.data.smartCardFees;
+                         useage_fees= response.data.userFees;
+                         total_fees = security_deposit + smart_card_fee + useage_fees;
+                        $state.go('admin.ccavenurequest.manage');
+                        growl.success(response.message);
+                    } else {
+                        growl.error(response.message);
+                    }
+                }, function (response) {
+                    growl.error(response.data.description);
+                })
+
+                /*$uibModal.open({
                     templateUrl: 'Error-popup.html',
                     controller: 'ErrorPopUp',
                     size: size,
@@ -2179,8 +2231,9 @@
                         items: function () {
                         }
                     }
-                });
+                });*/
             };
+
     }]);
 
     // Select plan error pop up message (temporary)
@@ -2401,31 +2454,22 @@
         };
     }]);
 
-    app.controller('CC', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
+    app.controller('CCavenu', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
     {
-        var _subject = "UserFeedBack";
+            $scope.memberDetails={
+                 name:cc_member_name,
+                 uid:cc_member_uid,
+                 email:cc_member_email,
+                 mobile:cc_member_mobile,
+                 planName:plan_name,
+                 totalFees:total_fees,
+                 tid:new Date().getTime(),
+            }
 
-        $scope.FeedbackDetails={
-            name:_user_name,
-            createdBy:_user_id,
-            ticketdate:new Date(),
-            subject:_subject,
-            channel:5,
-            priority:2,
-            description:''
-        };
+            $scope.testhidden={
+                name:''
+            };
 
-        $scope.userfeedback = function () {
-            DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response) {
-                if (!response.error) {
-                    growl.success("Feedback submitted successfully");
-                    $scope.FeedbackDetails.description = "";
-                } else {
-                    growl.error(response.message);
-                }
-            }, function (response) {
-            });
-        };
     }]);
 
 

@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/ccavenu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/angular-md5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/forgotscript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/message.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/resetpassword.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" afterPath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/feedback/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/feedback/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/angular/docs/components/google-code-prettify-1.0.1/styles/index.html" afterPath="$PROJECT_DIR$/app/angular/docs/components/google-code-prettify-1.0.1/styles/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" afterPath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.js" afterPath="$PROJECT_DIR$/app/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers.js" afterPath="$PROJECT_DIR$/app/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/login/login.html" afterPath="$PROJECT_DIR$/app/login/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services.js" afterPath="$PROJECT_DIR$/app/services.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -42,8 +34,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="2403" column="22" lean-forward="false" selection-start-line="2403" selection-start-column="22" selection-end-line="2403" selection-end-column="22" />
+            <state relative-caret-position="238">
+              <caret line="202" column="44" lean-forward="true" selection-start-line="202" selection-start-column="44" selection-end-line="202" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -52,42 +44,19 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="76" />
+            <state relative-caret-position="187">
+              <caret line="360" column="22" lean-forward="false" selection-start-line="360" selection-start-column="22" selection-end-line="360" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config.js">
+      <file leaf-file-name="manage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/modules/change-password/manage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="232" column="41" lean-forward="false" selection-start-line="232" selection-start-column="29" selection-end-line="232" selection-end-column="41" />
+            <state relative-caret-position="469">
+              <caret line="132" column="24" lean-forward="true" selection-start-line="113" selection-start-column="19" selection-end-line="132" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resetpassword.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/resetpassword.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#ul#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#h3#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#p#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -105,28 +74,8 @@
       <file leaf-file-name="view-plans.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/modules/plans/view-plans.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bicycles.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/modules/bicycles/bicycles.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="50" />
+            <state relative-caret-position="409">
+              <caret line="38" column="141" lean-forward="false" selection-start-line="38" selection-start-column="141" selection-end-line="38" selection-end-column="141" />
               <folding />
             </state>
           </provider>
@@ -135,8 +84,26 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/login/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2514">
-              <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
+            <state relative-caret-position="179">
+              <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#4;n#form#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#5;n#form#0;n#div#3;n#!!top" expanded="true" />
+                <marker date="1485962075436" expanded="false" signature="7281:7295" ph="..." />
+                <marker date="1485962075436" expanded="false" signature="7385:7403" ph="..." />
+                <marker date="1485962075436" expanded="false" signature="7585:7601" ph="..." />
+                <marker date="1485962075436" expanded="false" signature="11220:11254" ph="..." />
+                <marker date="1485962075436" expanded="false" signature="11391:11425" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar-left.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -145,8 +112,8 @@
       <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1628" column="4" lean-forward="false" selection-start-line="1628" selection-start-column="4" selection-end-line="1628" selection-end-column="4" />
+            <state relative-caret-position="121">
+              <caret line="1512" column="20" lean-forward="false" selection-start-line="1512" selection-start-column="20" selection-end-line="1512" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -163,29 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>comments</find>
-      <find>pmbb-body</find>
-      <find>ChangePassword</find>
-      <find>passwordchange</find>
-      <find>username</find>
-      <find>des</find>
-      <find>getmember</find>
-      <find>saveChangePassword</find>
-      <find>savef</find>
-      <find>passw</find>
-      <find>saveNewPassword</find>
-      <find>feedback</find>
-      <find>saveUserFeedback</find>
-      <find>updatemember</find>
-      <find>apiendpoint</find>
-      <find>APIEndPoint</find>
-      <find>PasswordChange</find>
-      <find>btnEmailSubmit</find>
-      <find>test</find>
-      <find>message</find>
-      <find>savenew</find>
-      <find>password</find>
-      <find>signup</find>
       <find>_new</find>
       <find>passwordcha</find>
       <find>md</find>
@@ -193,6 +137,29 @@
       <find>submit</find>
       <find>changepassword</find>
       <find>UserFeedBack</find>
+      <find>cc_member_uid</find>
+      <find>getva</find>
+      <find>for</find>
+      <find>SelectedP</find>
+      <find>PLAN</find>
+      <find>cc</find>
+      <find>cca</find>
+      <find>cc_member_mobile</find>
+      <find>getVal</find>
+      <find>selectplans</find>
+      <find>SelectPlan</find>
+      <find>getUserDetails</find>
+      <find>getplan</find>
+      <find>getmembership</find>
+      <find>_plan</find>
+      <find>cc_member_name</find>
+      <find>plan_name</find>
+      <find>getplandetails</find>
+      <find>total_fees</find>
+      <find>forgotPassword</find>
+      <find>ccav</find>
+      <find>signup</find>
+      <find>forgot</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\SRE\Desktop\PBS-UserPortal\app\admin\modules\reports</dir>
@@ -234,27 +201,27 @@
         <option value="$PROJECT_DIR$/app/admin/modules/resetpassword/managepassword.html" />
         <option value="$PROJECT_DIR$/assets/css/app.css" />
         <option value="$PROJECT_DIR$/app/directives.js" />
-        <option value="$PROJECT_DIR$/app/login/login.html" />
         <option value="$PROJECT_DIR$/app/admin/common/dashboard.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/pwdReset/pwdReset.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/contact-feedback/contact-feedback.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/contact-feedback/manage.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/change-password/passwordchange.html" />
-        <option value="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
-        <option value="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/feedback/manage.html" />
-        <option value="$PROJECT_DIR$/app/app.js" />
-        <option value="$PROJECT_DIR$/app/services.js" />
         <option value="$PROJECT_DIR$/app/style.css" />
         <option value="$PROJECT_DIR$/app/message.html" />
         <option value="$PROJECT_DIR$/app/forgotscript.js" />
         <option value="$PROJECT_DIR$/app/demo.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" />
-        <option value="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/ccavenurequest/ccavenu.html" />
         <option value="$PROJECT_DIR$/app/config.js" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/app/services.js" />
+        <option value="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
+        <option value="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" />
         <option value="$PROJECT_DIR$/app/controllers.js" />
+        <option value="$PROJECT_DIR$/app/login/login.html" />
+        <option value="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
       </list>
     </option>
   </component>
@@ -424,33 +391,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ccavenurequest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bicycles" />
+              <option name="myItemId" value="change-password" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -611,7 +552,7 @@
       <workItem from="1485688431079" duration="5231000" />
       <workItem from="1485749137156" duration="32037000" />
       <workItem from="1485835757361" duration="38581000" />
-      <workItem from="1485921191219" duration="7408000" />
+      <workItem from="1485921191219" duration="27667000" />
     </task>
     <task id="LOCAL-00001" summary="Done with binding the values of docking station (edit) with 6 new fileds and changed the keywords (Registration and Refunds) in day wise report">
       <created>1483628334344</created>
@@ -781,15 +722,29 @@
       <option name="project" value="LOCAL" />
       <updated>1485837914707</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="done with change password ( pending with small design issue)">
+      <created>1485929400523</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1485929400523</updated>
+    </task>
+    <task id="LOCAL-00026" summary="done with change password ( pending with small design issue)">
+      <created>1485929458782</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1485929458782</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="609241000" />
+    <option name="totallyTimeSpent" value="629500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17769517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -855,34 +810,35 @@
     <MESSAGE value="Done with registered login (ride history, payment history, docking station, contact, help)" />
     <MESSAGE value="done with login, sign up, forgot password view" />
     <MESSAGE value="done with feedback(view) and sign up" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with feedback(view) and sign up" />
+    <MESSAGE value="done with change password ( pending with small design issue)" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with change password ( pending with small design issue)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>7274</line>
+          <line>7318</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>7201</line>
+          <line>7245</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3640</line>
+          <line>3684</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>4111</line>
+          <line>4155</line>
           <option name="timeStamp" value="409" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>4110</line>
+          <line>4154</line>
           <option name="timeStamp" value="410" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -907,27 +863,27 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>5752</line>
+          <line>5796</line>
           <option name="timeStamp" value="456" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>5754</line>
+          <line>5798</line>
           <option name="timeStamp" value="457" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>1604</line>
+          <line>1616</line>
           <option name="timeStamp" value="568" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/services.js</url>
-          <line>1680</line>
+          <line>1690</line>
           <option name="timeStamp" value="573" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3094</line>
+          <line>3138</line>
           <option name="timeStamp" value="575" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -942,7 +898,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3092</line>
+          <line>3136</line>
           <option name="timeStamp" value="579" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -967,12 +923,12 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>6843</line>
+          <line>6887</line>
           <option name="timeStamp" value="632" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>6844</line>
+          <line>6888</line>
           <option name="timeStamp" value="633" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -982,55 +938,24 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>235</line>
+          <line>247</line>
           <option name="timeStamp" value="805" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2173</line>
-          <option name="timeStamp" value="819" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/services.js</url>
-          <line>1519</line>
-          <option name="timeStamp" value="847" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/services.js</url>
-          <line>1522</line>
-          <option name="timeStamp" value="856" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/services.js</url>
-          <line>1521</line>
-          <option name="timeStamp" value="857" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2357</line>
-          <option name="timeStamp" value="858" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2359</line>
-          <option name="timeStamp" value="859" />
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="883" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="873" />
+      <option name="time" value="906" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/ride-history/ride-history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="true" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/modules/registration-centres/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1219,6 +1144,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="0" column="1259" lean-forward="true" selection-start-line="0" selection-start-column="1259" selection-end-line="0" selection-end-column="1259" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1226,6 +1152,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="0" column="898" lean-forward="true" selection-start-line="0" selection-start-column="898" selection-end-line="0" selection-end-column="898" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1245,13 +1172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="32" column="81" lean-forward="false" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/modules/members/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1263,6 +1183,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,6 +1191,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,6 +1199,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1300,6 +1223,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1307,62 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2514">
-          <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1628" column="4" lean-forward="false" selection-start-line="1628" selection-start-column="4" selection-end-line="1628" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/change-password/manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1161">
-          <caret line="146" column="19" lean-forward="true" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#dd#0;n#dl#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#dd#0;n#dl#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#p#0;n#div#0;n#dd#0;n#dl#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="223" column="16" lean-forward="false" selection-start-line="223" selection-start-column="16" selection-end-line="223" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/plans/view-plans.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/bicycles/bicycles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1375,34 +1243,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html">
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/bicycles/bicycles.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="76" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="232" column="41" lean-forward="false" selection-start-line="232" selection-start-column="29" selection-end-line="232" selection-end-column="41" />
+        <state relative-caret-position="357">
+          <caret line="246" column="36" lean-forward="false" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers.js">
+    <entry file="file://$PROJECT_DIR$/app/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="2403" column="22" lean-forward="false" selection-start-line="2403" selection-start-column="22" selection-end-line="2403" selection-end-column="22" />
+        <state relative-caret-position="180">
+          <caret line="223" column="16" lean-forward="false" selection-start-line="223" selection-start-column="16" selection-end-line="223" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="1512" column="20" lean-forward="false" selection-start-line="1512" selection-start-column="20" selection-end-line="1512" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1425,6 +1301,70 @@
             <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#p#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="360" column="22" lean-forward="false" selection-start-line="360" selection-start-column="22" selection-end-line="360" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/maintenance/new-design/manageview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" column="136" lean-forward="false" selection-start-line="27" selection-start-column="130" selection-end-line="27" selection-end-column="136" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/plans/view-plans.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="38" column="141" lean-forward="false" selection-start-line="38" selection-start-column="141" selection-end-line="38" selection-end-column="141" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="202" column="44" lean-forward="true" selection-start-line="202" selection-start-column="44" selection-end-line="202" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/change-password/manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="132" column="24" lean-forward="true" selection-start-line="113" selection-start-column="19" selection-end-line="132" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#4;n#form#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#5;n#form#0;n#div#3;n#!!top" expanded="true" />
+            <marker date="1485962075436" expanded="false" signature="7281:7295" ph="..." />
+            <marker date="1485962075436" expanded="false" signature="7385:7403" ph="..." />
+            <marker date="1485962075436" expanded="false" signature="7585:7601" ph="..." />
+            <marker date="1485962075436" expanded="false" signature="11220:11254" ph="..." />
+            <marker date="1485962075436" expanded="false" signature="11391:11425" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1507,6 +1507,16 @@
                 return deferred.promise;
             },
 
+            getPlanDetails:function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.membership.get + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
             saveUserFeedback: function (data) {
             var deferred = $q.defer();
             $http.post(APINew + APIEndPoint.feedback.save, data).then(function (result) {
@@ -1617,7 +1627,7 @@
             },
             forgotPassword: function (data) {
                 var deferred = $q.defer();
-                $http.put(APINew + APIEndPoint.user.forgotPassword, data).then(function (result) {
+                $http.put(APINew + APIEndPoint.users.forgotPass, data).then(function (result) {
                     deferred.resolve(result.data);
                 }, function (error) {
                     deferred.reject(error);

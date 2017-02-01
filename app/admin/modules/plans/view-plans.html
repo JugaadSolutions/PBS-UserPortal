@@ -33,10 +33,10 @@
                         {{plans.processingFees}}
                     </td>
                     <td data-title="'Total'">
-                        {{plans.userFees + plans.securityDeposit + plans.smartCardFees + plans.processingFees }}
+                        {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}
                     </td>
-                    <td data-title="''">
-                       <button ng-click="Selectplan()" class="btn btn-icon-text btn-success waves-effect"> Select </button>
+                    <td data-title="'Select'">
+                       <button ng-click="Selectplan($event)" value="{{plans._id}}" class="btn btn-icon-text btn-success waves-effect"> Select </button>
                     </td>
                 </tr>
             </table>

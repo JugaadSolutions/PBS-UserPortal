@@ -244,7 +244,7 @@
             .state("admin.ccavenurequest.manage", {
                 url: "/manage",
                 templateUrl: adminViewPath + 'ccavenurequest/manage.html',
-                controller: 'UserFeedBack',
+                controller: 'CCavenu',
                 containerClass: 'sw-toggled'
             })
 

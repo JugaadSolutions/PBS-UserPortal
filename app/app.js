@@ -358,7 +358,7 @@
         users: {
             user: 'users',
             password: 'password/change',
-            forgotPassword: 'users/forgotpassword'
+            forgotPass: 'users/forgotpassword'
         },
 
         newpassword:{
