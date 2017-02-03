@@ -7,6 +7,30 @@
 
     <section id="content" ui-view>
 
+        <div class="container">
+             <!-- <h3>Welcome:</h3> <i class="zmdi zmdi-mood"></i> <span ng-bind="_user_name"></span>
+            <h3>Balance:</h3> <span ng-bind="_user_balance"></span>-->
+            <div class="card" >
+                <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" >
+                     <b>Hello&nbsp;<i class="zmdi zmdi-mood"></i>
+                    <br>
+                    <span ng-bind="_user_name"></span></b>&nbsp; Welcome Back
+                </div>
+                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" >
+                    <i class="zmdi zmdi-card"></i> <b>Your balance:</b>&nbsp;₹<span ng-bind="_user_balance"></span>/-
+                    <br>
+                    <br>
+                    <i class="zmdi zmdi-calendar"></i> <b>EXP. Date:&nbsp;</b><span ng-bind="_validity | date : 'dd MMM yy'"></span>
+                </div>
+
+                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" >
+                    <i class="zmdi zmdi-card"></i> <b>Your last Transaction</b>
+                    <br>
+                    <br>
+                    <i class="zmdi zmdi-calendar"></i> <b><span ng-bind=""></span></b>
+                </div>
+        </div>
+</div>
     </section>
 </section>
 

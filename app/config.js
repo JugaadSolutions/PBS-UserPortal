@@ -12,6 +12,7 @@
         /* Views Path */
         var adminViewPath = "/PBS-UserPortal/app/admin/modules/";
         var loginViewPath = "/PBS-UserPortal/app/login/";
+        var resetPasswordSuccessViewPath = "/PBS-UserPortal/app/resetpassword-success/";
 
         $urlRouterProvider.otherwise("/login");
 
@@ -50,6 +51,13 @@
                 templateUrl: adminViewPath + 'admin.html',
                 controller: 'AdminController',
                 containerClass: 'sw-toggled'
+            })
+
+            .state('resetpassword-success', {
+                url: '/resetpassword-success',
+                templateUrl: resetPasswordSuccessViewPath + 'success.html',
+                controller: 'resetPasswordSuccess',
+                containerClass: 'login-content ng-scope'
             })
 
             .state("admin.members", {
@@ -247,6 +255,21 @@
                 controller: 'CCavenu',
                 containerClass: 'sw-toggled'
             })
+
+            //home
+            .state("admin.home", {
+                url: "/home",
+                templateUrl: adminViewPath + 'home/home.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.home.manage", {
+                url: "/manage",
+                templateUrl: adminViewPath + 'home/manage.html',
+                controller: 'UserHomePage',
+                containerClass: 'sw-toggled'
+            })
+
 
             .state("admin.docking-ports", {
                 url: "/docking-ports",

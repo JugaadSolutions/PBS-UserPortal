@@ -13,6 +13,8 @@
     var _login_id;
     var _user_id;
     var _user_name;
+    var _user_balance;
+    var _validity;
     app.controller('PBSController', ['$scope', '$state', 'auth', 'AWS', '$rootScope', function ($scope, $state, auth, AWS, $rootScope) {
 
         $scope.$on('userInfo', function (event, user) {
@@ -51,10 +53,38 @@
     }]);
 
     //Admin Controller
-    app.controller('AdminController', ['$scope', '$state', 'auth', 'growl', function ($scope, $state, auth, growl) {
-
+    app.controller('AdminController', ['$scope', '$state', 'auth', 'growl','DataService', function ($scope, $state, auth, growl,DataService)
+    {
         $scope.$on('sideBar', function (event, data) {
             $scope.sideBar = data;
+        })
+
+
+        // User Details
+        DataService.getUserDetails(_user_id).then(function (response) {
+            if (!response.error) {
+                $scope._user_name=response.data.Name;
+                $scope._user_balance=response.data.creditBalance;
+                $scope._validity=response.data.validity;
+                $scope.membershipid=response.data.membershipId;
+                _user_balance=response.data.creditBalance;
+                _validity=response.data.validity;
+                growl.success(response.data.message);
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
+        })
+
+        DataService.getLastTransaction(_user_id).then(function (response) {
+            if (!response.error) {
+             /*   growl.success(response.data.message);*/
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
         })
 
     }]);
@@ -67,6 +97,7 @@
     {
 
     }]);
+
     //Login Controller
     app.controller('LoginController', ['$state', '$scope', '$rootScope', '$timeout', 'growl', 'user', 'auth', 'DataService','md5', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService,md5) {
         $scope.login = true;
@@ -267,6 +298,14 @@
             }
         };
 
+    }]);
+
+    // reset password success controller
+    app.controller('resetPasswordSuccess', ['$state', '$scope', '$rootScope', '$timeout', 'growl', 'user', 'auth', 'DataService','md5', function ($state, $scope, $rootScope, $timeout, growl, user, auth, DataService,md5)
+    {
+        $scope.backToLogin=function () {
+            $state.go('login');
+        }
     }]);
 
     // Manage Members Controller
@@ -2165,12 +2204,10 @@
         DataService.getMemberships(filters).then(function (response) {
             if (!response.error) {
                 $scope.membershipData = response.data;
-              /*  $scope.membershipData.forEach(function (membership) {
-                    membership.status = StatusService.getMembershipStatus(membership.status);
-                    membership.planName = membership.farePlan.planName;
-                    membership.total = membership.userFees + membership.securityDeposit + membership.smartCardFees +
-                        membership.processingFees;
-                });*/
+                $scope.orderid = new Date().getTime();
+                $scope.uid=_user_id;
+                $scope.membershipData.forEach(function (membership) {
+                });
             } else {
                 growl.error(response.message);
             }
@@ -2214,7 +2251,26 @@
                          smart_card_fee = response.data.smartCardFees;
                          useage_fees= response.data.userFees;
                          total_fees = security_deposit + smart_card_fee + useage_fees;
-                        $state.go('admin.ccavenurequest.manage');
+                         orderid:new Date().getTime(),
+                        /*$state.go('admin.ccavenurequest.manage');*/
+                        $scope.sendPlanDetails={
+                            _member_name:cc_member_name,
+                            _member_uid:cc_member_uid,
+                            _member_email:cc_member_email,
+                            _member_no:cc_member_mobile,
+                            _selected_plan:plan_name,
+                            _plan_amount:total_fees
+                        };
+                        DataService.sendforCCavenu($scope.sendPlanDetails).then(function(response){
+                            if (!response.error) {
+                                growl.success(response.message);
+                            } else {
+                                growl.error(response.message);
+                            }
+                        }, function (response) {
+                            growl.error(response.data.description);
+                        })
+
                         growl.success(response.message);
                     } else {
                         growl.error(response.message);
@@ -2442,7 +2498,8 @@
         };
 
         $scope.userfeedback = function () {
-            DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response) {
+            DataService.saveUserFeedback($scope.FeedbackDetails).then(function (response)
+            {
                 if (!response.error) {
                     growl.success("Feedback submitted successfully");
                     $scope.FeedbackDetails.description = "";
@@ -2470,6 +2527,15 @@
                 name:''
             };
 
+    }]);
+
+    app.controller('UserHomePage', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
+    {
+        $scope.userDetails={
+            name:_user_name,
+           expirydate:_validity,
+            balance:_user_balance
+        };
     }]);
 
 

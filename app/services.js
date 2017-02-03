@@ -1507,6 +1507,17 @@
                 return deferred.promise;
             },
 
+            // get last transaction details
+            getLastTransaction:function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.userlasttransaction.get + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
             getPlanDetails:function (data) {
                 var deferred = $q.defer();
                 $http.get(APINew + APIEndPoint.membership.get + '/' + data).then(function (result) {
@@ -1527,6 +1538,17 @@
             return deferred.promise;
             },
 
+            //forgot password
+            saveResetPassword: function (data) {
+            var deferred = $q.defer();
+            $http.post(APINew + APIEndPoint.feedback.save, data).then(function (result) {
+                deferred.resolve(result.data);
+            }, function (error) {
+                deferred.reject(error);
+            });
+            return deferred.promise;
+            },
+
             saveNewPassword: function (data) {
             var deferred = $q.defer();
             $http.put(APINew + "users/" + data.uid + "/password/change" ,  data).then(function (result) {
@@ -1535,6 +1557,17 @@
                 deferred.reject(error);
             });
             return deferred.promise;
+            },
+
+            //post for ccavenu
+            sendforCCavenu: function (data) {
+                var deferred = $q.defer();
+                $http.post(APINew + APIEndPoint.ccavenu.send, data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
             },
 
             getMemberPaymentTransaction: function (filters) {

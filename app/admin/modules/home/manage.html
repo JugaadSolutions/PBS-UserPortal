@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="card" >
+        <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" >
+            <b>Hello&nbsp;<i class="zmdi zmdi-mood"></i>
+                <br>
+                <span ng-bind="userDetails.name"></span></b>&nbsp; Welcome Back
+        </div>
+        <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" >
+            <i class="zmdi zmdi-card"></i> <b>Your balance:</b>&nbsp;₹<span ng-bind="userDetails.balance"></span>/-
+            <br>
+            <br>
+            <i class="zmdi zmdi-calendar"></i> <b>EXP. Date:&nbsp;</b><span ng-bind="userDetails.expirydate | date : 'dd MMM yy'"></span>
+        </div>
+    </div>
+</div>

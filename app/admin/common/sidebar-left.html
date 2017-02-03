@@ -20,8 +20,8 @@
       <!--  <a href="" class="pmop-edit">
             <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
         </a>-->
-        <a href="#"><i class="zmdi zmdi-camera"></i>Update Profile Picture</a>
-        <script type="text/javascript">
+       <!-- <a href="#"><i class="zmdi zmdi-camera"></i>Update Profile Picture</a>-->
+      <!--  <script type="text/javascript">
             $("a").click(function() {
                 // creating input on-the-fly
                 var input = $(document.createElement('input'));
@@ -29,12 +29,18 @@
                 input.trigger('click'); // opening dialog
                 return false; // avoiding navigation
             });
-        </script>
+        </script>-->
     </li>
     </ul>
     <ul class="main-menu">
-        <li ng-class="{active: $state.includes('admin.plans')}">
-            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i> Select Plans</a>
+        <li ng-class="{active: $state.includes('admin.home')}">
+            <a ui-sref="admin.home.manage"><i class="zmdi zmdi-home"></i>Home</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid !== null && membershipid!=='' && membershipid!==undefined && _user_balance!==0">
+            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i> TopUp</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid===undefined && _user_balance === 0">
+            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i>Select Plan</a>
         </li>
         <li ng-class="{active: $state.includes('admin.payment-history')}">
             <a ui-sref="admin.payment-history.view-payments"><i class="glyphicon glyphicon-credit-card"></i> Payment History</a>

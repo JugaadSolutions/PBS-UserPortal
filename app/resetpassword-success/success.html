@@ -1,0 +1,46 @@
+<html ng-app="Retset">
+
+<head>
+    <script src="../../assets/js/angular.min.js"></script>
+</head>
+<style>
+    .submit {
+        width: 10%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 615px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+<body ng-controller="resetpwd">
+<div class="container">
+    <ul class="header-inner clearfix ">
+        <img src="../../assets/images/trintrin.jpg" style="margin-left: 560px;height:150px;width:150px"/>
+    </ul>
+    <div style="margin-left: 465px;color: green">
+    <h1>Your Transaction is successfull</h1>
+    </div>
+
+    <br>
+    <br>
+    <button type="button" class="submit"
+             ng-click="backToLogin()">
+        <i class="zmdi zmdi-view-list"></i> Back to login
+    </button>
+</div>
+</body>
+</html>
+
+<script>
+    var app=angular.module('Retset');
+    app.controller("resetpwd",function ($scope) {
+            $scope.backToLogin=function (response) {
+                alert('hi');
+                };
+    });
+</script>
+

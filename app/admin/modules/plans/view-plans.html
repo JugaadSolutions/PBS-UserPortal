@@ -1,3 +1,10 @@
+<script>
+    window.onload = function() {
+        var d = new Date().getTime();
+        document.getElementById("tid").value = d;
+    };
+</script>
+
 <div class="container">
 
     <div class="card" >
@@ -36,7 +43,32 @@
                         {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}
                     </td>
                     <td data-title="'Select'">
-                       <button ng-click="Selectplan($event)" value="{{plans._id}}" class="btn btn-icon-text btn-success waves-effect"> Select </button>
+                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                        <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.smartCardFees}}" />
+                        <input type="hidden" name="currency" value="INR" />
+                        <input type="hidden" name="merchant_param1" value="{{uid}}"/>
+                        <input type="hidden" name="merchant_param2" value="{{plans.subscriptionType}}"/>
+                        <input type="hidden" name="merchant_param3" value="NewMember"/>
+                        <input type="hidden" name="tid" id="tid" readonly />
+                        <input type="hidden" name="merchant_id" value="96478"/>
+                        <input type="hidden" name="order_id" value="{{orderid}}"/>
+                        <input type="hidden" name="currency" value="INR"/>
+                        <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                        <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+
+                    <input type="hidden" name="language" value="EN"/>
+                    <input type="hidden" name="billing_name" value=""/>
+                    <input type="hidden" name="billing_tel" value=""/>
+                    <input type="hidden" name="billing_email" value=""/><!--</td>-->
+                    <!--<td>-->
+                       <!-- <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">-->
+<button type="submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">Select</button>
+<!--                    </td>-->
+<!--
+                    <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">
+-->
+                      <!-- <button ng-click="Selectplan($event)" value="{{plans._id}}" class="btn btn-icon-text btn-success waves-effect"> Select </button>-->
+                    </form>
                     </td>
                 </tr>
             </table>

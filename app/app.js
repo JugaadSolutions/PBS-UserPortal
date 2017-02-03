@@ -68,6 +68,14 @@
             save:'tickets'
         },
 
+        ccavenu:{
+          send:'paymenttransaction/ccavRequestHandler'
+        },
+
+        userlasttransaction:{
+            get:'payment'
+        },
+
         employee: {
             getAll: 'employee',
             get: 'employee',
@@ -121,6 +129,7 @@
             update: 'dockport',
             delete: 'dockingport'
         },
+
         bicycle: {
             getAll: 'bicycle',
             get: 'bicycle',
