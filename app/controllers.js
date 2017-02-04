@@ -59,6 +59,7 @@
             $scope.sideBar = data;
         })
 
+       /* var aaa=  sessionStorage.getItem("emp-key");*/
 
         // User Details
         DataService.getUserDetails(_user_id).then(function (response) {
@@ -180,7 +181,10 @@
             _login_id=res.data.data.id;
             _user_id=res.data.data.uid;
 
-
+            /*sessionStorage.setItem("emp-key", _user_id);*/
+            localStorageService.set('localStorageKey',_user_id);
+            var _value = localStorageService.get('localStorageKey');
+            alert(_value);
 
             DataService.getUserDetails(_user_id).then(function (response) {
                 if (!response.error) {
@@ -2295,6 +2299,20 @@
                 });*/
             };
 
+    }]);
+
+    // Top up for users
+    app.controller('TopUp', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModalInstance', 'loggedInUser', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModalInstance, loggedInUser)
+    {
+        $uibModal.open({
+         templateUrl: 'Error-popup.html',
+         controller: 'ErrorPopUp',
+         size: size,
+         resolve: {
+         items: function () {
+         }
+         }
+         });
     }]);
 
     // Select plan error pop up message (temporary)

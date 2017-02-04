@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="testing with forgotpassword">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/hash.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/new.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/passwordstrength.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/resetpassword/resetpassword.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/resetpwd.css" />
+    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="testing with forgotpassword page design and functionality">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/localstorage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" afterPath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/admin.html" afterPath="$PROJECT_DIR$/app/admin/modules/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/home/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/home/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" afterPath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.js" afterPath="$PROJECT_DIR$/app/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers.js" afterPath="$PROJECT_DIR$/app/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/resetpassword.html" afterPath="$PROJECT_DIR$/app/resetpassword.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,32 +33,71 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resetpassword.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/resetpassword.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="105" column="215" lean-forward="true" selection-start-line="105" selection-start-column="215" selection-end-line="105" selection-end-column="215" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#ul#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1486200181068" expanded="true" signature="3557:10302" ph="[...]" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="env.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/env.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="29" column="60" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="60" />
+            <state relative-caret-position="298">
+              <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="localstorage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/localstorage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resetpassword.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/resetpassword.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#ul#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="passwordstrength.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/passwordstrength.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-85">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,43 +113,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="passwordstrength.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/passwordstrength.js">
+      <file leaf-file-name="sidebar-left.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="angular-md5.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/angular-md5.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="39" column="98" lean-forward="false" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="md5.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/md5.js">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="1671" column="4" lean-forward="false" selection-start-line="1671" selection-start-column="4" selection-end-line="1671" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -125,8 +136,8 @@
       <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/modules/admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,10 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getUserDetails</find>
-      <find>ride</find>
-      <find>form</find>
-      <find>getUserDetailsT</find>
       <find>LoginController</find>
       <find>$state.go('admin.lo</find>
       <find>adminco</find>
@@ -173,6 +180,10 @@
       <find>$urlRouterProvider</find>
       <find>jquer</find>
       <find>403Controller</find>
+      <find>selectplan</find>
+      <find>logincon</find>
+      <find>getUserDetails</find>
+      <find>admincon</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\SRE\Desktop\PBS-UserPortal\app\admin\modules\reports</dir>
@@ -184,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/admin/modules/fleets/manage.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/maintenance/new-design/manageview.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/tickets/add.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/docking-stations/docking-stations.html" />
@@ -221,19 +231,20 @@
         <option value="$PROJECT_DIR$/app/admin/modules/home/home.html" />
         <option value="$PROJECT_DIR$/app/resetpassword-success/success.html" />
         <option value="$PROJECT_DIR$/app/services.js" />
-        <option value="$PROJECT_DIR$/app/app.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
         <option value="$PROJECT_DIR$/app/resetpassword/resetpassword.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
-        <option value="$PROJECT_DIR$/app/controllers.js" />
-        <option value="$PROJECT_DIR$/app/admin/modules/admin.html" />
         <option value="$PROJECT_DIR$/app/admin/modules/home/manage.html" />
         <option value="$PROJECT_DIR$/app/config.js" />
         <option value="$PROJECT_DIR$/app/hash.js" />
         <option value="$PROJECT_DIR$/app/resetpwd.css" />
         <option value="$PROJECT_DIR$/app/new.html" />
         <option value="$PROJECT_DIR$/app/passwordstrength.js" />
+        <option value="$PROJECT_DIR$/app/admin/modules/admin.html" />
+        <option value="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
+        <option value="$PROJECT_DIR$/assets/js/localstorage.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/app/controllers.js" />
         <option value="$PROJECT_DIR$/app/resetpassword.html" />
       </list>
     </option>
@@ -323,6 +334,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PBS-UserPortal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PBS-UserPortal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PBS-UserPortal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PBS-UserPortal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -347,10 +398,7 @@
       <recent name="C:\Users\SRE\Desktop\06.12.2016\PBS-Admin-UI\assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.resetpassword.html (1)">
-    <configuration default="false" name="resetpassword.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PBS-UserPortal/app/resetpassword/resetpassword.html">
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="resetpassword.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PBS-UserPortal/app/resetpassword.html">
       <method />
     </configuration>
@@ -413,18 +461,20 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <configuration default="false" name="resetpassword.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/PBS-UserPortal/app/resetpassword/resetpassword.html">
+      <method />
+    </configuration>
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/PBS-UserPortal/index.html">
       <method />
     </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.resetpassword.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.resetpassword.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
       <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.resetpassword.html (1)" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="1">
         <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.resetpassword.html (1)" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.resetpassword.html" />
       </list>
     </recent_temporary>
   </component>
@@ -476,7 +526,7 @@
       <workItem from="1485835757361" duration="38581000" />
       <workItem from="1485921191219" duration="28356000" />
       <workItem from="1485969709071" duration="4354000" />
-      <workItem from="1486009156971" duration="67313000" />
+      <workItem from="1486009156971" duration="83194000" />
     </task>
     <task id="LOCAL-00001" summary="Done with binding the values of docking station (edit) with 6 new fileds and changed the keywords (Registration and Refunds) in day wise report">
       <created>1483628334344</created>
@@ -674,11 +724,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486099085786</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="testing with forgotpassword">
+      <created>1486185324430</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1486185324430</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="701856000" />
+    <option name="totallyTimeSpent" value="717737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -727,7 +784,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done with binding the values of docking station (edit) with 6 new fileds and changed the keywords (Registration and Refunds) in day wise report" />
     <MESSAGE value="altered with the account modules ( made some changes in daywise,totalcash, bank cash deposit ) to generate report and view report" />
     <MESSAGE value="altered with the account modules ( add  bank cash deposit and manage, total cash deposit ) to generate report and view" />
     <MESSAGE value="checked with Redistribution vehicle tracking ( moving from one place to another ), done with docking station cleaning manage view and insert details" />
@@ -752,34 +808,35 @@
     <MESSAGE value="password match and regular expression check in signup" />
     <MESSAGE value="done with user dash board information details" />
     <MESSAGE value="testing with forgotpassword" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing with forgotpassword" />
+    <MESSAGE value="testing with forgotpassword page design and functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing with forgotpassword page design and functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>7389</line>
+          <line>7407</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>7316</line>
+          <line>7334</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3755</line>
+          <line>3773</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>4226</line>
+          <line>4244</line>
           <option name="timeStamp" value="409" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>4225</line>
+          <line>4243</line>
           <option name="timeStamp" value="410" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -804,17 +861,17 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>5867</line>
+          <line>5885</line>
           <option name="timeStamp" value="456" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>5869</line>
+          <line>5887</line>
           <option name="timeStamp" value="457" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>1660</line>
+          <line>1664</line>
           <option name="timeStamp" value="568" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -824,7 +881,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3209</line>
+          <line>3227</line>
           <option name="timeStamp" value="575" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -839,7 +896,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>3207</line>
+          <line>3225</line>
           <option name="timeStamp" value="579" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -864,12 +921,12 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>6958</line>
+          <line>6976</line>
           <option name="timeStamp" value="632" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>6959</line>
+          <line>6977</line>
           <option name="timeStamp" value="633" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -885,7 +942,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2268</line>
+          <line>2272</line>
           <properties />
           <option name="timeStamp" value="907" />
         </line-breakpoint>
@@ -903,44 +960,55 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2235</line>
+          <line>2239</line>
           <properties />
           <option name="timeStamp" value="912" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2240</line>
+          <line>2244</line>
           <properties />
           <option name="timeStamp" value="914" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/resetpassword.html</url>
-          <line>122</line>
+          <url>file://$PROJECT_DIR$/app/services.js</url>
+          <line>1499</line>
           <properties />
-          <option name="timeStamp" value="972" />
+          <option name="timeStamp" value="979" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/resetpassword.html</url>
-          <line>124</line>
+          <url>file://$PROJECT_DIR$/app/services.js</url>
+          <line>1501</line>
           <properties />
-          <option name="timeStamp" value="973" />
+          <option name="timeStamp" value="980" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/controllers.js</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="981" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/controllers.js</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="982" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/controllers.js</url>
+          <line>185</line>
+          <properties />
+          <option name="timeStamp" value="983" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="974" />
+      <option name="time" value="984" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/change-password/passwordchange.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/modules/resetpassword/changepassword.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1171,14 +1239,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="48" column="93" lean-forward="false" selection-start-line="48" selection-start-column="93" selection-end-line="48" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/resetpassword/resetpassword.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1223,42 +1283,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="111" lean-forward="false" selection-start-line="7" selection-start-column="109" selection-end-line="7" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="1675" column="49" lean-forward="false" selection-start-line="1675" selection-start-column="49" selection-end-line="1675" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/modules/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1295,10 +1323,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/app/ccavenue.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="51" />
+        <state relative-caret-position="486">
+          <caret line="227" column="35" lean-forward="true" selection-start-line="227" selection-start-column="35" selection-end-line="227" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="29" column="60" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/modules/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar-left.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="39" column="98" lean-forward="false" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
           <folding />
         </state>
       </provider>
@@ -1311,41 +1363,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/passwordstrength.js">
+    <entry file="file://$PROJECT_DIR$/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="1671" column="4" lean-forward="false" selection-start-line="1671" selection-start-column="4" selection-end-line="1671" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/localstorage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="105" column="215" lean-forward="true" selection-start-line="105" selection-start-column="215" selection-end-line="105" selection-end-column="215" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1486200181068" expanded="true" signature="3557:10302" ph="[...]" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/passwordstrength.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/resetpassword.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        <state relative-caret-position="191">
+          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#img#0;n#ul#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ccavenue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1887">
-          <caret line="243" column="19" lean-forward="true" selection-start-line="243" selection-start-column="19" selection-end-line="243" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="60" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
