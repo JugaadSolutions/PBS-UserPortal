@@ -12,7 +12,8 @@
         /* Views Path */
         var adminViewPath = "/PBS-UserPortal/app/admin/modules/";
         var loginViewPath = "/PBS-UserPortal/app/login/";
-        var resetPasswordSuccessViewPath = "/PBS-UserPortal/app/resetpassword-success/";
+        /*var resetPasswordSuccessViewPath = "/PBS-UserPortal/app/resetpassword-success/";*/
+       /* var resetPasswordViewPath = /PBS-UserPortal/app/resetpassword/*/
 
         $urlRouterProvider.otherwise("/login");
 
@@ -28,7 +29,7 @@
 
             .state('core', {
                 url: '/core',
-                redirectTo: 'admin',
+                redirectTo: 'resetpassword.html',
                 containerClass: 'login-content ng-scope'
             })
 
@@ -53,12 +54,12 @@
                 containerClass: 'sw-toggled'
             })
 
-            .state('resetpassword-success', {
+            /*.state('resetpassword-success', {
                 url: '/resetpassword-success',
                 templateUrl: resetPasswordSuccessViewPath + 'success.html',
                 controller: 'resetPasswordSuccess',
                 containerClass: 'login-content ng-scope'
-            })
+            })*/
 
             .state("admin.members", {
                 url: "/members",

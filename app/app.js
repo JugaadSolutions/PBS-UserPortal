@@ -73,7 +73,7 @@
         },
 
         userlasttransaction:{
-            get:'payment'
+            get:'gateway'
         },
 
         employee: {

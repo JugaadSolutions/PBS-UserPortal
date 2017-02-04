@@ -11,5 +11,17 @@
             <br>
             <i class="zmdi zmdi-calendar"></i> <b>EXP. Date:&nbsp;</b><span ng-bind="userDetails.expirydate | date : 'dd MMM yy'"></span>
         </div>
+
+        <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="status=== 'Success'">
+            <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditDate | date : 'dd MMM yy'"></span> is success</b>
+            <br>
+            <br>
+        </div>
+
+        <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="status=== 'Aborted'">
+            <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditAmount"></span> is successfull</b>
+            <br>
+            <br>
+        </div>
     </div>
 </div>

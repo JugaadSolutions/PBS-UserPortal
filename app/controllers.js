@@ -79,6 +79,9 @@
 
         DataService.getLastTransaction(_user_id).then(function (response) {
             if (!response.error) {
+                $scope.creditAmount=response.data.credit;
+                $scope.creditDate=response.data.paymentdate;
+                $scope.status=response.data.order_status;
              /*   growl.success(response.data.message);*/
             } else {
                 growl.error(response.message);
@@ -176,6 +179,8 @@
             var token = res.data.data.token;
             _login_id=res.data.data.id;
             _user_id=res.data.data.uid;
+
+
 
             DataService.getUserDetails(_user_id).then(function (response) {
                 if (!response.error) {

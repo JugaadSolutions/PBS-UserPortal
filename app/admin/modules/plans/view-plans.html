@@ -43,7 +43,7 @@
                         {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}
                     </td>
                     <td data-title="'Select'">
-                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                        <form method="POST" name="customerData" target="_blank" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
                         <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.smartCardFees}}" />
                         <input type="hidden" name="currency" value="INR" />
                         <input type="hidden" name="merchant_param1" value="{{uid}}"/>
@@ -55,14 +55,13 @@
                         <input type="hidden" name="currency" value="INR"/>
                         <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
                         <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
-
                     <input type="hidden" name="language" value="EN"/>
                     <input type="hidden" name="billing_name" value=""/>
                     <input type="hidden" name="billing_tel" value=""/>
                     <input type="hidden" name="billing_email" value=""/><!--</td>-->
                     <!--<td>-->
                        <!-- <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">-->
-<button type="submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">Select</button>
+<button type="submit"  class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">Select</button>
 <!--                    </td>-->
 <!--
                     <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">
