@@ -11,28 +11,75 @@
              <!-- <h3>Welcome:</h3> <i class="zmdi zmdi-mood"></i> <span ng-bind="_user_name"></span>
             <h3>Balance:</h3> <span ng-bind="_user_balance"></span>-->
             <div class="card" >
-                <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" >
-                     <b>Hello
-                    <br>
-                    <span ng-bind="_user_name"></span></b>&nbsp; Welcome Back
-                </div>
-                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" >
-                    <i class="zmdi zmdi-card"></i> <b>Your balance:</b>&nbsp;₹<span ng-bind="_user_balance"></span>/-
-                    <br>
-                    <br>
-                    <i class="zmdi zmdi-calendar"></i> <b>EXP. Date:&nbsp;</b><span ng-bind="_validity | date : 'dd MMM yy'"></span>
+                <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" ng-if="user_status === 0 && _user_balance===0" >
+                     <b>Welcome&nbsp;
+                    <span ng-bind="_user_name"></span></b><br><br>
+                    <b><span>We have received your signup information. Select a <a ui-sref="admin.plans.view-plans">plan</a> to continue or visit a </span></b> <a href="http://www.mytrintrin.com/?page_id=5713" target="_blank">Registration centre</a> to complete your registration.
                 </div>
 
-                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="status=== 'Success'">
-                    <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditDate | date : 'dd MMM yy'"></span> is success</b>
+                <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" ng-if="user_status === 0 && _user_balance>0" >
+                    <b>Welcome&nbsp;
+                        <span ng-bind="_user_name"></span></b><br><br>
+                    <b><span>We have received your signup information and you have a balance of Rs: <span ng-bind="_user_balance"></span>.  Visit a </span></b> <a href="http://www.mytrintrin.com/?page_id=5713" target="_blank">Registration centre</a>  with your ID proof to complete your registration.
+                </div>
+
+                <div class="card-header ch-alt m-b-20" style="background-color:#dff0d8; color:#3c763d;" ng-if="user_status === 1" >
+                    <b>Welcome,
+                        <br>
+                        <span ng-bind="_user_name"></span></b>
+                </div>
+
+                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="user_status ===1 && _user_balance >0">
+                   <h4> <i class="zmdi zmdi-card"></i> <b>Your balance:</b>&nbsp;₹<span ng-bind="_user_balance"></span>/- </h4>
+                  <h4> <i class="zmdi zmdi-calendar"></i> <b>Valid till:&nbsp;</b><span ng-bind="_validity | date : 'dd MMM yy'"></span></h4>
+                </div>
+
+                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="status=== 'Success' || user_status===1">
+                    <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditDate | date : 'dd MMM yy'"></span> is successfull</b>
                     <br>
                     <br>
                 </div>
 
                 <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="status=== 'Aborted'">
-                    <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditAmount"></span> is successfull</b>
+                    <i class="zmdi zmdi-card"></i> <b>Your last Transaction of Rs ₹ <span ng-bind="creditAmount"></span> on <span ng-bind="creditAmount"></span> is Failure</b>
                     <br>
                     <br>
+                </div>
+
+                <div class="card-header ch-alt m-b-20" style="background-color:#ebccd1; color:black;" ng-if="user_status ===1 " >
+                    <i class="zmdi zmdi-bike"></i> <b>Last Ride Details</b>
+                    <br>
+                    <br>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table ng-table="SingleRideTable" class="table table-striped table-vmiddle" show-filter="false">
+                                <tr ng-repeat="OneRide in SingleRide">
+                                    <td data-title="'Checkout Date/time'">
+                                        {{OneRide.checkOutTime | date : "dd MMM yy"}}
+                                    </td>
+                                    <td data-title="'From'">
+                                        {{OneRide.FromStation}}
+                                    </td>
+                                    <td data-title="'Checkin Date/time'" >
+                                        {{OneRide.checkInTime | date : "dd MMM yy"}}
+                                    </td>
+                                    <td data-title="'To'" >
+                                        {{OneRide.ToStation}}
+                                    </td>
+                                    <td data-title="'Duration (Mins)'" >
+                                        {{OneRide.duration.toFixed(2)}}
+                                    </td>
+                                    <td data-title="'Fare (Rs)'" >
+                                        {{OneRide.fare}}
+                                    </td>
+                                    <td data-title="'Balance (Rs)'" >
+                                        {{OneRide.balance}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
         </div>
 </div>

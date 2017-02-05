@@ -53,16 +53,19 @@
     }]);
 
     //Admin Controller
-    app.controller('AdminController', ['$scope', '$state', 'auth', 'growl','DataService', function ($scope, $state, auth, growl,DataService)
+    /*app.controller('AdminController', ['$scope', '$state', 'auth', 'growl','sweet','$filter','StatusService', 'DataService','NgTableParams','AWS',  function ($scope, $state, auth, growl,sweet,$filter,StatusService,DataService,NgTableParams,AWS){*/
+        app.controller('AdminController',['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
     {
         $scope.$on('sideBar', function (event, data) {
             $scope.sideBar = data;
         })
 
+        $scope.LogInUID=localStorage.ID;
+
        /* var aaa=  sessionStorage.getItem("emp-key");*/
 
         // User Details
-        DataService.getUserDetails(_user_id).then(function (response) {
+        DataService.getUserDetails($scope.LogInUID).then(function (response) {
             if (!response.error) {
                 $scope._user_name=response.data.Name;
                 $scope._user_balance=response.data.creditBalance;
@@ -70,15 +73,16 @@
                 $scope.membershipid=response.data.membershipId;
                 _user_balance=response.data.creditBalance;
                 _validity=response.data.validity;
+                $scope.user_status=response.data.status;
                 growl.success(response.data.message);
             } else {
                 growl.error(response.message);
             }
         }, function (response) {
             growl.error(response.data.description);
-        })
+        });
 
-        DataService.getLastTransaction(_user_id).then(function (response) {
+        DataService.getLastTransaction($scope.LogInUID).then(function (response) {
             if (!response.error) {
                 $scope.creditAmount=response.data.credit;
                 $scope.creditDate=response.data.paymentdate;
@@ -89,8 +93,34 @@
             }
         }, function (response) {
             growl.error(response.data.description);
-        })
+        });
 
+        // getting rides of the member
+        $scope.SingleRide=[];
+        DataService.getRidesUser($scope.LogInUID).then(function (response) {
+            if (!response.error) {
+                    $scope.SingleRide.push(response.data[0]);
+            }
+            else
+            {
+                growl.error(response.message);
+            }
+        }, function (response) {
+           /* growl.error(response.data.description['0']);*/
+        });
+
+        $scope.SingleRideTable = new NgTableParams(
+            {
+                count: 10
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.SingleRide, params.filter()) : $scope.SingleRide;
+                 /*   params.total(orderedData.length);*/
+                   /* $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));*/
+                }
+            }
+        );
     }]);
     //403 Controller
     app.controller('403Controller', ['$scope', '$state', 'auth', 'growl', function ($scope, $state, auth, growl) {
@@ -181,14 +211,14 @@
             _login_id=res.data.data.id;
             _user_id=res.data.data.uid;
 
-            /*sessionStorage.setItem("emp-key", _user_id);*/
-            localStorageService.set('localStorageKey',_user_id);
-            var _value = localStorageService.get('localStorageKey');
-            alert(_value);
+            $scope.UID=res.data.data.uid;
+            localStorage.ID=$scope.UID;
 
-            DataService.getUserDetails(_user_id).then(function (response) {
+
+            DataService.getUserDetails($scope.UID).then(function (response) {
                 if (!response.error) {
                     _user_name=response.data.Name;
+                    $scope.user_status=response.data.status;
                     growl.success(response.data.message);
                 } else {
                     growl.error(response.message);
@@ -277,6 +307,11 @@
             {
                 growl.error("Please enter password");
             }
+            if( $scope.signupDetails.cpassword == "" || $scope.signupDetails.cpassword == null)
+            {
+                growl.error("Please enter confirm password");
+            }
+
             else
                 {
                     var _first_name =  $scope.signupDetails.Name;
@@ -2201,7 +2236,11 @@
     var smart_card_fee=0;
     var useage_fees=0;
     var total_fees =0;
-    app.controller('SelectPlans', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'NgTableParams', '$filter', '$uibModal', 'StatusService', function ($scope, $state, $stateParams, DataService, growl, sweet, NgTableParams, $filter, $uibModal, StatusService) {
+    app.controller('SelectPlans', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'NgTableParams', '$filter', '$uibModal', 'StatusService', function ($scope, $state, $stateParams, DataService, growl, sweet, NgTableParams, $filter, $uibModal, StatusService)
+    {
+        $scope.LogInUID=localStorage.ID;
+        var User_ID=$scope.LogInUID;
+
         $scope.membershipData = [];
 
         var filters = {
@@ -2214,7 +2253,7 @@
             if (!response.error) {
                 $scope.membershipData = response.data;
                 $scope.orderid = new Date().getTime();
-                $scope.uid=_user_id;
+                $scope.uid=User_ID;
                 $scope.membershipData.forEach(function (membership) {
                 });
             } else {
@@ -2237,10 +2276,11 @@
             }
         );
 
-        DataService.getUserDetails(_user_id).then(function (response) {
+        DataService.getUserDetails(User_ID).then(function (response) {
             if (!response.error) {
                 cc_member_name=response.data.Name;
-                cc_member_uid=response.data.UserID;
+                /*cc_member_uid=response.data.UserID;*/
+                cc_member_uid=User_ID;
                 cc_member_email = response.data.email;
                 cc_member_mobile = response.data.phoneNumber;
                 growl.success(response.data.message);
@@ -2288,21 +2328,12 @@
                     growl.error(response.data.description);
                 })
 
-                /*$uibModal.open({
-                    templateUrl: 'Error-popup.html',
-                    controller: 'ErrorPopUp',
-                    size: size,
-                    resolve: {
-                        items: function () {
-                        }
-                    }
-                });*/
             };
 
     }]);
 
     // Top up for users
-    app.controller('TopUp', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModalInstance', 'loggedInUser', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModalInstance, loggedInUser)
+   /* app.controller('TopUp', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModalInstance', 'loggedInUser', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModalInstance, loggedInUser)
     {
         $uibModal.open({
          templateUrl: 'Error-popup.html',
@@ -2314,7 +2345,7 @@
          }
          });
     }]);
-
+*/
     // Select plan error pop up message (temporary)
     app.controller('ErrorPopUp', ['$scope', '$state', '$stateParams', 'DataService', 'growl', 'sweet', 'AWS', '$uibModalInstance', 'loggedInUser', function ($scope, $state, $stateParams, DataService, growl, sweet, AWS, $uibModalInstance, loggedInUser)
     {
@@ -2360,11 +2391,13 @@
     {
 
       /*  $scope.user_id = _user_id;*/
-        $scope.user_id = _login_id;
+       /* $scope.user_id = _login_id;*/
+
+        $scope.LogInUID=localStorage.ID;
 
         $scope.ridesDataUser = [];
 
-        DataService.getRidesUser($scope.user_id).then(function (response) {
+        DataService.getRidesUser($scope.LogInUID).then(function (response) {
             if (!response.error) {
                 var i=0;
                /* $scope.ridesDataUser= response.data;*/
@@ -2400,11 +2433,12 @@
     // Payment Histroy
     app.controller('PaymentHistory', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
     {
-        $scope.user_id = _user_id;
+        /*$scope.user_id = _user_id;*/
+        $scope.LogInUID=localStorage.ID;
 
         $scope.userPaymentHistory = [];
 
-        DataService.getUserPayment($scope.user_id).then(function (response) {
+        DataService.getUserPayment($scope.LogInUID).then(function (response) {
             if (!response.error) {
                 var i=0;
                 /* $scope.ridesDataUser= response.data;*/
@@ -2413,7 +2447,6 @@
                     var _payments = response.data[i];
                     $scope.userPaymentHistory.push(_payments);
                 }
-                var k=0;
             }
             else
             {
@@ -2460,6 +2493,8 @@
             newPassword:_new_password_hash,
             confirmPassword:_confirm_password_hash
         }*/
+        $scope.LogInUID=localStorage.ID;
+        var User_ID=$scope.LogInUID;
 
         $scope.passValidation=false;
         $scope.changepassword=function () {
@@ -2482,7 +2517,7 @@
             $scope.passwords={
                 currentPassword:oldPassword,
                 newPassword:newPassword,
-                uid:_user_id
+                uid:User_ID
             }
 
 
@@ -2508,11 +2543,14 @@
     //Feedback
     app.controller('UserFeedBack', ['$scope', '$state', 'sweet', 'DataService', 'growl', function ($scope, $state, sweet, DataService, growl)
     {
+        $scope.LogInUID=localStorage.ID;
+        var User_ID=$scope.LogInUID;
+
         var _subject = "UserFeedBack";
 
         $scope.FeedbackDetails={
         name:_user_name,
-        createdBy:_user_id,
+        createdBy:User_ID,
             ticketdate:new Date(),
             subject:_subject,
             channel:5,
@@ -2559,6 +2597,86 @@
            expirydate:_validity,
             balance:_user_balance
         };
+    }]);
+
+    app.controller('TopUp', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    {
+        $scope.LogInUID=localStorage.ID;
+        var UID=$scope.LogInUID;
+        $scope.orderid=new Date().getTime(),
+
+        DataService.getUserDetails($scope.LogInUID).then(function (response) {
+            if (!response.error) {
+                $scope._user_name=response.data.Name;
+                $scope._user_balance=response.data.creditBalance;
+                $scope._validity=response.data.validity;
+                $scope.membershipid=response.data.membershipId;
+                _user_balance=response.data.creditBalance;
+                _validity=response.data.validity;
+                $scope.user_status=response.data.status;
+                growl.success(response.data.message);
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
+        });
+
+
+        $scope.membershipData = [];
+
+        var filters = {
+            filter: {
+                populate: {path: 'farePlan'}
+            }
+        };
+
+        DataService.getMemberships(filters).then(function (response) {
+            if (!response.error) {
+                $scope.membershipData = response.data;
+                $scope.orderid = new Date().getTime();
+                $scope.tid=new Date().getTime();
+                $scope.uid=UID;
+                /*$scope.membershipData.forEach(function (membership) {
+                });*/
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description['0']);
+        });
+
+        $scope.membershipTable = new NgTableParams(
+            {
+                count: 6
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.membershipData, params.filter()) : $scope.membershipData;
+                    params.total(orderedData.length);
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            }
+        );
+
+        /*DataService.getUserDetails(User_ID).then(function (response) {
+            if (!response.error) {
+                cc_member_name=response.data.Name;
+                /!*cc_member_uid=response.data.UserID;*!/
+                cc_member_uid=User_ID;
+                cc_member_email = response.data.email;
+                cc_member_mobile = response.data.phoneNumber;
+                growl.success(response.data.message);
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description);
+        })*/
+
+
+
+
     }]);
 
 

@@ -9,7 +9,7 @@
 
     <div class="card" >
         <div class="card-header ch-alt m-b-20" style="background-color:#5cb85c; color:white;" >
-            <i class="fa fa-bell fa-fw"></i> <b>Plans Available </b>
+            <i class="fa fa-bell fa-fw"></i> <b>Select a plan below to make online payment. </b>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
                         {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}
                     </td>
                     <td data-title="'Select'">
-                        <form method="POST" name="customerData" target="_blank" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
                         <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.smartCardFees}}" />
                         <input type="hidden" name="currency" value="INR" />
                         <input type="hidden" name="merchant_param1" value="{{uid}}"/>

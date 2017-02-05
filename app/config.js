@@ -271,6 +271,20 @@
                 containerClass: 'sw-toggled'
             })
 
+            // topup
+            .state("admin.topup", {
+                url: "/topup",
+                templateUrl: adminViewPath + 'topup/topup.html',
+                containerClass: 'sw-toggled'
+            })
+
+            .state("admin.topup.manage", {
+                url: "/manage",
+                templateUrl: adminViewPath + 'topup/manage.html',
+                controller: 'TopUp',
+                containerClass: 'sw-toggled'
+            })
+
 
             .state("admin.docking-ports", {
                 url: "/docking-ports",

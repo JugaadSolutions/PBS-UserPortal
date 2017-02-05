@@ -32,12 +32,12 @@
         </script>-->
     </li>
     </ul>
-    <ul class="main-menu">
-        <li ng-class="{active: $state.includes('admin.home')}">
-            <a ui-sref="admin.home.manage"><i class="zmdi zmdi-home"></i>Home</a>
+    <ul class="main-menu" ng-if="user_status===1">
+        <li ng-class="{active: $state.includes('admin')}">
+            <a ui-sref="admin"><i class="zmdi zmdi-home"></i>Home</a>
         </li>
-        <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid !== null && membershipid!=='' && membershipid!==undefined && _user_balance!==0">
-            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i> TopUp/Renew</a>
+        <li ng-class="{active: $state.includes('admin.topup')}">
+            <a ui-sref="admin.topup.manage"><i class="glyphicon glyphicon-ok"></i> TopUp/Renew</a>
         </li>
         <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid===undefined && _user_balance === 0">
             <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i>Select Plan</a>
@@ -64,4 +64,31 @@
             <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
         </li>
     </ul>
+
+    <ul class="main-menu" ng-if="user_status===0">
+        <li ng-class="{active: $state.includes('admin')}">
+            <a ui-sref="admin"><i class="zmdi zmdi-home"></i>Home</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid===undefined && _user_balance === 0">
+            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i>Select Plan</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.feedback')}">
+            <a ui-sref="admin.feedback.manage"><i class="glyphicon glyphicon-envelope"></i> Feedback</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+        </li>
+    </ul>
+
+   <!-- <ul class="main-menu" ng-if="user_status===0">
+        <li ng-class="{active: $state.includes('admin')}">
+            <a ui-sref="admin"><i class="zmdi zmdi-home"></i>Home</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid===undefined && _user_balance === 0">
+            <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i>Select Plan</a>
+        </li>
+        <li ng-class="{active: $state.includes('admin.members')}">
+            <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+        </li>
+    </ul>-->
 </div>

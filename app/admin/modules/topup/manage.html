@@ -1,0 +1,100 @@
+
+<div class="container">
+
+    <div class="card">
+
+
+        <div class="card-header ch-alt m-b-20">
+            <h2>TopUp</h2>
+
+            <br>
+
+          <!--  <form class="pmbb-edit" name="TopUp">-->
+
+                <div class="pmbb-body p-l-30">
+
+
+                    <div class="">
+                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                            <input type="number" class="form-control" name="amount" placeholder="Eg: 50" value="" required>
+                            <br>
+                            <input type="hidden" name="currency" value="INR" />
+                            <input type="hidden" name="merchant_param1" value="{{UID}}"/>
+                            <input type="hidden" name="merchant_param2" value=""/>
+                            <input type="hidden" name="merchant_param3" value=""/>
+                            <input type="hidden" name="tid" id="tid" readonly />
+                            <input type="hidden" name="merchant_id" value="96478"/>
+                            <input type="hidden" name="order_id" value="{{orderid}}"/>
+                            <input type="hidden" name="currency" value="INR"/>
+                            <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                            <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                            <input type="hidden" name="language" value="EN"/>
+                            <input type="hidden" name="billing_name" value="{{_user_name}}"/>
+                            <input type="hidden" name="billing_tel" value=""/>
+                            <input type="hidden" name="billing_email" value=""/>
+                            <button type="submit"  class="btn btn-icon-text btn-success waves-effect" value="Select">Select</button>
+                        </form>
+                    </div>
+                </div>
+         <!--   </form>-->
+
+            <div class="card-header ch-alt m-b-20">
+                <h2>Renew</h2>
+                <br>
+                <div class="pmbb-body p-l-30">
+                    <div class="">
+                        <div class="table-responsive">
+                            <table ng-table="membershipTable" class="table table-striped table-vmiddle" show-filter="false">
+                                <tr ng-repeat="plans in membershipData">
+                                    <td data-title="'Plan'">
+                                        {{plans.subscriptionType}}
+                                    </td>
+                                    <td data-title="'Validity'">
+                                        {{plans.validity}}
+                                    </td>
+                                    <td data-title="'Fees'">
+                                        {{plans.userFees}}
+                                    </td>
+
+                                    <td data-title="'Total'">
+                                        {{plans.userFees}}
+                                    </td>
+                                    <td data-title="'Select'">
+                                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                                            <input type="hidden"  name="amount" value="{{plans.userFees}}" />
+                                            <input type="hidden" name="currency" value="INR" />
+                                            <input type="hidden" name="merchant_param1" value="{{uid}}"/>
+                                            <input type="hidden" name="merchant_param2" value="{{plans.subscriptionType}}"/>
+                                            <input type="hidden" name="merchant_param3" value="NewMember"/>
+                                            <input type="hidden" name="tid" value="{{tid}}" readonly />
+                                            <input type="hidden" name="merchant_id" value="96478"/>
+                                            <input type="hidden" name="order_id" value="{{orderid}}"/>
+                                            <input type="hidden" name="currency" value="INR"/>
+                                            <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                                            <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                                            <input type="hidden" name="language" value="EN"/>
+                                            <input type="hidden" name="billing_name" value=""/>
+                                            <input type="hidden" name="billing_tel" value=""/>
+                                            <input type="hidden" name="billing_email" value=""/><!--</td>-->
+                                            <!--<td>-->
+                                            <!-- <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">-->
+                                            <button type="submit"  class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">Continue</button>
+                                            <!--                    </td>-->
+                                            <!--
+                                                                <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">
+                                            -->
+                                            <!-- <button ng-click="Selectplan($event)" value="{{plans._id}}" class="btn btn-icon-text btn-success waves-effect"> Select </button>-->
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
