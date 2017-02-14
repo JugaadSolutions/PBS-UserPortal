@@ -214,7 +214,7 @@
             <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
             <div class="fg-line">
                 <input type="password" name="cpassword"
-                       ng-model="cpassword"
+                       ng-model="signupDetails.cpassword"
                        required
                        placeholder="Confirm password"
                        class="form-control"
@@ -223,8 +223,8 @@
                        ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
                        style="font-size: 12px" >
                 <p>
-                    <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== cpassword">Password Mismatch</span>
-                    <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === cpassword && passValidation">Password match</span>
+                    <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== signupDetails.cpassword">Password Mismatch</span>
+                    <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === signupDetails.cpassword && passValidation">Password match</span>
                 </p>
             </div>
         </div>

@@ -500,34 +500,14 @@
             /*Tickets*/
             .state("admin.tickets",{
                 url:"/tickets",
-                templateUrl:adminViewPath + 'tickets/tickets-details.html',
+                templateUrl:adminViewPath + 'tickets/tickets.html',
                 containerClass:'sw-toggled'
             })
+
             .state("admin.tickets.manage", {
                 url: "/manage",
                 templateUrl: adminViewPath + 'tickets/manage.html',
-                controller: 'ManageTicketsDetails',
-                containerClass: 'sw-toggled'
-            })
-
-            .state("admin.tickets.add", {
-                url: "/add",
-                templateUrl: adminViewPath + 'tickets/add.html',
-                controller: 'AddTicketsDetails',
-                containerClass: 'sw-toggled'
-            })
-
-            .state("admin.tickets.edit", {
-                url: "/edit/:id",
-                templateUrl: adminViewPath + 'tickets/edit.html',
-                controller: '',
-                containerClass: 'sw-toggled'
-            })
-
-            .state("admin.tickets.adminedit", {
-                url: "/adminedit",
-                templateUrl: adminViewPath + 'tickets/adminedit.html',
-                controller: 'EditTickets',
+                controller: 'ViewTickets',
                 containerClass: 'sw-toggled'
             })
 

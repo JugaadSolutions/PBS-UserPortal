@@ -75,6 +75,9 @@
         <li ng-class="{active: $state.includes('admin.feedback')}">
             <a ui-sref="admin.feedback.manage"><i class="glyphicon glyphicon-envelope"></i> Feedback</a>
         </li>
+        <li ng-class="{active: $state.includes('admin.tickets')}">
+            <a ui-sref="admin.tickets.manage"><i class="zmdi zmdi-labels"></i>Tickets</a>
+        </li>
         <li ng-class="{active: $state.includes('admin.members')}">
             <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
         </li>
