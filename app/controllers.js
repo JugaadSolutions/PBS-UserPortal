@@ -317,7 +317,7 @@
             }
             else if(!$scope.passValidation)
             {
-                growl.error("Your password doesn't meet the policy requirements");
+                growl.error("Your password does not meet the policy requirements");
             }
             else
                 {
