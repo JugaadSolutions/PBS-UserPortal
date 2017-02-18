@@ -225,7 +225,7 @@
                 }
             }, function (response) {
                 growl.error(response.data.description);
-            })
+            });
 
           /*  alert(_login_id);*/
             if (token) {
@@ -261,8 +261,8 @@
             user.login(username, password)
                 .then(handleRequest, handleRequest);
             $state.reload();
-            };
-        }
+            }
+        };
 
 
         $scope.passValidation=false;
@@ -290,29 +290,35 @@
 
         $scope.UserSignup = function ()
         {
-                /*var _pass = md5.createHash($scope.signupDetails.password || '')*/;
-
+                /*var _pass = md5.createHash($scope.signupDetails.password || '')*/
             if( $scope.signupDetails.Name == "" || $scope.signupDetails.Name == null)
             {
                 growl.error("Please enter username");
             }
-            if( $scope.signupDetails.phoneNumber == "" || $scope.signupDetails.phoneNumber == null)
+            else if( $scope.signupDetails.phoneNumber == "" || $scope.signupDetails.phoneNumber == null)
             {
                 growl.error("Please enter mobile number");
             }
-            if( $scope.signupDetails.email == "" || $scope.signupDetails.email == null)
+            else if( $scope.signupDetails.email == "" || $scope.signupDetails.email == null)
             {
                 growl.error("Please enter email");
             }
-            if( $scope.signupDetails.password == "" || $scope.signupDetails.password == null)
+            else if( $scope.signupDetails.password == "" || $scope.signupDetails.password == null)
             {
                 growl.error("Please enter password");
             }
-            if( $scope.signupDetails.cpassword == "" || $scope.signupDetails.cpassword == null)
+            else if( $scope.signupDetails.cpassword == "" || $scope.signupDetails.cpassword == null)
             {
                 growl.error("Please enter confirm password");
             }
-
+            else if($scope.signupDetails.password!== $scope.signupDetails.cpassword)
+            {
+                growl.error("Password Mismatch");
+            }
+            else if(!$scope.passValidation)
+            {
+                growl.error("Your password doesn't meet the policy requirements");
+            }
             else
                 {
                     var _first_name =  $scope.signupDetails.Name;
