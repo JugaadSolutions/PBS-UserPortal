@@ -203,7 +203,7 @@
                         'numbers': '0-9 \\s',
                         'only-letters': 'A-Za-z0-9. ',
                         'letters': 'A-Za-z0-9.-#,' ,
-                        'email': '\\wÑñ@._\\-',
+                        'email': '\\wÑñ@._',
                         'alpha-numeric': '\\w\\s',
                         'latin-alpha-numeric': '\\w\\sÑñáéíóúüÁÉÍÓÚÜ',
                         'none':'',

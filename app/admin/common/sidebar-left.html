@@ -37,19 +37,19 @@
             <a ui-sref="admin"><i class="zmdi zmdi-home"></i>Home</a>
         </li>
         <li ng-class="{active: $state.includes('admin.topup')}">
-            <a ui-sref="admin.topup.manage"><i class="glyphicon glyphicon-ok"></i> TopUp/Renew</a>
+            <a ui-sref="admin.topup.manage"><i class="glyphicon glyphicon-ok"></i>TopUp</a>
         </li>
         <li ng-class="{active: $state.includes('admin.plans')}" ng-if="membershipid===undefined && _user_balance === 0">
             <a ui-sref="admin.plans.view-plans"><i class="glyphicon glyphicon-ok"></i>Select Plan</a>
         </li>
         <li ng-class="{active: $state.includes('admin.payment-history')}">
-            <a ui-sref="admin.payment-history.view-payments"><i class="glyphicon glyphicon-credit-card"></i> Payment</a>
+            <a ui-sref="admin.payment-history.view-payments"><i class="glyphicon glyphicon-credit-card"></i> Payments</a>
         </li>
         <li ng-class="{active: $state.includes('admin.ride-history')}">
-            <a ui-sref="admin.ride-history.view-history"><i class="zmdi zmdi-bike"></i> Ride </a>
+            <a ui-sref="admin.ride-history.view-history"><i class="zmdi zmdi-bike"></i> Rides</a>
         </li>
         <li ng-class="{active: $state.includes('admin.stations')}">
-            <a ui-sref="admin.stations.view-stations"><i class="glyphicon glyphicon-map-marker"></i> Docking Stations Map</a>
+            <a ui-sref="admin.stations.view-stations"><i class="glyphicon glyphicon-map-marker"></i> Hub Map</a>
         </li>
         <li ng-class="{active: $state.includes('admin.change-password')}">
             <a ui-sref="admin.change-password.manage"><i class="zmdi zmdi-lock"></i> Change Password</a>
@@ -75,9 +75,12 @@
         <li ng-class="{active: $state.includes('admin.feedback')}">
             <a ui-sref="admin.feedback.manage"><i class="glyphicon glyphicon-envelope"></i> Feedback</a>
         </li>
-        <li ng-class="{active: $state.includes('admin.tickets')}">
-            <a ui-sref="admin.tickets.manage"><i class="zmdi zmdi-labels"></i>Tickets</a>
+        <li ng-class="{active: $state.includes('admin.change-password')}">
+            <a ui-sref="admin.change-password.manage"><i class="zmdi zmdi-lock"></i> Change Password</a>
         </li>
+       <!-- <li ng-class="{active: $state.includes('admin.tickets')}">
+            <a ui-sref="admin.tickets.manage"><i class="zmdi zmdi-labels"></i>Tickets</a>
+        </li>-->
         <li ng-class="{active: $state.includes('admin.members')}">
             <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
         </li>

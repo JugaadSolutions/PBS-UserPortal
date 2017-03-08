@@ -234,6 +234,10 @@
           send:'member/search'
         },
 
+        topUp:{
+            getAll:'topups'
+        },
+
       fleetDetails:{
             save:'fleetarea',
             get:'',

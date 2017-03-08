@@ -15,7 +15,7 @@
         <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
         <div class="fg-line">
             <input type="password" autocomplete="on" ng-enter="loginUser(username, password)" class="form-control"
-                   placeholder="Password" ng-model="password">
+                   placeholder="Password" ng-model="password" maxlength="30">
         </div>
     </div>
 
@@ -25,11 +25,11 @@
        class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
             class="zmdi zmdi-arrow-forward"></i></a>
 
-  <!--  <ul class="login-navigation" style="">
-        <li block="#l-forget-password" class="bgm-orange"
-            ng-click="for()">Forgot Password?
-        </li>
-    </ul>-->
+    <!--  <ul class="login-navigation" style="">
+          <li block="#l-forget-password" class="bgm-orange"
+              ng-click="for()">Forgot Password?
+          </li>
+      </ul>-->
 
     <ul class="login-navigation">
         <li block="#l-user-signup" class="" style="color: green;font-weight: bold;font-size:medium" ng-click="demo()">Signup</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,7 +47,7 @@
     <div class="input-group m-b-20">
         <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
         <div class="fg-line">
-            <input type="text" class="form-control" ng-enter="forgot(email)" placeholder="Email Address"
+            <input type="text" class="form-control" ng-enter="forgot(email)" chars="email" maxlength="40" placeholder="Email Address"
                    ng-model="email">
         </div>
     </div>
@@ -57,7 +57,7 @@
 
     <ul class="login-navigation">
         <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
-           Back to Login
+            Back to Login
         </li>
     </ul>
 </div>
@@ -71,7 +71,7 @@
     </p>
     <ul class="login-navigation">
         <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
-           Back to Login
+            Back to Login
         </li>
     </ul>
 </div>
@@ -82,66 +82,66 @@
         <img class="w-75" ui-sref="admin" src="assets/images/logo.png" alt="logo">
     </div>
     <form name="signupForm">
-    <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" ng-model="signupDetails.Name" chars="only-letters"  placeholder="First Name">
-        </div>
-    </div>
-
-    <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" ng-model="signupDetails.lastName" chars="only-letters" placeholder="Last Name">
-        </div>
-    </div>
-
-    <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" ng-model="signupDetails.phoneNumber" chars="numbers" minlength="10" maxlength="10"  placeholder="Mobile No">
-        </div>
-    </div>
-
-    <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-        <div class="fg-line">
-            <input type="email" class="form-control" ng-model="signupDetails.email"  placeholder="Email">
-        </div>
-    </div>
-
-    <!--<div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
-        <div class="fg-line">
-            <input type="password" class="form-control"
-                   ng-model="signupDetails.password" placeholder="Password"
-                   name="password"
-                   ng-init="password_error_show=0"
-                   ng-focus="password_error_show=1"
-                   ng-change="password_error_show = password_error_show + 1;changepassword()"
-            required>
-        </div>
-
-        <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
-            <div style="margin-left: 24px;">
-                password must contain alphanumeric,one lower,<br>one upper case letters and one special character.<br>Minimum 8 characters
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                <input type="text" class="form-control" ng-model="signupDetails.Name" chars="only-letters" maxlength="30" placeholder="First Name">
             </div>
         </div>
-        <br/>
 
-    </div>-->
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+            <div class="fg-line">
+                <input type="text" class="form-control" ng-model="signupDetails.lastName" chars="only-letters" maxlength="30" placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+            <div class="fg-line">
+                <input type="text" class="form-control" ng-model="signupDetails.phoneNumber" chars="numbers" minlength="10" maxlength="10"  placeholder="Mobile No">
+            </div>
+        </div>
+
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+            <div class="fg-line">
+                <input type="email" class="form-control" ng-model="signupDetails.email" maxlength="40" chars="email"  placeholder="Email">
+            </div>
+        </div>
+
+        <!--<div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+            <div class="fg-line">
+                <input type="password" class="form-control"
+                       ng-model="signupDetails.password" placeholder="Password"
+                       name="password"
+                       ng-init="password_error_show=0"
+                       ng-focus="password_error_show=1"
+                       ng-change="password_error_show = password_error_show + 1;changepassword()"
+                required>
+            </div>
+
+            <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
+                <div style="margin-left: 24px;">
+                    password must contain alphanumeric,one lower,<br>one upper case letters and one special character.<br>Minimum 8 characters
+                </div>
+            </div>
+            <br/>
+
+        </div>-->
 
 
         <!--working-->
-    <!--<div class="form-group">
-        <input type="password" class="form-control"  ng-model="signupDetails.password" placeholder="Password" name="password"required="required" ng-minlength="6"/>
-        <div ng-if="signupForm.password.$touched || signupSubmitted" class="fg-line">
-            <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
-            <p ng-show="signupForm.password.$error.minlength" class="help-block">
-                password must contain alphanumeric,one lower,<br>one upper case letters and one special character
-                Minimum 6 character</p>
-        </div>
-    </div>-->
+        <!--<div class="form-group">
+            <input type="password" class="form-control"  ng-model="signupDetails.password" placeholder="Password" name="password"required="required" ng-minlength="6"/>
+            <div ng-if="signupForm.password.$touched || signupSubmitted" class="fg-line">
+                <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
+                <p ng-show="signupForm.password.$error.minlength" class="help-block">
+                    password must contain alphanumeric,one lower,<br>one upper case letters and one special character
+                    Minimum 6 character</p>
+            </div>
+        </div>-->
 
         <div class="input-group m-b-20">
             <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
@@ -152,7 +152,7 @@
                        placeholder="Password"
                        ng-focus="password_error_show=1"
                        ng-change="password_error_show = password_error_show + 1;changepassword()"
-                       style="font-size: 12px">
+                       style="font-size: 12px" maxlength="30">
                 <div style="color: #ff0000" ng-show="!passValidation && password_error_show>0">
                     <div>
                         Password must be alphanumeric,one upper letter and one special character.Password length minimum 6 characters
@@ -184,31 +184,31 @@
                 </div>
         </dl>-->
 
-   <!-- <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
-        <div class="fg-line">
-            <input type="password" class="form-control" placeholder="Confirm Password"
-                   name="cpassword"
-                   required
-                   ng-model="cpassword"
-                   ng-init="cpassword_error_show=0"
-                   ng-focus="cpassword_error_show=1"
-                   ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()">
-            <p>
-                <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && password !== cpassword">Password Mismatch</span>
-                <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && password === cpassword" && passValidation>Password match</span>
-            </p>
-        </div>
-    </div>-->
+        <!-- <div class="input-group m-b-20">
+             <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+             <div class="fg-line">
+                 <input type="password" class="form-control" placeholder="Confirm Password"
+                        name="cpassword"
+                        required
+                        ng-model="cpassword"
+                        ng-init="cpassword_error_show=0"
+                        ng-focus="cpassword_error_show=1"
+                        ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()">
+                 <p>
+                     <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && password !== cpassword">Password Mismatch</span>
+                     <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && password === cpassword" && passValidation>Password match</span>
+                 </p>
+             </div>
+         </div>-->
 
         <!--working-->
-    <!--<div class="form-group">
-        <input type="password" class="form-control"  name="confirm_password" ng-model="confirm_password" placeholder="Confirm password" match-password="signupDetails.password" required>
-        <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
-            <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
-            <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
-        </div>
-    </div>-->
+        <!--<div class="form-group">
+            <input type="password" class="form-control"  name="confirm_password" ng-model="confirm_password" placeholder="Confirm password" match-password="signupDetails.password" required>
+            <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
+                <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
+                <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
+            </div>
+        </div>-->
 
         <div class="input-group m-b-20">
             <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
@@ -221,7 +221,7 @@
                        ng-init="cpassword_error_show=0"
                        ng-focus="cpassword_error_show=1"
                        ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
-                       style="font-size: 12px" >
+                       style="font-size: 12px" maxlength="30">
                 <p>
                     <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== signupDetails.cpassword">Password Mismatch</span>
                     <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === signupDetails.cpassword && passValidation">Password match</span>
@@ -229,38 +229,38 @@
             </div>
         </div>
 
-<!--        <dl class="dl-horizontal required">
-            <dd>
-                <div class="fg-line"
-                     ng-class="{ 'has-error': PwdChange.confirmPassword.$touched && PwdChange.confirmPassword.$invalid }">
-                    <input type="password" name="cpassword"
-                           ng-model="cpassword"
-                           required
-                           placeholder="Confirm password"
-                           class="form-control"
-                           ng-init="cpassword_error_show=0"
-                           ng-focus="cpassword_error_show=1"
-                           ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
-                           style="font-size: 25px" >
-                    <p>
-                        <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== cpassword">Password Mismatch</span>
-                        <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === cpassword && passValidation">Password match</span>
-                    </p>
-                </div>
-            </dd>
-        </dl>-->
+        <!--        <dl class="dl-horizontal required">
+                    <dd>
+                        <div class="fg-line"
+                             ng-class="{ 'has-error': PwdChange.confirmPassword.$touched && PwdChange.confirmPassword.$invalid }">
+                            <input type="password" name="cpassword"
+                                   ng-model="cpassword"
+                                   required
+                                   placeholder="Confirm password"
+                                   class="form-control"
+                                   ng-init="cpassword_error_show=0"
+                                   ng-focus="cpassword_error_show=1"
+                                   ng-change="cpassword_error_show = cpassword_error_show + 1;changepassword()"
+                                   style="font-size: 25px" >
+                            <p>
+                                <span style="color: #ff0000;margin-left: -0.5em" ng-show="cpassword_error_show>0 && signupDetails.password !== cpassword">Password Mismatch</span>
+                                <span style="color: #3c823f;margin-left: -2.5em" ng-show="cpassword_error_show>0 && signupDetails.password === cpassword && passValidation">Password match</span>
+                            </p>
+                        </div>
+                    </dd>
+                </dl>-->
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-    <a href=""  ng-click="UserSignup();"
-       class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
-            class="zmdi zmdi-arrow-forward"></i></a>
+        <a href=""  ng-click="UserSignup()" ng-disabled="!passValidation && !$invalid"
+           class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i
+                class="zmdi zmdi-arrow-forward"></i></a>
 
-    <ul class="login-navigation">
-        <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
-           Back to Login
-        </li>
-    </ul>
+        <ul class="login-navigation">
+            <li block="#l-login" style="color: green;font-weight: bold;font-size:medium" ng-click="log()">
+                Back to Login
+            </li>
+        </ul>
     </form>
 </div>
 

@@ -51,20 +51,17 @@
                     <td data-title="'Plan'">
                         {{plans.subscriptionType}}
                     </td>
-                    <td data-title="'Validity'">
-                        {{plans.validity}}
-                    </td>
-                    <td data-title="'Fees'">
-                         {{plans.userFees}}
-                    </td>
-                    <td data-title="'Deposit'">
+                    <td data-title="'Security Deposit'">
                         {{plans.securityDeposit}}
                     </td>
-                    <td data-title="'Card Fees'">
-                         {{plans.smartCardFees}}
-                    </td>
-                    <td data-title="'Processing'" >
+                    <td data-title="'Processing Fees'" >
                         {{plans.processingFees}}
+                    </td>
+                    <td data-title="'Usage Fees'">
+                        {{plans.userFees}}
+                    </td>
+                    <td data-title="'Validity'">
+                        {{plans.validity}} Days
                     </td>
                     <td data-title="'Total'">
                         {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}

@@ -150,18 +150,24 @@
                 var data = {
                     email: email
                 };
-                DataService.forgotPassword(data).then(function (response) {
-                    if (!response.error) {
-                        $scope.successForgot = true;
-                        $scope.forget = false;
+                if(data.email == "" || data.email == null)
+                {
+                    growl.error("Please enter the email");
+                }
+                else {
+                    DataService.forgotPassword(data).then(function (response) {
+                        if (!response.error) {
+                            $scope.successForgot = true;
+                            $scope.forget = false;
 
-                        growl.success(response.data.message);
-                    } else {
-                        growl.error(response.message);
-                    }
-                }, function (response) {
-                    growl.error(response.data.description);
-                })
+                            growl.success(response.data.message);
+                        } else {
+                            growl.error(response.message);
+                        }
+                    }, function (response) {
+                        growl.error(response.data.description);
+                    })
+                }
             };
         };
 
@@ -215,22 +221,23 @@
             localStorage.ID=$scope.UID;
 
 
-            DataService.getUserDetails($scope.UID).then(function (response) {
-                if (!response.error) {
-                    _user_name=response.data.Name;
-                    $scope.user_status=response.data.status;
-                    growl.success(response.message);
-                } else {
-                    growl.error(response.message);
-                }
-            }, function (response) {
-                growl.error(response.data.description);
-            })
+
 
           /*  alert(_login_id);*/
             if (token) {
                 auth.saveToken(token);
                 $state.reload();
+                DataService.getUserDetails($scope.UID).then(function (response) {
+                    if (!response.error) {
+                        _user_name=response.data.Name;
+                        $scope.user_status=response.data.status;
+                        /*growl.success(response.message);*/
+                    } else {
+                        growl.error(response.message);
+                    }
+                }, function (response) {
+                    growl.error(response.data.description);
+                });
             } else {
                 growl.error(res.data.message);
             }
@@ -261,8 +268,8 @@
             user.login(username, password)
                 .then(handleRequest, handleRequest);
             $state.reload();
-            };
-        }
+            }
+        };
 
 
         $scope.passValidation=false;
@@ -290,35 +297,41 @@
 
         $scope.UserSignup = function ()
         {
-                /*var _pass = md5.createHash($scope.signupDetails.password || '')*/;
-
+                /*var _pass = md5.createHash($scope.signupDetails.password || '')*/
             if( $scope.signupDetails.Name == "" || $scope.signupDetails.Name == null)
             {
                 growl.error("Please enter username");
             }
-            if( $scope.signupDetails.phoneNumber == "" || $scope.signupDetails.phoneNumber == null)
+            else if( $scope.signupDetails.phoneNumber == "" || $scope.signupDetails.phoneNumber == null)
             {
                 growl.error("Please enter mobile number");
             }
-            if( $scope.signupDetails.email == "" || $scope.signupDetails.email == null)
+            else if( $scope.signupDetails.email == "" || $scope.signupDetails.email == null)
             {
                 growl.error("Please enter email");
             }
-            if( $scope.signupDetails.password == "" || $scope.signupDetails.password == null)
+            else if( $scope.signupDetails.password == "" || $scope.signupDetails.password == null)
             {
                 growl.error("Please enter password");
             }
-            if( $scope.signupDetails.cpassword == "" || $scope.signupDetails.cpassword == null)
+            else if( $scope.signupDetails.cpassword == "" || $scope.signupDetails.cpassword == null)
             {
                 growl.error("Please enter confirm password");
             }
-
+            else if($scope.signupDetails.password!== $scope.signupDetails.cpassword)
+            {
+                growl.error("Password Mismatch");
+            }
+            else if(!$scope.passValidation)
+            {
+                growl.error("Your password does not meet the policy requirements");
+            }
             else
                 {
                     var _first_name =  $scope.signupDetails.Name;
                     var _last_name =  $scope.signupDetails.lastName;
                     var _email =  $scope.signupDetails.email;
-                    var _phoneno =  $scope.signupDetails.phoneNumber;
+                    var _phoneno = "91-" + $scope.signupDetails.phoneNumber;
                     var _password = md5.createHash($scope.signupDetails.password || '');
 
                     $scope.signupDetailsHash={
@@ -354,7 +367,8 @@
     }]);
 
     // Manage Members Controller
-    app.controller('ManageMembers', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS) {
+    app.controller('ManageMembers', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    {
         $scope.membersData = [];
         $scope.memberDocument=[];
 
@@ -364,14 +378,14 @@
             }
         };
 
-        login_email;
+      /*  login_email;*/
 
       /*  $scope.auth(function(response){
             var test=  params.email;
         })*/
 
         DataService.getMembers(filters).then(function (response) {
-            login_email;
+           /* login_email;*/
             if (!response.error) {
                 var i=0;
                 $scope.membersData = response.data;
@@ -2405,25 +2419,7 @@
     // Change password
     app.controller('PasswordChange', ['$scope', '$state', 'sweet', 'DataService', 'growl', '$uibModal','md5', function ($scope, $state, sweet, DataService, growl, $uibModal,md5)
     {
-     /*   $scope.oldPasswordChange={
-            oldPassword:'',
-            newPassword:'',
-            confirmPassword:''
-        };*/
 
-      /*  var _old_password = $scope.oldPasswordChange.oldPassword;
-        var _new_password = $scope.oldPasswordChange.newPassword;
-        var _confirm_password = $scope.oldPasswordChange.confirmPassword;*/
-
-      /*  var _old_password_hash = md5.createHash($scope.oldPasswordChange.oldPassword || '');*/
-      /*  var _new_password_hash = md5.createHash(_new_password || '');
-        var _confirm_password_hash = md5.createHash(_confirm_password || '');*/
-
-    /*    $scope.hashedPasswords={
-            oldPassword:_old_password_hash,
-            newPassword:_new_password_hash,
-            confirmPassword:_confirm_password_hash
-        }*/
         $scope.LogInUID=localStorage.ID;
         var User_ID=$scope.LogInUID;
 
@@ -2442,32 +2438,46 @@
         $scope.submit = function (oldPassword,newPassword,confirmPassword)
         {
 
-            oldPassword =  md5.createHash(oldPassword || '');
-            newPassword =  md5.createHash(newPassword || '');
+            if($scope.passValidation)
+            {
+                if($scope.password == $scope.cpassword)
+                {
+                    oldPassword = md5.createHash(oldPassword || '');
+                    newPassword = md5.createHash(newPassword || '');
+                    $scope.passwords = {
+                        currentPassword: oldPassword,
+                        newPassword: newPassword,
+                        uid: User_ID
+                    };
+                    DataService.saveNewPassword($scope.passwords).then(function (response) {
+                        if (!response.error) {
 
-            $scope.passwords={
-                currentPassword:oldPassword,
-                newPassword:newPassword,
-                uid:User_ID
+                            oldPassword = "";
+                            newPassword = "";
+                            confirmPassword = "";
+                            $scope.cpassword = "";
+                            $scope.password = "";
+                            $scope.oldPassword = "";
+                            growl.success("Password Reset Successfull");
+                            $state.go('admin');
+                        } else {
+                            growl.error("old password does not match");
+                        }
+                    }, function (response) {
+                        growl.error("old password does not match");
+                    });
+                }
+                else
+                {
+                    growl.error("Password does not match");
+                }
+            }
+            else {
+                growl.error("Your password does not meet the policy requirements");
             }
 
-
-            DataService.saveNewPassword($scope.passwords).then(function (response) {
-                if (!response.error)
-                {
-                    growl.success("Password Resetted Successfully");
-                    oldPassword = "";
-                    newPassword = "";
-                    confirmPassword = "";
-
-                } else
-                    {
-                    growl.error("old password does not match");
-                }
-            }, function (response) {
-                growl.error("old password does not match");
-            });
         };
+
 
     }]);
 
@@ -2533,8 +2543,9 @@
     app.controller('TopUp', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
     {
         $scope.LogInUID=localStorage.ID;
-        var UID=$scope.LogInUID;
-        $scope.orderid=new Date().getTime(),
+        $scope.UID=$scope.LogInUID;
+        $scope.orderid=new Date().getTime();
+        $scope.tid=new Date().getTime();
 
         DataService.getUserDetails($scope.LogInUID).then(function (response) {
             if (!response.error) {
@@ -2554,7 +2565,33 @@
         });
 
 
-        $scope.membershipData = [];
+        $scope.TopupData = [];
+
+        DataService.getTopups().then(function (response) {
+            if (!response.error) {
+                $scope.TopupData = response.data;
+            } else {
+                growl.error(response.message);
+            }
+        }, function (response) {
+            growl.error(response.data.description['0']);
+        });
+
+        $scope.topupTable = new NgTableParams(
+            {
+                count: 6
+            },
+            {
+                getData: function ($defer, params) {
+                    var orderedData = params.filter() ? $filter('filter')($scope.TopupData, params.filter()) : $scope.TopupData;
+                    /*   params.total(orderedData.length);
+                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));*/
+                }
+            }
+        );
+
+
+       /* $scope.membershipData = [];
 
         var filters = {
             filter: {
@@ -2568,8 +2605,8 @@
                 $scope.orderid = new Date().getTime();
                 $scope.tid=new Date().getTime();
                 $scope.uid=UID;
-                /*$scope.membershipData.forEach(function (membership) {
-                });*/
+                /!*$scope.membershipData.forEach(function (membership) {
+                });*!/
             } else {
                 growl.error(response.message);
             }
@@ -2588,7 +2625,7 @@
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 }
             }
-        );
+        );*/
 
         /*DataService.getUserDetails(User_ID).then(function (response) {
             if (!response.error) {

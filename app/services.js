@@ -871,6 +871,16 @@
                 return deferred.promise;
             },
 
+            getTopups: function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.topUp.getAll).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
             /*bank cash deposit details*/
             getBankCashDepositDetails: function () {
                 var deferred = $q.defer();
