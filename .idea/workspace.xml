@@ -1,49 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="Corrected password policy issue by Shivu">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" afterPath="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/accounts/bankcashdeposits/bankcashdeposit-report-print.html" afterPath="$PROJECT_DIR$/app/admin/modules/accounts/bankcashdeposits/bankcashdeposit-report-print.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/accounts/daywise-collectionsummary-report-print.html" afterPath="$PROJECT_DIR$/app/admin/modules/accounts/daywise-collectionsummary-report-print.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/ccavenurequest/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/feedback/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/feedback/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/fleets/edit.html" afterPath="$PROJECT_DIR$/app/admin/modules/fleets/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/home/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/home/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/maintenance/bicycle-maintenance/report-print.html" afterPath="$PROJECT_DIR$/app/admin/modules/maintenance/bicycle-maintenance/report-print.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/maintenance/bicycle-maintenance/report.html" afterPath="$PROJECT_DIR$/app/admin/modules/maintenance/bicycle-maintenance/report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/maintenance/edit.html" afterPath="$PROJECT_DIR$/app/admin/modules/maintenance/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/maintenance/manage-view.html" afterPath="$PROJECT_DIR$/app/admin/modules/maintenance/manage-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/maintenance/new-design/manageview.html" afterPath="$PROJECT_DIR$/app/admin/modules/maintenance/new-design/manageview.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/payment-history/view-payments.html" afterPath="$PROJECT_DIR$/app/admin/modules/payment-history/view-payments.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" afterPath="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/resetpassword/managepassword.html" afterPath="$PROJECT_DIR$/app/admin/modules/resetpassword/managepassword.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/ride-history/view-history.html" afterPath="$PROJECT_DIR$/app/admin/modules/ride-history/view-history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/add.html" afterPath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/edit.html" afterPath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/settings/ticket-type/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/smart-cards/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/smart-cards/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/stations/view-stations.html" afterPath="$PROJECT_DIR$/app/admin/modules/stations/view-stations.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/tickets/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/tickets/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/modules/topup/manage.html" afterPath="$PROJECT_DIR$/app/admin/modules/topup/manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers.js" afterPath="$PROJECT_DIR$/app/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/directives.js" afterPath="$PROJECT_DIR$/app/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/forgotscript.js" afterPath="$PROJECT_DIR$/app/forgotscript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/hash.js" afterPath="$PROJECT_DIR$/app/hash.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/login/login.html" afterPath="$PROJECT_DIR$/app/login/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/message.html" afterPath="$PROJECT_DIR$/app/message.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/new.html" afterPath="$PROJECT_DIR$/app/new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/passwordstrength.js" afterPath="$PROJECT_DIR$/app/passwordstrength.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/resetpassword-success/success.html" afterPath="$PROJECT_DIR$/app/resetpassword-success/success.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/resetpassword.html" afterPath="$PROJECT_DIR$/app/resetpassword.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/resetpassword/resetpassword.html" afterPath="$PROJECT_DIR$/app/resetpassword/resetpassword.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/resetpwd.css" afterPath="$PROJECT_DIR$/app/resetpwd.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services.js" afterPath="$PROJECT_DIR$/app/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/style.css" afterPath="$PROJECT_DIR$/app/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/localstorage.js" afterPath="$PROJECT_DIR$/assets/js/localstorage.js" />
-    </list>
+    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -326,134 +284,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="topup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBS-UserPortal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -461,7 +291,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../06.12.2016/PBS-Admin-UI" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -619,7 +449,7 @@
       <workItem from="1488519088255" duration="18959000" />
       <workItem from="1488601094044" duration="1533000" />
       <workItem from="1488611794637" duration="687000" />
-      <workItem from="1488965525950" duration="13049000" />
+      <workItem from="1488965525950" duration="13698000" />
     </task>
     <task id="LOCAL-00001" summary="Done with binding the values of docking station (edit) with 6 new fileds and changed the keywords (Registration and Refunds) in day wise report">
       <created>1483628334344</created>
@@ -852,11 +682,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487412803442</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added New topup plans in Topup(side bar)">
+      <created>1488986316536</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1488986316536</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809110000" />
+    <option name="totallyTimeSpent" value="809759000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -869,11 +706,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17695168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.49563318" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5021834" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32899022" sideWeight="0.5021834" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.49344978" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24981412" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -923,7 +760,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="checked with Redistribution vehicle tracking ( moving from one place to another ), done with docking station cleaning manage view and insert details" />
     <MESSAGE value="Adding a new view design for docking station cleaning module ( In progress )" />
     <MESSAGE value="Done with report and print view for docking station cleaning and bicycle maintenance in maintenace module" />
     <MESSAGE value="Done with ticket manage view , add view ( search option ) ---- In progress" />
@@ -948,7 +784,8 @@
     <MESSAGE value="testing with forgotpassword page design and functionality" />
     <MESSAGE value="testing the user portal application" />
     <MESSAGE value="Corrected password policy issue by Shivu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected password policy issue by Shivu" />
+    <MESSAGE value="Added New topup plans in Topup(side bar)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added New topup plans in Topup(side bar)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
