@@ -2198,6 +2198,7 @@
             if (!response.error) {
                 $scope.membershipData = response.data;
                 $scope.orderid = new Date().getTime();
+                $scope.tid = new Date().getTime();
                 $scope.uid=User_ID;
                 $scope.membershipData.forEach(function (membership) {
                 });
