@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="8f5638c7-00bc-4b06-a6a1-c434d5eba7a0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -26,8 +24,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="2200" column="50" lean-forward="false" selection-start-line="2200" selection-start-column="50" selection-end-line="2200" selection-end-column="50" />
+            <state relative-caret-position="-17">
+              <caret line="2201" column="35" lean-forward="false" selection-start-line="2201" selection-start-column="35" selection-end-line="2201" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -207,8 +205,8 @@
         <option value="$PROJECT_DIR$/app/admin/common/sidebar-left.html" />
         <option value="$PROJECT_DIR$/app/env.js" />
         <option value="$PROJECT_DIR$/app/admin/modules/change-password/manage.html" />
-        <option value="$PROJECT_DIR$/app/controllers.js" />
         <option value="$PROJECT_DIR$/app/admin/modules/plans/view-plans.html" />
+        <option value="$PROJECT_DIR$/app/controllers.js" />
       </list>
     </option>
   </component>
@@ -540,7 +538,7 @@
       <workItem from="1488611794637" duration="687000" />
       <workItem from="1488965525950" duration="13843000" />
       <workItem from="1489033298222" duration="2611000" />
-      <workItem from="1489035964899" duration="9000" />
+      <workItem from="1489035964899" duration="401000" />
     </task>
     <task id="LOCAL-00001" summary="Done with binding the values of docking station (edit) with 6 new fileds and changed the keywords (Registration and Refunds) in day wise report">
       <created>1483628334344</created>
@@ -787,11 +785,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489035832228</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="added work space.xml">
+      <created>1489036002835</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1489036002835</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="812524000" />
+    <option name="totallyTimeSpent" value="812916000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -858,7 +863,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done with report and print view for docking station cleaning and bicycle maintenance in maintenace module" />
     <MESSAGE value="Done with ticket manage view , add view ( search option ) ---- In progress" />
     <MESSAGE value="Done with KPI(Smart card performance at the dock (taking out a cycle from docking station), Docking station clean (In progress)" />
     <MESSAGE value="Done with KPI(Smart card performance at the dock (taking out a cycle from docking station),KPI Docking station clean (In progress)" />
@@ -883,7 +887,8 @@
     <MESSAGE value="Corrected password policy issue by Shivu" />
     <MESSAGE value="Added New topup plans in Topup(side bar)" />
     <MESSAGE value="added transaction id in selecting the plan" />
-    <option name="LAST_COMMIT_MESSAGE" value="added transaction id in selecting the plan" />
+    <MESSAGE value="added work space.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added work space.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -945,7 +950,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>1644</line>
+          <line>1630</line>
           <option name="timeStamp" value="568" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -1015,7 +1020,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>2258</line>
+          <line>2244</line>
           <option name="timeStamp" value="907" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -1035,7 +1040,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/controllers.js</url>
-          <line>1177</line>
+          <line>1163</line>
           <option name="timeStamp" value="1013" />
         </line-breakpoint>
       </breakpoints>
@@ -1400,8 +1405,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="2200" column="50" lean-forward="false" selection-start-line="2200" selection-start-column="50" selection-end-line="2200" selection-end-column="50" />
+        <state relative-caret-position="-17">
+          <caret line="2201" column="35" lean-forward="false" selection-start-line="2201" selection-start-column="35" selection-end-line="2201" selection-end-column="35" />
           <folding />
         </state>
       </provider>
