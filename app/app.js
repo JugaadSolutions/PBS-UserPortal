@@ -68,6 +68,12 @@
             save:'tickets'
         },
 
+        tickets:{
+          save:'tickets',
+            getAll:'tickets/user',
+            get:'tickets'
+        },
+
         ccavenu:{
           send:'paymenttransaction/ccavRequestHandler'
         },

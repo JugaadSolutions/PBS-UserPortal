@@ -1105,6 +1105,38 @@
                 return deferred.promise;
             },
 
+            saveTicketsDetails:function (data) {
+                var deferred = $q.defer();
+                $http.post(APINew + APIEndPoint.tickets.save,data).then(function (result) {
+                    deferred.resolve(result.data);
+                },function (error) {
+                    deferred.reject(error)
+                });
+                return deferred.promise;
+            },
+
+            /*getMyTickets*/
+            getMyTickets: function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.tickets.getAll + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+            getMyTicketDetails: function (data) {
+                var deferred = $q.defer();
+                $http.get(APINew + APIEndPoint.tickets.get + '/' + data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+
             // Global key names and values
             saveGlobalKeyNameValue:function (data) {
                 var name = data.name;

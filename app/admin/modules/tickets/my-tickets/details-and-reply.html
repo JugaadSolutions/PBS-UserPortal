@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="block-header">
+        <h2>View Tickets
+            <small>Add all required details with fields marked as * are
+                mandatory
+            </small>
+        </h2>
+        <div class="actions m-t-10">
+            <button type="button" class="btn btn-icon-text btn-default waves-effect m-r-5"
+                    ng-click="cancelTicketDetails();">
+                <i class="zmdi zmdi-arrow-left"></i> Back to List
+            </button>
+            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                    ng-click="updateRaisedTicket();" ng-disabled="EditFleets.$invalid">
+                <i class="zmdi zmdi-save"></i> Update
+            </button>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="ch-alt m-b-0">
+            <h3 ng-bind="TicketSubject"> </h3>
+            <label>On:&nbsp;</label><label style="font-weight: bold" ng-bind="TicketCreatedDate | date:'dd MMM yy'"></label>&nbsp;|&nbsp;
+            <label>Status:&nbsp;</label> <label ng-bind="TicketStatus"></label>
+            <br>
+                      <!--  <div class="pmb-block">
+                <div class="pmbb-header m-t-30">
+                    <dl class="dl-horizontal">
+                        <dt class="p-l-30">Description</dt>
+                        <dd>
+                            <div class="fg-line">
+                                        <textarea name="comments"
+                                                  ng-model="RaisedTicket.description" class="form-control"
+                                                  rows="4" disabled>
+                            </textarea>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal">
+                        <dt class="p-l-30">Replies</dt>
+                        <dd>
+                            <div class="fg-line" ng-repeat="reply in ReplyDescriptions">
+                                        <textarea name="comments"
+                                                  ng-model="reply.description" class="form-control"
+                                                  rows="4" style="border-width: 2px" disabled>
+                            </textarea>
+                                &lt;!&ndash;<span ng-repeat="fromdate in ReplyFromanddates">{{fromdate.Name}}</span>&ndash;&gt;
+                                By &nbsp;<b><span>{{reply.replierId.Name}}</span></b>&nbsp;On&nbsp;<b><span>{{reply.replydate | date:'dd MMM yy'}}</span></b>
+                                <br>
+                                <br>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <form class="pmbb-edit" name="EditTickets">
+
+                        <dl class="dl-horizontal required">
+                            <dt class="p-l-30">Reply</dt>
+                            <dd>
+                                <div class="fg-line">
+                                        <textarea name="comments"
+                                                  ng-model="replyDetails.description" class="form-control"
+                                                  rows="4" required>
+                            </textarea>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dt class="p-l-30">Status</dt>
+                            <dd>
+                                <div class="fg-line">
+                                    <select chosen class="form-control" ng-model="replyDetails.status"
+                                            data-placeholder-text-single="'Select Status'"
+                                            name="Status">
+                                        <option value="Open">Open</option>
+                                        <option value="Close">Close</option>
+                                        <option value="Hold">Hold</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <dl class="dl-horizontal">
+                            <dd>
+                                <div class="fg-line m-t-10">
+                                    <label class="radio radio-inline m-r-20">
+                                        <input type="radio" name="internal" ng-model="replyDetails.internal" value="0">
+                                        <i class="input-helper"></i>
+                                        Internal usage
+                                    </label>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <div style="margin-left: 180px">
+                            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                                    ng-click="addReply()" ng-disabled="EditTickets.$invalid">
+                                <i class="zmdi zmdi-save"></i> Reply
+                            </button>
+
+                            <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                                    ng-click="ReassignEmployee()">
+                                <i class="zmdi zmdi-save"></i> Reassign
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>-->
+        </div>
+
+
+        <br>
+    </div>
+</div>

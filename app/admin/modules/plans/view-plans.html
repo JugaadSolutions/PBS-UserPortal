@@ -23,7 +23,7 @@
                 <tr ng-repeat="plans in membershipData">
                     <td data-title="'Select'">
                         <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
-                            <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.smartCardFees}}" />
+                            <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.processingFees}}" />
                             <input type="hidden" name="currency" value="INR" />
                             <input type="hidden" name="merchant_param1" value="{{uid}}"/>
                             <input type="hidden" name="merchant_param2" value="{{plans.subscriptionType}}"/>
@@ -64,7 +64,7 @@
                         {{plans.validity}} Days
                     </td>
                     <td data-title="'Total'">
-                        {{plans.userFees + plans.securityDeposit + plans.smartCardFees  }}
+                        {{plans.userFees + plans.securityDeposit + plans.processingFees }}
                     </td>
                 </tr>
             </table>

@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>Raise a Tickets</h2>
+            <br>
+            <form class="pmbb-edit" name="RaiseTickets">
+
+                <div class="pmbb-body p-l-30">
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Subject</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': RaiseTickets.subject.$touched && RaiseTickets.subject.$invalid }">
+                                <input type="text" name="subject" ng-model="TicketsDetails.subject" class="form-control"
+                                       placeholder="Bicycle" chars="only-letters" maxlength="20" required>
+                                <span class="help-block" ng-messages="RaiseTickets.subject.$error"
+                                      ng-show="RaiseTickets.subject.$touched">
+                                    <small ng-message="required">Subject is required</small>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dl-horizontal required">
+                        <dt class="p-t-10">Description</dt>
+                        <dd>
+                            <div class="fg-line"
+                                 ng-class="{ 'has-error': RaiseTickets.description.$touched && RaiseTickets.description.$invalid }">
+                               <textarea name="description"
+                                         ng-model="TicketsDetails.description" class="form-control"
+                                         rows="4"
+                                         placeholder="Issues you faced" chars="only-letters" required>
+                                </textarea>
+                                <span class="help-block" ng-messages="RaiseTickets.description.$error"
+                                      ng-show="RaiseTickets.description.$touched">
+                                    <small ng-message="required">Description is required</small>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>
+
+
+                    <button type="button" class="btn btn-icon-text btn-success waves-effect"
+                            ng-click="addTicketsDetails()" ng-disabled="RaiseTickets.$invalid">
+                        <i class="zmdi zmdi-view-list"></i> Submit
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

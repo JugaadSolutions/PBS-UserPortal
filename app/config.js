@@ -12,8 +12,8 @@
         /* Views Path */
         var adminViewPath = "/PBS-UserPortal/app/admin/modules/";
         var loginViewPath = "/PBS-UserPortal/app/login/";
-        /*var resetPasswordSuccessViewPath = "/PBS-UserPortal/app/resetpassword-success/";*/
-       /* var resetPasswordViewPath = /PBS-UserPortal/app/resetpassword/*/
+        /*var resetPasswordSuccessViewPath = "/userportal/app/resetpassword-success/";*/
+       /* var resetPasswordViewPath = /userportal/app/resetpassword/*/
 
         $urlRouterProvider.otherwise("/login");
 
@@ -500,16 +500,43 @@
             /*Tickets*/
             .state("admin.tickets",{
                 url:"/tickets",
-                templateUrl:adminViewPath + 'tickets/tickets.html',
+                templateUrl:adminViewPath + 'tickets/tick.html',
                 containerClass:'sw-toggled'
             })
 
-            .state("admin.tickets.manage", {
-                url: "/manage",
-                templateUrl: adminViewPath + 'tickets/manage.html',
-                controller: 'ViewTickets',
-                containerClass: 'sw-toggled'
+            .state("admin.tickets.raise-tickets",{
+                url:"/raise-tickets",
+                templateUrl:adminViewPath + 'tickets/raise-tickets/raise-tickets.html',
+                containerClass:'sw-toggled'
             })
+
+            .state("admin.tickets.raise-tickets.add",{
+                url:"/add",
+                templateUrl:adminViewPath + 'tickets/raise-tickets/add.html',
+                controller: 'RaiseTickets',
+                containerClass:'sw-toggled'
+            })
+
+
+            .state("admin.tickets.my-tickets",{
+                url:"/my-tickets",
+                templateUrl:adminViewPath + 'tickets/my-tickets/my-tickets.html',
+                containerClass:'sw-toggled'
+            })
+
+            .state("admin.tickets.my-tickets.add",{
+                url:"/add",
+                templateUrl:adminViewPath + 'tickets/my-tickets/add.html',
+                controller: 'MyTickets',
+                containerClass:'sw-toggled'
+            })
+
+            .state("admin.tickets.my-tickets.details-and-reply",{
+             url:"/details-and-reply/:id",
+             templateUrl:adminViewPath + 'tickets/my-tickets/details-and-reply.html',
+             controller: 'TicketsDetailsReply',
+             containerClass:'sw-toggled'
+             })
 
             /*Ports test*/
             .state("admin.ports-testing",{
@@ -928,14 +955,14 @@
             // Temporary Simulator Routes
             .state("checkout", {
                 url: "/simulator/checkout",
-                templateUrl: '/PBS-UserPortal/app/simulator/checkout.html',
+                templateUrl: '/userportal/app/simulator/checkout.html',
                 controller: 'SimulateCheckout',
                 containerClass: 'sw-toggled'
             })
 
             .state("checkin", {
                 url: "/simulator/checkin",
-                templateUrl: '/PBS-UserPortal/app/simulator/checkin.html',
+                templateUrl: '/userportal/app/simulator/checkin.html',
                 controller: 'SimulateCheckin',
                 containerClass: 'sw-toggled'
             })

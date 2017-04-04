@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header ch-alt m-b-20">
+            <h2>My Tickets
+                <br> </h2>
+            <form class="pmbb-edit" name="DaywiseCashForm" novalidate>
+
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive" >
+                <table ng-table="MyTicketsTable" class="table table-striped table-vmiddle" show-filter="false">
+                    <tr ng-repeat="mytick in MyTickets">
+                        <td data-title="'Date'" filter="{ creditBalance: 'text'}">
+                            {{mytick.ticketdate | date : "dd MMM yy" }}
+                        </td>
+                        <td data-title="'Subject'" filter="{ creditBalance: 'text'}">
+                            <a ui-sref="admin.tickets.my-tickets.details-and-reply({id:mytick.uuId})">{{mytick.subject}}</a>
+                        </td>
+                        <td data-title="'Status'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                           {{ mytick.status}}
+                        </td>
+                        <td data-title="'UUID'" filter="{ name: 'text'}" filter="{ lastName: 'text'}">
+                            {{ mytick.uuId}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

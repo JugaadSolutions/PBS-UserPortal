@@ -57,6 +57,21 @@
         <li ng-class="{active: $state.includes('admin.feedback')}">
             <a ui-sref="admin.feedback.manage"><i class="glyphicon glyphicon-envelope"></i> Feedback</a>
         </li>
+
+        <li class="sub-menu">
+            <a href="" toggle-submenu><i class="zmdi zmdi-labels"></i>Tickets</a>
+            <ul>
+                <li><a ng-class="{'active': $state.includes('admin.tickets.raise-tickets.add')}"
+                       ui-sref="admin.tickets.raise-tickets.add">Raise Tickets</a>
+                </li>
+                <li><a ng-class="{'active': $state.includes('admin.tickets.my-tickets.add')}"
+                       ui-sref="admin.tickets.my-tickets.add">My Tickets</a>
+                </li>
+            </ul>
+        </li>
+        <!--<li ng-class="{active: $state.includes('admin.tickets')}">
+            <a ui-sref="admin.tickets.manage"><i class="zmdi zmdi-labels"></i>Tickets</a>
+        </li>-->
         <li ng-class="{active: $state.includes('admin.help')}">
             <a href="http://www.mytrintrin.com/?page_id=4308" target="_blank"><i class="glyphicon glyphicon-question-sign"></i> Help</a>
         </li>
@@ -78,9 +93,6 @@
         <li ng-class="{active: $state.includes('admin.change-password')}">
             <a ui-sref="admin.change-password.manage"><i class="zmdi zmdi-lock"></i> Change Password</a>
         </li>
-       <!-- <li ng-class="{active: $state.includes('admin.tickets')}">
-            <a ui-sref="admin.tickets.manage"><i class="zmdi zmdi-labels"></i>Tickets</a>
-        </li>-->
         <li ng-class="{active: $state.includes('admin.members')}">
             <a href="javascript:void(0);" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
         </li>

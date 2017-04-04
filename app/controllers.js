@@ -68,6 +68,7 @@
         DataService.getUserDetails($scope.LogInUID).then(function (response) {
             if (!response.error) {
                 $scope._user_name=response.data.Name;
+
                 $scope._user_balance=response.data.creditBalance;
                 $scope._validity=response.data.validity;
                 $scope.membershipid=response.data.membershipId;
@@ -220,16 +221,14 @@
             $scope.UID=res.data.data.uid;
             localStorage.ID=$scope.UID;
 
-
-
-
           /*  alert(_login_id);*/
             if (token) {
                 auth.saveToken(token);
                 $state.reload();
                 DataService.getUserDetails($scope.UID).then(function (response) {
                     if (!response.error) {
-                        _user_name=response.data.Name;
+                        $scope.MemberName=response.data.Name;
+                        localStorage.UserName = $scope.MemberName;
                         $scope.user_status=response.data.status;
                         /*growl.success(response.message);*/
                     } else {
@@ -272,17 +271,29 @@
         };
 
 
-        $scope.passValidation=false;
+
         $scope.changepassword=function () {
-            var regexp=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9:@#$%^&*]{6,20}$/;
-            if(!$scope.signupDetails.password.match(regexp))
+
+            $scope.passValidation=false;
+           // $scope.signupDetails.cpassword = '';
+            if ($scope.signupDetails.password.length >= 6)
             {
-                $scope.passValidation=false;
-            }
-            else {
-                $scope.passValidation=true;
+                //if password contains both lower and uppercase characters, increase strength value
+                if ($scope.signupDetails.password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))
+                {
+                    //if it has numbers and characters, increase strength value
+                    if ($scope.signupDetails.password.match(/([0-9])/))
+                    {
+                        //if it has one special character, increase strength value
+                        if ($scope.signupDetails.password.match(/([!,%,&,@,#,$,^,*,?,_,~])/))
+                        {
+                            $scope.passValidation=true;
+                        }
+                    }
+                }
             }
         };
+
 
         $scope.signupDetails={
             Name:'',
@@ -322,6 +333,7 @@
             {
                 growl.error("Password Mismatch");
             }
+
             else if(!$scope.passValidation)
             {
                 growl.error("Your password does not meet the policy requirements");
@@ -332,14 +344,16 @@
                     var _last_name =  $scope.signupDetails.lastName;
                     var _email =  $scope.signupDetails.email;
                     var _phoneno = "91-" + $scope.signupDetails.phoneNumber;
-                    var _password = md5.createHash($scope.signupDetails.password || '');
-
+                   var _password = md5.createHash($scope.signupDetails.password || '');
+                    var _password = $scope.signupDetails.password;
+                    var _cpassword = $scope.signupDetails.cpassword;
                     $scope.signupDetailsHash={
                         Name:_first_name,
                         lastName:_last_name,
                         email:_email,
                         phoneNumber:_phoneno,
-                        password:_password
+                        password:_password,
+                        cpassword:_cpassword
                     };
                 DataService.signup($scope.signupDetailsHash).then(function (response) {
                     if (!response.error) {
@@ -2426,14 +2440,26 @@
 
         $scope.passValidation=false;
         $scope.changepassword=function () {
-            var regexp=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9:@#$%^&*]{6,20}$/;
-            if(!$scope.password.match(regexp))
+            $scope.passValidation=false;
+
+            var strength = 0;
+            if ($scope.password.length >= 6)
             {
-                $scope.passValidation=false;
+                //if password contains both lower and uppercase characters, increase strength value
+                if ($scope.password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))
+                {
+                    //if it has numbers and characters, increase strength value
+                    if ($scope.password.match(/([0-9])/))
+                    {
+                        //if it has one special character, increase strength value
+                        if ($scope.password.match(/([!,%,&,@,#,$,^,*,?,_,~])/))
+                        {
+                            $scope.passValidation=true;
+                        }
+                    }
+                }
             }
-            else {
-                $scope.passValidation=true;
-            }
+
         };
 
         $scope.submit = function (oldPassword,newPassword,confirmPassword)
@@ -2448,6 +2474,7 @@
                     $scope.passwords = {
                         currentPassword: oldPassword,
                         newPassword: newPassword,
+                        cpassword:confirmPassword,
                         uid: User_ID
                     };
                     DataService.saveNewPassword($scope.passwords).then(function (response) {
@@ -4912,129 +4939,100 @@
 
     }]);
 
-    /*Tickets*/
-    app.controller('ManageTicketsDetails', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', '$uibModal', 'StatusService', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, $uibModal, StatusService)
+
+
+
+
+    /*Tickets (Raise tickets)*/
+    app.controller('RaiseTickets', ['$scope', '$state', 'DataService', 'growl', 'sweet', function ($scope, $state, DataService, growl, sweet)
     {
-        $scope.ticketsDetails = [];
-
-        $scope.addNewTicketDetails = function () {
-            $state.go('admin.tickets.add');
+        $scope.LogInUID=localStorage.ID;
+        $scope.LoginUserName=localStorage.UserName;
+        
+        $scope.TicketsDetails={
+            name:$scope.LoginUserName,
+            createdBy:$scope.LogInUID,
+            ticketdate:new Date(),
+            subject:'',
+            channel:5,
+            description:'',
+            priority:3,
+            user:$scope.LogInUID
         };
-
-    /*   $scope.searchMember={
-           name:''
-       };
-
-        $scope.SearchMember = function () {
-            DataService.memberSearch($scope.searchMember).then(function (response) {
-                if (!response.error) {
-                    growl.success(response.message);
-                } else {
+        
+        $scope.addTicketsDetails=function () {
+            DataService.saveTicketsDetails($scope.TicketsDetails).then(function (response)
+                {
+                    if (!response.error)
+                    {
+                        growl.success(response.message);
+                    } else
+                    {
+                        growl.error(response.message);
+                    }
+                },
+                function (response) {
                     growl.error(response.message);
-                }
-            }, function (response) {
-                growl.error(response.data.description['0']);
-            })
-        };*/
+                });
+        }
+
 
     }]);
 
-    var _search_member_name;
-    var _global_search_member_name;
-    app.controller('AddTicketsDetails',  ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', 'StatusService', '$uibModal', 'AWS', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, StatusService, $uibModal, AWS)
+    app.controller('MyTickets', ['$scope', '$state','DataService', 'StatusService', 'NgTableParams', 'growl', 'sweet', '$filter', '$uibModal', function ($scope, $state, DataService, StatusService, NgTableParams, growl, sweet, $filter, $uibModal)
     {
-        $scope.ticketsDetails = {
-            SearchedmemberName:_global_search_member_name,
-            memberId:'',
-            ticketSubject:'',
-            ticketDescription:'',
-            priorityName:'',
-            departmentName:'',
-            type:''
-        };
+        $scope.LogInUID=localStorage.ID;
 
-        $scope.cancelAddTickets = function () {
-            sweet.show({
-                title: 'Are you sure?',
-                text: 'You may have unsaved data',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, leave!',
-                closeOnConfirm: true
-            }, function () {
-                $state.go('admin.tickets.manage');
-            });
-        };
+        $scope.MyTickets = [];
 
-        $scope.smember =function () {
-            alert("hi");
-        };
-
-        $scope.addNewTicketDetails = function () {
-            DataService.saveTicketDetails($scope.ticketsDetails).then(function (response) {
-                if (!response.error) {
-                    growl.success(response.message);
-                    $state.go('admin.registration-centres.edit', {'id': response.data._id});
-                } else {
-                    growl.error(response.message);
-                }
-            }, function (response) {
-                growl.error(response.data.description['0']);
-            })
-        };
-
-        $scope.searchMember={
-            name:''
-        }
-
-        $scope.SearchMember = function () {
-            DataService.memberSearch($scope.searchMember).then(function (response) {
-                if (!response.error) {
-                    _search_member_name = $scope.searchMember.name;
-
-                    /* $scope.SearchMember = function (size) {
-                         $uibModal.open({
-                             templateUrl: 'member-search-details.html',
-                             controller: 'SearchMemberDetails',
-                             size: size,
-                             resolve: {
-                                 items: function () {
-                                     /!* return $scope.member.credit;*!/
-                                 }
-                             }
-                         });
-                     };*/
-
-                    return $uibModal.open({
-                        templateUrl: 'member-search-details.html',
-                        controller: 'SearchMemberDetails',
-                        size: 'md',
-                        resolve: {
-                            member: function () {
-                                return _global_search_member_name;
-                                alert(_global_search_member_name)
+        DataService.getMyTickets($scope.LogInUID).then(function (response)
+            {
+                if (!response.error)
+                {
+                    for(var i=0;i<response.data.length;i++)
+                    {
+                        $scope.MyTickets.push(response.data[i]);
+                    }
+                    $scope.MyTicketsTable = new NgTableParams(
+                        {
+                            count: 10
+                        },
+                        {
+                            getData: function ($defer, params) {
+                                var orderedData = params.filter() ? $filter('filter')($scope.MyTickets, params.filter()) : $scope.MyTickets;
+                                params.total(orderedData.length);
+                                $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                             }
                         }
-                    });
-
-                    growl.success(response.message);
-                } else {
+                    );
+                } else
+                {
                     growl.error(response.message);
                 }
-            }, function (response) {
-                growl.error(response.data.description['0']);
-            })
+            },
+            function (response) {
+                growl.error(response.message);
+            });
+
+        $scope.ticketsDetailsReply = function (id) {
+            $state.go('admin.tickets.my-tickets.details-and-reply', {'id': id});
         };
+    }]);
 
-        $scope.departmentNames = [];
-        $scope.valueSelections = [];
-        $scope.keyValues = [];
-        var Values;
+    var _ticket_id;
+    app.controller('TicketsDetailsReply', ['$scope', '$state','$stateParams','DataService', 'StatusService', 'NgTableParams', 'growl', 'sweet', '$filter', '$uibModal', function ($scope, $state,$stateParams, DataService, StatusService, NgTableParams, growl, sweet, $filter, $uibModal)
+    {
+        $scope.LogInUID=localStorage.ID;
 
-        DataService.getGlobalKeyNameValues().then(function (response)
-        {
-            if (!response.error) {
-                $scope.departmentNames = response.data;
+        _ticket_id = $stateParams.id;
+
+        DataService.getMyTicketDetails($stateParams.id).then(function (response) {
+            if (!response.error)
+            {
+                $scope.RaisedTicket = response.data[0];
+                $scope.TicketSubject = response.data[0].subject;
+                $scope.TicketCreatedDate = response.data[0].ticketdate;
+                $scope.TicketStatus = response.data[0].status;
             }
             else {
                 growl.error(response.message);
@@ -5043,26 +5041,7 @@
             growl.error(response.data.description['0']);
         });
 
-        $scope.selectedDepartment =function(data)
-        {
-            $scope.ticketsDetails.departmentName=data.name;
-
-            for (var i=0;i<data.value.length;i++)
-            {
-                Values = data.value[i];
-                $scope.valueSelections.push(Values);
-
-                $scope.selectedValues=function (Values) {
-                    $scope.ticketsDetails.type=Values;
-                }
-            }
-        };
-
-    }]);
-
-    app.controller('EditTickets', ['$scope', '$state', 'DataService', 'NgTableParams', 'growl', 'sweet', '$filter', '$uibModal', 'StatusService', function ($scope, $state, DataService, NgTableParams, growl, sweet, $filter, $uibModal, StatusService) {
-
-        $scope.cancelUpdateTickets = function () {
+        $scope.cancelTicketDetails = function () {
             sweet.show({
                 title: 'Are you sure?',
                 text: 'You may have unsaved data',
@@ -5071,9 +5050,10 @@
                 confirmButtonText: 'Yes, leave!',
                 closeOnConfirm: true
             }, function () {
-                $state.go('admin.tickets.manage');
+                $state.go('admin.tickets.my-tickets.add');
             });
         };
+
     }]);
 
     //check in check out
