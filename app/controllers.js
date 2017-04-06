@@ -4983,7 +4983,10 @@
     {
         $scope.LogInUID=localStorage.ID;
 
-        $scope.MyTickets = [];
+        $scope.MyTickets;
+
+       var open = [];
+       var close = [];
 
         DataService.getMyTickets($scope.LogInUID).then(function (response)
             {
@@ -4991,8 +4994,21 @@
                 {
                     for(var i=0;i<response.data.length;i++)
                     {
-                        $scope.MyTickets.push(response.data[i]);
+                        if(response.data[i].status == 'Open')
+                        {
+                            open.push(response.data[i]);
+                            if(i==response.data.length-1)
+                            {
+                                $scope.MyTickets = open;
+                            }
+                        }
+                        if(response.data[i].status == 'Close')
+                        {
+                            close.push(response.data[i]);
+                        }
+
                     }
+
                     $scope.MyTicketsTable = new NgTableParams(
                         {
                             count: 10
@@ -5000,8 +5016,8 @@
                         {
                             getData: function ($defer, params) {
                                 var orderedData = params.filter() ? $filter('filter')($scope.MyTickets, params.filter()) : $scope.MyTickets;
-                                params.total(orderedData.length);
-                                $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                                /*params.total(orderedData.length);
+                                $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));*/
                             }
                         }
                     );
@@ -5017,6 +5033,40 @@
         $scope.ticketsDetailsReply = function (id) {
             $state.go('admin.tickets.my-tickets.details-and-reply', {'id': id});
         };
+
+        $scope.OpenTickets=function () {
+            $scope.MyTickets=open;
+
+            $scope.MyTicketsTable = new NgTableParams(
+                {
+                    count: 10
+                },
+                {
+                    getData: function ($defer, params) {
+                        var orderedData = params.filter() ? $filter('filter')($scope.MyTickets, params.filter()) : $scope.MyTickets;
+                        /*params.total(orderedData.length);
+                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));*/
+                    }
+                }
+            );
+        }
+        $scope.ClosedTickets=function ()
+        {
+            $scope.MyTickets=close;
+
+            $scope.MyTicketsTable = new NgTableParams(
+                {
+                    count: 10
+                },
+                {
+                    getData: function ($defer, params) {
+                        var orderedData = params.filter() ? $filter('filter')($scope.MyTickets, params.filter()) : $scope.MyTickets;
+                        /*params.total(orderedData.length);
+                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));*/
+                    }
+                }
+            );
+        }
     }]);
 
     var _ticket_id;
@@ -5026,13 +5076,20 @@
 
         _ticket_id = $stateParams.id;
 
+        $scope.RaisedTicket = {};
+        $scope.ReplyDescriptions=[];
+        $scope.ReplyFromanddates=[];
+
         DataService.getMyTicketDetails($stateParams.id).then(function (response) {
             if (!response.error)
             {
                 $scope.RaisedTicket = response.data[0];
-                $scope.TicketSubject = response.data[0].subject;
-                $scope.TicketCreatedDate = response.data[0].ticketdate;
-                $scope.TicketStatus = response.data[0].status;
+
+                for(var i =0;i<response.data[0].transactions.length;i++)
+                {
+                    $scope.ReplyDescriptions.push(response.data[0].transactions[i]);
+                    $scope.ReplyFromanddates.push(response.data[0].transactions[i].replierId)
+                }
             }
             else {
                 growl.error(response.message);
@@ -5053,6 +5110,49 @@
                 $state.go('admin.tickets.my-tickets.add');
             });
         };
+
+        $scope.replyDetails={
+            ticketid:_ticket_id,
+            replydate:new Date(),
+            description:'',
+            replierId:$scope.LogInUID,
+            status:''
+        };
+
+        if($scope.replyDetails.status == '')
+        {
+            var _ticketstatus="Open";
+
+            $scope.replyDetails={
+                ticketid:_ticket_id,
+                replydate:new Date(),
+                description:'',
+                replierId:$scope.LogInUID,
+                status:_ticketstatus
+            };
+        }
+        else
+        {
+            $scope.replyDetails={
+                ticketid:_ticket_id,
+                replydate:new Date(),
+                description:'',
+                replierId:$scope.LogInUID,
+                status:''
+            };
+        }
+
+        $scope.addReply=function () {
+            DataService.saveTicketReply($scope.replyDetails).then(function (response) {
+                if (!response.error) {
+                    growl.success("Successfully Replied");
+                } else {
+                    growl.error(response.message);
+                }
+            }, function (response) {
+                growl.error(response.data.description['0']);
+            });
+        }
 
     }]);
 

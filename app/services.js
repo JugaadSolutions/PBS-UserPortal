@@ -1136,6 +1136,17 @@
                 return deferred.promise;
             },
 
+            saveTicketReply:function(data)
+            {
+                var deferred = $q.defer();
+                $http.post(APINew + APIEndPoint.ticketsDetails.reply + '/' + data.ticketid + '/' + "addreply", data).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
 
             // Global key names and values
             saveGlobalKeyNameValue:function (data) {

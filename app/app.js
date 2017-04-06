@@ -232,8 +232,8 @@
 
         ticketsDetails:{
             get:'ticketdetails',
-            getAll:'ticketsDetails'
-
+            getAll:'ticketsDetails',
+            reply:'tickets'
         },
 
         searchmember:{
