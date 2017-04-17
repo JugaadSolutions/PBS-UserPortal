@@ -2105,7 +2105,7 @@
         var self = this;
 
         self.saveToken = function (token) {
-            $window.localStorage['PBSToken'] = token;
+            $window.localStorage['PBSUserToken'] = token;
         };
 
         self.parseToken = function (token) {
@@ -2115,7 +2115,7 @@
         };
 
         self.getToken = function () {
-            return $window.localStorage['PBSToken'];
+            return $window.localStorage['PBSUserToken'];
         };
 
         self.isAuthed = function () {
@@ -2182,7 +2182,7 @@
         };
 
         self.logout = function () {
-            $window.localStorage.removeItem('PBSToken');
+            $window.localStorage.removeItem('PBSUserToken');
             $window.location.reload();
         };
 

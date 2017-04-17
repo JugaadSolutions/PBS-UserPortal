@@ -1,102 +1,88 @@
-<html ng-app="myApp">
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Docking Hubs</title>
-    <link rel="stylesheet" href="../assets/css/app.css">
-</head>
-<body ng-controller="test">
-<form name="registration">
-    <ul class="header-inner clearfix ">
-    </ul>
+    <script src="../assets/js/jquery.min.js"></script>
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0px; padding: 0px }
+        #googleMap { height: 100% }
 
-    <div class="map-view">
-        <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-            <ui-gmap-markers models="markers" coords="'self'" icon="'icon'">
-                <ui-gmap-windows show="show">
-                    <div ng-non-bindable>
-                        <section>
-                            <div class="mapHeading map-card-heading">
-                                {{title}}
-                            </div>
-                            <div class="subHeading map-card-content p-t-10">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <i class="zmdi zmdi-bike"></i>
-                                        </td>
-                                        <td>
-                                            <h5>Cycles</h5>
-                                            <p>Capacity</p>
-                                            <p>Available</p>
-                                        </td>
-                                        <td>
-                                            <h5>&nbsp;</h5>
-                                            <p>{{bicycleCapacity}}</p>
-                                            <p>{{bicycleCount}}</p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <i class="zmdi zmdi-alert-circle-o"></i>
-                                        </td>
-                                        <td>
-                                            <h5>Status</h5>
-                                        </td>
-                                        <td>
-                                            <p>{{dockingStationStatus}}</p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <i class="zmdi zmdi-time"></i>
-                                        </td>
-                                        <td>
-                                            <h5 ng-click="akon()">Working Hours</h5>
-                                        </td>
-                                        <td>
-                                            <p>06:00 am - 10:00 pm</p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <i class="zmdi zmdi-map"></i>
-                                        </td>
-                                        <td>
-                                            <h5>Direction</h5>
-                                        </td>
-                                        <td>
-                                            <a target="_blank" href="{{mapUrl}}{{latitude}},{{longitude}}"
-                                               class="pull-right text-muted"><p>Click here</p></a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </section>
-                    </div>
-                </ui-gmap-windows>
-            </ui-gmap-markers>
-        </ui-gmap-google-map>
-    </div>
-</form>
+        body {margin:0;}
+
+        .topnav {
+            overflow: hidden;
+            background-color: #2196f3;
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a href="http://www.mytrintrin.com">
+        <img src="../assets/images/trin.png" height="50px" />
+    </a>
+</div>
+<div id="googleMap" >
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa9Of1QM8A-e-x_BKH_nTDn0j7f3zpGNQ&callback=myMap"></script>
+
+</div>
 </body>
+</html>
 <script>
-    $(document).ready(function() {
-        var URL = "http://www.mytrintrin.com/api/dockingStations/dockstation";
+    $(document).ready(function(){
+
+        var URL = "http://www.mytrintrin.com:13070/api/dockstation/";
+
+        var mapProp= {
+            center:new google.maps.LatLng(12.2958104,76.63938050),
+            zoom:14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+
+        };
+
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
             $.ajax({
                 url: URL,
                 type: 'GET',
-                data: dataObject,
                 dataType: 'json',
-                success: function(result) {
+                success: function(result)
+                {
+                    hubs = [];
+                    for (var i = 0; i < result.data.length; i++)
+                    {
+                    hubs.push(result.data[i]) ;
+                    var _name = hubs[i].name;
+                    var _long = hubs[i].gpsCoordinates.longitude;
+                    var _lati=  hubs[i].gpsCoordinates.latitude;
+                    var _Bcount = hubs[i].bicycleCount;
+                    var _Bcapacity = hubs[i].bicycleCapacity;
+
+                    var myLatLng ={lat: _lati, lng: _long};
+                    var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng (_lati,_long),
+                    map: map,
+                    title: "Hub Name : " + _name + "<br/>" + "Bicycle Count : " + _Bcount + "<br/>" + "Bicycle Capacity : "+_Bcapacity,
+                    });
+
+                    /*google.maps.event.addListener(marker, 'mouseover', function (e) {
+                     e.marker.target.removeAttribute('title');
+                    });*/
+
+                    (function(marker, i) {
+                    // add click event
+                    google.maps.event.addListener(marker, 'click', function() {
+                    infowindow = new google.maps.InfoWindow({
+                    content: marker.getTitle()
+                    });
+                    infowindow.open(map, marker);
+                    });
+                    })(marker, i);
+
+                    }
                 },
                 error:function (error) {
                 }
             });
     });
 </script>
-</html>

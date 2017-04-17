@@ -2249,7 +2249,7 @@
             }
         }, function (response) {
             growl.error(response.data.description);
-        })
+        });
 
             $scope.Selectplan = function (event) {
                 var _plan_obj_id = event.currentTarget.value;
@@ -2373,7 +2373,7 @@
                 growl.error(response.message);
             }
         }, function (response) {
-            growl.error(response.data.description['0']);
+            growl.error(response.data.description);
         });
 
         $scope.ridesTableUser = new NgTableParams(
