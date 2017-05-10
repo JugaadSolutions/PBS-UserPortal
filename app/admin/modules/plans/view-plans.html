@@ -22,7 +22,7 @@
             <table ng-table="membershipTable" class="table table-striped table-vmiddle" show-filter="false">
                 <tr ng-repeat="plans in membershipData">
                     <td data-title="'Select'">
-                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                        <form method="POST" name="customerData" action="http://43.251.80.79/portal/ccavRequestHandler.php">
                             <input type="hidden"  name="amount" value="{{plans.userFees + plans.securityDeposit + plans.processingFees}}" />
                             <input type="hidden" name="currency" value="INR" />
                             <input type="hidden" name="merchant_param1" value="{{uid}}"/>
@@ -32,12 +32,12 @@
                             <input type="hidden" name="merchant_id" value="96478"/>
                             <input type="hidden" name="order_id" value="{{orderid}}"/>
                             <input type="hidden" name="currency" value="INR"/>
-                            <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
-                            <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                            <input type="hidden" name="redirect_url" value="http://43.251.80.79:13070/portal/ccavResponseHandler.php"/>
+                            <input type="hidden" name="cancel_url" value="http://43.251.80.79:13070/portal/ccavResponseHandler.php"/>
                             <input type="hidden" name="language" value="EN"/>
-                            <input type="hidden" name="billing_name" value=""/>
-                            <input type="hidden" name="billing_tel" value=""/>
-                            <input type="hidden" name="billing_email" value=""/><!--</td>-->
+                            <input type="hidden" name="billing_name" value="{{UserName}}"/>
+                            <input type="hidden" name="billing_tel" value="{{UserMobile}}"/>
+                            <input type="hidden" name="billing_email" value="{{UserEmail}}"/><!--</td>-->
                             <!--<td>-->
                             <!-- <input type = "submit" class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">-->
                             <button type="submit"  class="btn btn-icon-text btn-success waves-effect" value ="Select Plan">Select</button>
@@ -72,14 +72,5 @@
     </div>
 </div>
 
-<script type="text/ng-template" id="Error-popup.html">
-    <div class="modal-header">
-        <h4 class="modal-title">Message</h4>
-    </div>
-    <div class="modal-body">
-        <h3><p>Payment gateway procedure is under process</p></h3>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-link" type="button" ng-click="ok();">OK</button>
-    </div>
-</script>
+
+

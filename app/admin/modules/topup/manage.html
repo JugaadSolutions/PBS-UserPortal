@@ -35,7 +35,7 @@
                             <table ng-table="topupTable" class="table table-striped table-vmiddle" show-filter="false">
                                 <tr ng-repeat="topup in TopupData">
                                     <td data-title="'Plan Name'">
-                                        <form method="POST" name="customerData" action="http://www.mytrintrin.com/portal/ccavRequestHandler.php">
+                                        <form method="POST" name="customerData" action="http://43.251.80.79/portal/ccavRequestHandler.php">
                                             <input type="hidden"  name="amount" value="{{topup.userFees}}" />
                                             <input type="hidden" name="currency" value="INR" />
                                             <input type="hidden" name="merchant_param1" value="{{UID}}"/>
@@ -45,8 +45,8 @@
                                             <input type="hidden" name="merchant_id" value="96478"/>
                                             <input type="hidden" name="order_id" value="{{orderid}}"/>
                                             <input type="hidden" name="currency" value="INR"/>
-                                            <input type="hidden" name="redirect_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
-                                            <input type="hidden" name="cancel_url" value="http://www.mytrintrin.com/portal/ccavResponseHandler.php"/>
+                                            <input type="hidden" name="redirect_url" value="http://43.251.80.79/portal/ccavResponseHandler.php"/>
+                                            <input type="hidden" name="cancel_url" value="http://43.251.80.79/portal/ccavResponseHandler.php"/>
                                             <input type="hidden" name="language" value="EN"/>
                                             <input type="hidden" name="billing_name" value=""/>
                                             <input type="hidden" name="billing_tel" value=""/>

@@ -16,9 +16,9 @@
 
     <div class="card">
         <div class="ch-alt m-b-0">
-            <h3 ng-bind="RaisedTicket.subject"> </h3>
-            <label>On:&nbsp;</label><label style="font-weight: bold" ng-bind="RaisedTicket.ticketdate | date:'dd MMM yy'"></label>&nbsp;|&nbsp;
-            <label>Status:&nbsp;</label> <b><span ng-bind="RaisedTicket.status"></span></b> | <label>Ticket No: </label><b><span ng-bind="'UT'+RaisedTicket.uuId"></span></b>
+            &nbsp;<label>Subject :&nbsp;</label> <b><span ng-bind="RaisedTicket.subject"> </span></b> |  <label>Status:&nbsp;</label> <b><span ng-bind="RaisedTicket.status"></span></b> <br>
+            &nbsp;<label>On:&nbsp;</label><label style="font-weight: bold" ng-bind="RaisedTicket.ticketdate | date:'dd MMM yy'"></label>&nbsp;|&nbsp;
+            <label>Ticket No: </label><b><span ng-bind="'UT'+RaisedTicket.uuId"></span></b>
             <br>
 
             <div class="pmb-block">
